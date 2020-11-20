@@ -1,0 +1,34 @@
+// button's
+%button {
+  font-family: Poppins, "sans-serif";
+  color: white;
+}
+// ~button's
+
+// input's
+%input {
+  width: 100%;
+  height: 48px;
+  padding: 14px;
+  outline: none;
+  &::placeholder {
+    color: rgb(158, 158, 158);
+  }
+}
+
+%input-border-effects {
+  & {
+    border: 1px solid $input-border-color;
+    border-radius: $border-radius;
+  }
+  &:hover,
+  &:focus,
+  &:active {
+    border-color: darken($input-border-color, 20%);
+  }
+}
+
+// ~input's
+
+
+

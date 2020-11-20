@@ -1,0 +1,83 @@
+@import "variables";
+// I'm sorry you have to do all of these by hand
+// don't worry the @each will support mixin in the future
+
+// Small tablets and large smartphones (landscape view)
+
+@function get-size($name) {
+  @return map-get($grid-breakpoints, $name);
+}
+
+$screen-sm-min: get-size(sm);
+
+// Small tablets (portrait view)
+$screen-md-min: get-size(md);
+
+// Tablets and small desktops
+$screen-lg-min: get-size(lg);
+
+// Large tablets and desktops
+$screen-xl-min: get-size(xl);
+
+@mixin ssm {
+    @media screen and (max-width: #{$screen-sm-min}) {
+      @content;
+    }
+  }
+
+// Small devices
+@mixin sm {
+  @media screen and (min-width: #{$screen-sm-min}) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media screen and (min-width: #{$screen-md-min}) {
+    @content;
+  }
+}
+
+// Large devices
+@mixin lg {
+  @media screen and (min-width: #{$screen-lg-min}) {
+    @content;
+  }
+}
+
+// Extra large devices
+@mixin xl {
+  @media screen and (min-width: #{$screen-xl-min}) {
+    @content;
+  }
+}
+
+// Custom devices
+@mixin rwd($screen) {
+  @media screen and (min-width: #{$screen}) {
+    @content;
+  }
+}
+
+@mixin min-and-max($min-width, $max-width) {
+  @media screen and (min-width: #{$min-width}) and (max-width: #{$max-width}) {
+    @content;
+  }
+}
+
+@mixin max-width($max-width) {
+  @media screen and (max-width: #{$max-width}) {
+    @content;
+  }
+}
+
+@mixin landscape-rwd($screen) {
+  @media screen and (min-width: #{$screen}) and (orientation:landscape) {
+    @content;
+  }
+}
+@mixin portrait-rwd($screen) {
+  @media screen and (min-width: #{$screen}) and (orientation:portrait) {
+    @content;
+  }
+}
