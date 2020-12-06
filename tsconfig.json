@@ -43,6 +43,9 @@
       ],
       "@testing/*": [
           "testing/*"
+      ],
+      "@assets/*": [
+          "assets/*"
       ]
   }
   }

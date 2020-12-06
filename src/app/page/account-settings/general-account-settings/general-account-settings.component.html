@@ -1,1 +1,85 @@
-<div class="general-account-settings h-100 px-0 text-center">general account settings tab work!</div>
+<div class="general-account-settings h-100">
+    <div class="container-fluid">
+        <div class="row justify-content-start px-2 py-2">
+            <div class="col col-6">
+                <strong id="pageTitle" class="justify-content-start">Edit Profile</strong>
+            </div>
+            <div class="w-100"></div>
+            <div class="col col-6">
+                <small id="describe-feature" class="form-text text-muted justify-content-start">Everyone on ImgPack will
+                    know you through the information below.</small>
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                    else.</small>
+            </div>
+        </div>
+
+        <div class="row justify-content-start px-2">
+            <div class="col col-2">
+                <img class="rounded-circle avatar my-2 float-left" [src]="avatarSource" />
+            </div>
+            <div class="col col-3 ml-n3">
+                <form>
+                    <div class="form-group my-4">
+                        <div class="row">
+                            <span class="username strong my-1">{{defaultGeneralAccountSettings.username}}</span>
+                        </div>
+                        <div class="row">
+                            <label type="button" class="my-1 selectImageButton" for="selectAvartarSource">Change Your
+                                Avatar</label>
+                            <input type="file" hidden id="selectAvartarSource" name="selectAvartarSource"
+                                (change)="onSelectImage($event)">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row justify-content-start px-4">
+            <form>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col">
+                            <label for="inputFirstName">Firstname</label>
+                            <input type="text" class="form-control inputField" id="inputFirstName"
+                                placeholder="Enter firstname">
+                        </div>
+                        <div class="col">
+                            <label for="inputLastName">Lastname</label>
+                            <input type="text" class="form-control inputField" id="inputLastName"
+                                placeholder="Enter lastname">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputUserName">Username</label>
+                    <input type="text" class="form-control inputField" id="inputUserName" placeholder="Enter Username">
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail">Email address</label>
+                    <input type="email" class="form-control inputField" id="inputEmail" aria-describedby="emailHelp"
+                        placeholder="Enter email">
+                </div>
+                <div class="form-group">
+                    <label>Select your gender</label>
+                    <select class="custom-select selectGender">
+                        <option selected>Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+        <div class="row justify-content-start px-4">
+            <form>
+                <div class="form-group">
+                    <label for="introduceProfile">Introduce about you</label>
+                    <textarea class="form-control inputField" id="introduceProfile" rows="3"
+                        placeholder="Write somthing about you"></textarea>
+                </div>
+            </form>
+        </div>
+        <div class="row justify-content-start px-4 py-2">
+            <button type="submit" id="submit" class="btn btn-primary">Done</button>
+        </div>
+    </div>
+</div>
