@@ -1,0 +1,108 @@
+hr{
+    width: 50%;
+    
+}
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+.container{
+ 
+    margin: 20px auto;
+    columns: 3;
+    column-gap: 5px;
+} 
+.container .box{
+    width: 100%;
+    margin: 0 0 20px;
+    padding: 10px;
+    background: #fff;
+    overflow: hidden;
+    break-inside: avoid;
+    position: relative;
+}
+.container .box img{
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;   
+
+}
+
+.container .box .border{
+    width: 92%;
+    background-color: rgba(0, 0, 0, 0.52);
+    top: 9px;
+    left: 10px;
+    bottom: 76px;
+    position: absolute;
+    border-radius: 15px 15px 15px 15px;
+    text-align: left;
+    color: white;
+    padding: 20px;
+    display: block;
+    box-sizing: border-box;
+    opacity: 0;
+}
+.details .name{
+    font-weight: bolder;
+    bottom: 90px;
+    left: 20px;
+    color: white;
+    position: absolute;
+   
+}
+.details .btn{
+    position: absolute;
+    top: 20px;
+    left: 180px;
+    border-radius: 25px;
+   
+  
+    
+}
+.container .box .border:hover {
+    opacity: 1;
+    transition: ease-in-out 0.5s;
+    
+}
+.container .box .details{
+    opacity: 0;
+}
+.container .box .details:hover {
+    opacity: 0.9;
+
+}
+.container .box .border:hover + .details{
+    opacity: 1;
+   
+}
+
+
+.img:hover img {
+    transform: scale(1.5);
+    transition: all ease-in-out 0.5s;
+ 
+ 
+}
+
+
+.container .box h2{
+    margin: 10px 0 0;
+    padding: 0;
+    font-size: 20px;
+}
+.container .box p{
+    margin:  0;
+    padding: 0 0 10px;
+    font-size: 16px;
+}
+@media (max-width: 1200px)
+{
+    .container{
+        columns: 3;
+        width: calc(100% - 40px);
+       
+    } 
+}

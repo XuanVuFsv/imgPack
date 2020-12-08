@@ -6,6 +6,7 @@ import { NavbarModule } from '@components/general/navbar/navbar.module';
 import { LeftSidebarModule } from '@components/homepage/left-sidebar/left-sidebar.module';
 import { RightSidebarModule } from '@components/homepage/right-sidebar/right-sidebar.module';
 
+
 @NgModule({
   declarations: [ClientComponent],
   imports: [
