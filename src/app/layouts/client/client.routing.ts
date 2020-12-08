@@ -18,6 +18,10 @@ const routes: Routes = [{
     {
       path: 'following-tab',
       loadChildren: () => import('@page/homepage/following-tab/following-tab.module').then(m => m.FollowingTabModule)
+    },
+    {
+      path: 'library',
+      loadChildren: () => import('@page/homepage/library/library.module').then(m => m.LibraryModule)
     }
   ]
 }];

@@ -18,6 +18,7 @@ export class GeneralAccountSettingsComponent implements OnInit {
 
   ngOnInit(): void {
     this.avatarSource = this.defaultGeneralAccountSettings.avatarSource;
+    console.log(this.selectImageButton.nativeElement.value);
   }
 
   onSelectImage(file: any): void {

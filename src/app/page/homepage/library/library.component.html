@@ -1,0 +1,23 @@
+<h1 class="library text-center">≈ Library ≈</h1>
+<hr >
+<body>
+    <div class="container w-100  ">
+        <div class="box" *ngFor="let client of clients">
+            <img src="{{client.src}}">
+            <a href="" class="border">
+            </a>
+            <div class="details">
+                <a href="">
+                    <div class="name">
+                        {{client.name}}
+                    </div>
+                </a>
+                <button type="button" class="btn btn-danger active">Save</button>
+            </div>
+            <h2>{{client.title}}</h2>
+            <p>
+                {{client.status}}
+            </p>
+        </div>
+    </div>
+</body>

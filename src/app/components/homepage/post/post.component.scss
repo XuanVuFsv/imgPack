@@ -1,0 +1,85 @@
+
+.container{
+    width: 95%;
+    margin: 10px auto 0px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.container .box{
+    position: relative;
+    width: 650px;
+    height: auto ;
+    margin: 10px;
+    margin-left: 40px;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+.container.box .imgBox{
+    position: relative;
+    overflow: hidden;
+}
+.container .box .imgBox img{
+    max-width: 100% ;
+    height: auto ;
+    transition: transform 2s;
+    margin-top: 20px;
+}
+.container .box:hover .imgBox img{
+    transform: scale(1.1);
+}
+.container .box .details{
+    position: absolute;
+    top: 50px;
+    left: 40px;
+    transition: transform 2s;
+}
+.container .box:hover .details{
+    transform: translate(-60px,-30px);
+    
+}
+.container .box .details .avatar{  
+    width: 40px ;
+    height: 40px ;
+    border-radius: 50%;
+}
+.container .box .details .name{
+    padding-left: 15px;
+    color: white;
+    font-weight: bold;
+}
+.container .box .details .status{
+    
+    font-family: 'Courier New', Courier, monospace;
+    padding-top: 10px;
+    padding-left: 5px;
+    font-size: 18px;
+    color: white;
+}
+.container .box .boxButton{
+position: absolute;
+bottom: -10%;
+overflow: hidden;
+opacity: 1;
+}
+ .box .boxButton .btn{
+    margin-left: 80px;
+    margin-right: 30px;
+ 
+}
+
+.container .box:hover .boxButton{
+    bottom: -5%; 
+    opacity: 0.9;   
+    transition-duration: 1s;
+}
+.container .box .boxButton .btn i{
+    outline: none;
+    color: white;
+   
+    size: 500px;
+    font-size: 40px;
+    padding-right: 30px;
+}
