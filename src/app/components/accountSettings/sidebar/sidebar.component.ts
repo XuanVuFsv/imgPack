@@ -27,10 +27,10 @@ export class SidebarComponent implements OnInit {
     let currentIndex: number;
     //console.log(url);
 
-    if (url === '/accountSettings/general') {
+    if (url === '/account-settings/general') {
       currentIndex = 0;
     }
-    else if (url === '/accountSettings/notifications') {
+    else if (url === '/account-settings/notifications') {
       currentIndex = 1;
     }
     else {

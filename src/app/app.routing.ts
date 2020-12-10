@@ -20,12 +20,16 @@ const routes: Routes = [
     loadChildren: () => import('@layouts/client/client.module').then(m => m.ClientModule)
   },
   {
-    path: 'accountSettings',
+    path: 'account-settings',
     loadChildren: () => import('@layouts/account-settings/account-settings.module').then(m => m.AccountSettingsModule)
   },
   {
     path: '404',
     loadChildren: () => import('@layouts/not-found/not-found.module').then(m => m.NotFoundModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('@layouts/profile/profile.module').then(m => m.ProfileModule)
   },
   {
     path: '**',

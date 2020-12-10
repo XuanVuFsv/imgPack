@@ -8,6 +8,11 @@ const routes: Routes = [{
   component: ClientComponent,
   children: [
     {
+      path: '',
+      redirectTo: 'home',
+      pathMatch: 'full',
+    },
+    {
       path: 'test',
       loadChildren: () => import('@page/test/test.module').then(m => m.TestModule)
     },

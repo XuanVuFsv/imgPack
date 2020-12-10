@@ -7,6 +7,11 @@ const routes: Routes = [{
   component: AccountSettingsComponent,
   children: [
     {
+      path: '',
+      redirectTo: 'general',
+      pathMatch: 'full',
+    },
+    {
       path: 'general',
       loadChildren: () =>
       import('@page/account-settings/general-account-settings/general-account-settings.module')
