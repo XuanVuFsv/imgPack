@@ -25,7 +25,7 @@
 
 .inputField {
     border-radius: 10px;
-    border-color: gray;
+    border-color: rgba(128, 128, 128, 0.5);
     border-width: 2px;
     height: 50px;
     font-weight: 400;
@@ -34,7 +34,7 @@
 
 .selectGender {
     border-radius: 10px;
-    border-color: gray;
+    border-color: rgba(128, 128, 128, 0.5);
     border-width: 2px;
     height: 50px;
     font-weight: 400;
@@ -49,6 +49,10 @@
 #introduceProfile {
     width: 577.25px;
     height: 100px;
+}
+
+#inputLocation {
+    width: 577.25px;
 }
 
 #inputFirstName, #inputLastName, #inputEmail {
