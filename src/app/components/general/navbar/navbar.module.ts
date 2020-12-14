@@ -1,3 +1,4 @@
+import { UserSettingsService } from './../../../services/user-settings.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -14,6 +15,7 @@ import { NavbarComponent } from './navbar.component';
   ],
   exports: [
     NavbarComponent
-  ]
+  ],
+  providers: [UserSettingsService]
 })
 export class NavbarModule { }

@@ -1,4 +1,5 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { UserSettingsService } from './../../../services/user-settings.service';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 @Component({
   selector: 'app-general-account-settings',
   templateUrl: './general-account-settings.component.html',
@@ -6,18 +7,17 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 })
 export class GeneralAccountSettingsComponent implements OnInit {
 
-  avatarSource: string;
-  generalAcountSetting: object[];
-  defaultGeneralAccountSettings = {
-    username: 'Minh Vủ',
-    avatarSource: 'https://vnn-imgs-a1.vgcloud.vn/image1.ictnews.vn/_Files/2020/03/17/trend-avatar-1.jpg'
-  };
-  @ViewChild('selectAvartarSource') selectImageButton: ElementRef;
+  generalAcountSetting: object;
 
-  constructor() { }
+  @ViewChild('selectAvartarSource') selectImageButton: ElementRef;
+  @Output() onChangeAvatar = new EventEmitter<string>();
+
+  constructor(private _userSettingsService: UserSettingsService) { }
 
   ngOnInit(): void {
-    this.avatarSource = this.defaultGeneralAccountSettings.avatarSource;
+    // this.defaultGeneralAccountSettings["avatarSource"] = this._userSettingsService.GetGeneralUserSettings()["avatarSource"];
+       this._userSettingsService.GetUserSettings()["general"]
+       .subscribe(data => this.generalAcountSetting = data);
   }
 
   onSelectImage(file: any): void {
@@ -25,9 +25,13 @@ export class GeneralAccountSettingsComponent implements OnInit {
       const reader = new FileReader();
       reader.readAsDataURL(file.target.files[0]);
       reader.onload = (event: any) => {
-        this.avatarSource = event.target.result;
+        this.generalAcountSetting["avatarSource"] = event.target.result;
+        this.getNewAvatarSource(this.generalAcountSetting["avatarSource"]);
       };
     }
   }
 
+  getNewAvatarSource(source: string) {
+    this.onChangeAvatar.emit(source);
+  }
 }

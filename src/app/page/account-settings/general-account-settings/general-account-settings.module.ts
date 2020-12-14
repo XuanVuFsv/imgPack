@@ -1,3 +1,4 @@
+import { UserSettingsService } from './../../../services/user-settings.service';
 import { GeneralAccountSettingsComponent } from './general-account-settings.component';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -15,6 +16,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes)
-  ]
+  ],
+  providers: [UserSettingsService]
 })
 export class GeneralAccountSettingsModule { }

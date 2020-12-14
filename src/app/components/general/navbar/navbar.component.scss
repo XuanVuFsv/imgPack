@@ -1,16 +1,44 @@
-.navbar {
-  background-color: lightgreen;
+.navigation {
+  background-color:#e9e9ff;
+  ;
 }
 
 #search-icon {
   margin-left: -45px;
   margin-right: 10px;
-  border: rgba(128, 128, 128, 0.5) solid 2px;
-  background-color: rgba(128, 128, 128, 0.5);
+  border: rgba(128, 128, 128, 0.25) solid 2px;
+  background-color: #e9e9ff;
   padding: 8px;
 }
 
 #logo {
   width: 50px;
   height: 50px;
+}
+
+.profileAvatar {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
+#username {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+#profile {
+  background-color: white;
+}
+
+#profile:hover {
+  background-color: gray;
+}
+
+.btn-primary {
+  background-color: #00ACEE;
+}
+
+.btn-primary:hover {
+  background-color: #007bff;
 }

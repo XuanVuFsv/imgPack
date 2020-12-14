@@ -1,7 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top navigation">
   <div class="container-fluid justify-content-between">
     <div class="row w-100">
-      <div class="col-lg-2 ml-0 d-flex">
+      <div class="col-lg-2 ml-0 d-flex p-0">
         <div class="logo">
           <a class="navbar-brand" href="#">
             <img id="logo" src="../../../../assets/Logo/logo.png" alt="Logo">
@@ -9,7 +9,7 @@
         </div>
       </div>
 
-      <div class="col-lg-8 d-flex">
+      <div class="col-lg-8 d-flex p-0">
         <form class="form-inline w-100 my-2 my-lg-0">
           <input class="form-control w-75 mr-sm-2" type="search" placeholder="Search" aria-label="Search">
           <i id="search-icon" class="fas fa-search"></i>
@@ -17,21 +17,33 @@
         </form>
       </div>
 
-      <div class="col-lg-2 d-flex">
+      <div class="col-lg-2 d-flex p-0">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse p-0" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Upload</a>
+            <li class="nav-item mx-2 my-auto">
+              <a [class]="isHover['upload']?mouseHoverClasses['upload']:mouseNormalClasses['upload']" href="#"
+                (mouseover)="ChangeMouseStatus('upload')" (mouseout)="ChangeMouseStatus('upload')"></a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Notifications</a>
+            <li class="nav-item mx-2 my-auto">
+              <a [class]="isHover['notification']?mouseHoverClasses['notification']:mouseNormalClasses['notification']"
+                href="#" (mouseover)="ChangeMouseStatus('notification')"
+                (mouseout)="ChangeMouseStatus('notification')"></a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Profile</a>
+            <li class="nav-item mx-2 my-auto rounded-pill p-0" id="profile">
+              <a class="nav-link p-0" href="#">
+                <div class="row">
+                  <div class="col-6">
+                    <img class="profileAvatar rounded-circle" [src]="avatarSource" alt="avatar" />
+                  </div>
+                  <div class="col-6 my-auto">
+                    <span id="username">ABC</span>
+                  </div>
+                </div>
+              </a>
             </li>
           </ul>
         </div>
