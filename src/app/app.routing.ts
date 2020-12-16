@@ -16,6 +16,10 @@ const routes: Routes = [
     loadChildren: () => import('@layouts/login/login.module').then(m => m.LoginModule)
   },
   {
+    path: 'signup',
+    loadChildren: () => import('@layouts/signup/signup.module').then(m => m.SignupModule)
+  },
+  {
     path: 'homepage',
     loadChildren: () => import('@layouts/client/client.module').then(m => m.ClientModule)
   },
