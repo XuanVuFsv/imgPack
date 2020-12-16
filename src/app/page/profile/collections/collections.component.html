@@ -1,5 +1,84 @@
-<div class="collections h-100 px-0 text-center">
-    <div class="container-fluid">
-    
+<div class="collections h-100 px-0 ">
+
+    <div class="toolsBar w-100 d-flex justify-content-around ">
+        <p>Tool Bar</p>
+        <button type="button" class="btn  btn-info" (click)="sort()">A -> Z</button>
+        <div class="dropdown">
+            <button type="button" class="btn dropdown-toggle btn-success" id="dropdownMenuButton" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">Time</button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <button class="dropdown-item" (click)="sortIncrease()">Inscreasing Time</button>
+                <button class="dropdown-item" (click)="sortReduce()">Reduce Time</button>
+            </div>
+
+        </div>
+
+
+        <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-info" id="add">Add</button>
+
+        <div class="dropdown">
+            <button type="button" class="btn dropdown-toggle btn-danger" id="delete" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">Delete</button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <button class="dropdown-item">Remove</button>
+                <button class="dropdown-item" (click)="removeAll()">Remove All</button>
+            </div>
+        </div>
+    </div>
+    <div class="gallery w-100 h-100 ">
+        <div class="grid-container">
+            <div class="image-list" id="image-list" *ngFor="let pic of collection">
+                <a class="title d-flex justify-content-center align-items-center" href="google.com">
+                    {{pic.title}}
+                </a>
+                <a href="#" id="date" class="date d-flex justify-content-center align-items-center ">
+                    Created at: {{pic.date}}
+                </a>
+                <div class="image" id="image">
+                    <a href="#">
+                        <img src="{{pic.src}}">
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+<!-- <button (click)="Testing()">Display name</button> -->
+<!-- <input id="txtName" type="text"/> -->
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Add Collections</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row justify-content-start px-2 py-2">
+                        <div class="col col-6">
+                            <span>TITLE: <input type="text" id="title"></span>
+                            <br>
+                            <br>
+                            <input type="file" id="src">
+                        </div>
+                        <div class="col col-6">
+                            <span class="border border-dark"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Add</button>
+            </div>
+        </div>
     </div>
 </div>
