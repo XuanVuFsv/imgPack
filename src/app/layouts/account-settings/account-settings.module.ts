@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
     AccountSettingsRoutingModule,
     NavbarModule,
     SidebarModule
-  ]
+  ],
+  providers: []
 })
 export class AccountSettingsModule { }

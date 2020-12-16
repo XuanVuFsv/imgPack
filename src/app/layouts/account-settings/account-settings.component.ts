@@ -1,3 +1,4 @@
+import { UserSettingsService } from './../../services/user-settings.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountSettingsComponent implements OnInit {
 
-  constructor() { }
+  // avatarSource: string;
+  constructor(private _userSettingsService: UserSettingsService) { }
 
   ngOnInit(): void {
+    // this._userSettingsService.GetUserSettings().subscribe(data => {
+    //   this.avatarSource = data["general"]["avatarSource"];
+    // });
   }
 
 }

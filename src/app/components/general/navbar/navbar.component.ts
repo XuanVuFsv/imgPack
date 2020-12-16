@@ -1,6 +1,6 @@
 import { UserSettingsService } from './../../../services/user-settings.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, Input } from '@angular/core';
 import { ViewportScroller } from '@angular/common';
 @Component({
   selector: 'app-navbar',
@@ -10,7 +10,7 @@ import { ViewportScroller } from '@angular/common';
 export class NavbarComponent implements OnInit, AfterViewInit {
 
   currentURL: string;
-  avatarSource: string;
+  @Input() avatarSource: string;
   viewportScroller: ViewportScroller;
   isCollapse: boolean;
   isHover: object = {
@@ -37,8 +37,12 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   ngOnInit(): void
   {
     this.isCollapse = true;
-    this._userSetingsService.GetUserSettings()["general"]["avatarSource"]
-    .subscribe(data => this.avatarSource = data);  }
+    this._userSetingsService.GetUserSettings()
+    .subscribe((data: any) => 
+    {
+      this.avatarSource = data["general"]["avatarSource"];
+    });  
+  }
 
   ngAfterViewInit() {
 

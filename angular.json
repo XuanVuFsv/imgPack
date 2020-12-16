@@ -25,7 +25,8 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              { "glob": "user-settings.json", "input": "./", "output": "./assets/" }
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
