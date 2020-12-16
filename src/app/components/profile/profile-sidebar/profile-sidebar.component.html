@@ -1,1 +1,23 @@
-<p>profile-sidebar works!</p>
+<div class="sidebar">
+    <div class="avatar h-25 text-center ">
+        <img class="rounded-circle " src="https://cdn.pixabay.com/photo/2020/11/24/18/19/cat-5773481__340.jpg">
+        <a class="text-decoration-none" href="#">
+            <div class="name font-weight-bold  ">
+                Minh Vủ
+            </div>
+        </a>
+    </div>
+
+    <div class="button d-flex flex-column h-100  ">
+        <a class="fas fa-user float-left" [class.active]="buttonStatus[0]"
+            href="http://localhost:4200/profile/overview">Overview</a>
+        <a class="fas fa-bell float-left" [class.active]="buttonStatus[1]"
+            href="http://localhost:4200/profile/collections">Collections</a>
+        <a class="fas fa-shield float-left" [class.active]="buttonStatus[2]"
+            href="http://localhost:4200/profile/your-image">Your Images</a>
+        <a class="fas fa-shield float-left" [class.active]="buttonStatus[3]"
+            href="http://localhost:4200/profile/data-analysis">Data Analysis</a>
+        <a class="fas fa-shield float-left" [class.active]="buttonStatus[4]"
+            href="http://localhost:4200/profile/upload">Upload</a>
+    </div>
+</div>

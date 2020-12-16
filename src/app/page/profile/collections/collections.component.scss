@@ -1,3 +1,97 @@
-.collections {
-    background-color: yellowgreen;
+p{
+    font-size: 20px;
+    
 }
+.toolsBar{
+    height: 45px;
+    background-color: rgb(219, 203, 206);
+    padding-top: 8px;
+    position: relative;
+}
+.btn{
+    
+ 
+    padding: 0px;
+    border-radius: 50px ;
+    font-size:15px;
+    width: 100px;
+    height: 30px;
+}
+.btn:hover, .btn:focus{
+  background-color: rgb(104, 100, 100);
+}
+
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 1em;
+    margin-top: 20px;
+    margin-right: 10px;
+  }
+img {
+    width: 100%;
+    height: auto;
+    filter: blur(0px);
+    transition: filter 0.3 ease-in;
+    transform: scale(1.1);
+}
+.image{
+    line-height: 0%;
+}
+.image-list{
+    position: relative;
+    overflow: hidden;
+}
+.date{
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    padding-top: 80px;
+     /* typographic styles */
+    color: white;
+    font-size: 0.9em;
+    font-weight: bold;
+    text-decoration: none;
+      /* hide date by default */
+    opacity: 0;
+    transition: opacity .5s;
+}
+.image-list:hover .date {
+    opacity: 1;
+  }
+.title{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(90,0,10,0.4);
+    z-index: 1;
+   /* typographic styles */
+     color: white;
+     font-size: 1.5em;
+     font-weight: bold;
+    text-decoration: none;
+   /* hide the title by default */
+    opacity: 0;
+    transition: opacity .5s;
+}
+.image-list:hover .title {
+    opacity: 1;
+  }
+.image-list:hover img {
+    filter: blur(2px);
+  }
+
+@media (hover: none) { 
+    .location-title {
+      opacity: 1;
+    }
+    .location-image img {
+      filter: blur(2px);
+    }
+  }

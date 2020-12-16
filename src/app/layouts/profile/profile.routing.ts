@@ -14,8 +14,7 @@ const routes: Routes = [{
         {
             path: 'overview',
             loadChildren: () =>
-                import('@page/profile/overview/overview.module')
-                    .then(m => m.OverviewModule)
+                import('@page/profile/overview/overview.module').then(m => m.OverviewModule)
         },
         {
             path: 'collections',
