@@ -24,9 +24,9 @@
         <p class="message">Already registered? <a href="#">Sign In</a></p>
       </form>
       <form class="login-form">
-        <input type="text" placeholder="username" />
-        <input type="password" placeholder="password" />
-        <button>login</button>
+        <input #email type="text" placeholder="email" />
+        <input #password type="password" placeholder="password" />
+        <input class="btn btn-primary" (click)="Login()" type="button" />
         <p class="message">──────── or sign in with ────────</p>
         <p>
           <img src="../../../assets/login/fb.png" width="50px" height="auto">
