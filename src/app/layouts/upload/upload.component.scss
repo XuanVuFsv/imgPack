@@ -1,13 +1,14 @@
-.upload {
-  background: red;
+.container-fluid {
+  margin-top: 100px;
 }
 .formupload {
   background-color: red;
+  border-radius: 10px;
 
   position: absolute;
-  top: 50%;
+
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%);
 }
 
 .frameupload {
@@ -38,6 +39,7 @@
 .info {
   margin-top: 25px;
   margin-bottom: 25px;
+  padding-left: 0px;
 }
 
 .title {
