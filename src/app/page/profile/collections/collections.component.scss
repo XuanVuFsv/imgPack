@@ -9,8 +9,6 @@ p{
     position: relative;
 }
 .btn{
-    
- 
     padding: 0px;
     border-radius: 50px ;
     font-size:15px;
@@ -21,6 +19,14 @@ p{
   background-color: rgb(104, 100, 100);
 }
 
+
+.btn-primary {
+    background-color: #00ACEE;
+}
+
+.btn-primary:hover {
+    background-color: #007bff;
+}
 
 .grid-container {
     display: grid;
@@ -95,3 +101,13 @@ img {
       filter: blur(2px);
     }
   }
+
+.selectImageButton {
+    color: #00ACEE;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.selectImageButton:hover {
+    color: #007bff;
+}
