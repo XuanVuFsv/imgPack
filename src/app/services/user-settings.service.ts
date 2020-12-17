@@ -17,10 +17,19 @@ export class UserSettingsService {
       })
   };
 
+  httpHeaders = new HttpHeaders({
+    'content-type': 'application/json',
+    Authorization: localStorage.getItem('accessToken')
+  });
+
   constructor(private http: HttpClient) { }
 
   GetUserSettings(): Observable<IUserSettings> {
-    return this.http.get<IUserSettings>(this.testURL);
+    console.log (this.httpHeaders);
+    
+    return this.http.get<IUserSettings>(this.testURL, {
+      headers: this.httpHeaders
+    });
   }
 
   UpdateUserSettings(userSettings: IUserSettings): Observable<IUserSettings> {
