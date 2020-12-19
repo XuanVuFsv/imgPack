@@ -1,10 +1,13 @@
+.left-sidebar{
+    padding: 0px;
+    margin: 0px;
+}
 .sidebar{
     position: fixed;
     width: 527px;
     height: 100%;
+    background-color: rgba(238, 225, 225, 0.589);
 }
-
-
 img{
     width: 120px;
     height: 120px;
@@ -13,6 +16,7 @@ img{
 .avatar{
     padding-top: 50px;
     padding-right: 200px;
+ 
 }
 .name{
     color: black;

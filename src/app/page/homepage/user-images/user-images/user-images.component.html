@@ -1,0 +1,30 @@
+<div class="user text-center h-100 d-flex justify-content-center">
+    <div class="mainContainer d-block">
+        <div class="up">
+            <div class="detail ">
+                <div class="col px-0 ">
+                    <img class=" rounded-circle" id="avatar" src="https://cdn.pixabay.com/photo/2020/11/22/16/45/nutcracker-5767159__340.jpg" alt="">
+                    <h1>Name</h1>     
+                </div>
+                <div class="follow col px-0 ">
+                    <p>0 người theo dõi - 0 người đang theo dõi</p>
+             
+                </div>
+            </div>
+        </div>
+        <div class="grid">
+            <div class="gallery" *ngFor="let client of clients">
+                <img id="image" src="{{client.src}}" data-original=" hi" />  
+                <div id="modal" >
+                    <img src="{{client.src}}" class="full-img">
+                    <p class="caption">{{client.status}}</p>
+                </div>
+                <button class="btn" (click)="openImage()"> View</button>
+              
+            </div>
+        </div>
+
+
+    </div>
+
+</div>

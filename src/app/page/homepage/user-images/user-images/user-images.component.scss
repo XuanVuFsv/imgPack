@@ -1,0 +1,85 @@
+#avatar{
+    width: 120px;
+    height: 120px;
+    margin-top: 20px;
+}
+.gallery{
+    margin: 0;
+}
+#image{
+    width: 350px;
+    height: 350px;
+    transition: all 0.3s ease-out;
+    cursor: pointer;
+   
+}
+#image:hover {
+transform: scale(1.2);
+}
+.gallery{
+    overflow: hidden;
+    position: relative;
+}
+.grid{
+    display: grid;
+    grid-template-columns: repeat(4, 350px);
+    justify-content: center;
+    align-content: center;
+    grid-gap: 10px;
+    height: 100vh;
+  
+}
+
+#modal{
+    background-color: rgba(0,0,0, 0.8);
+    // display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.25s ease-out;
+    
+}
+#modal.open1{
+    opacity: 1;
+    pointer-events: all;
+    z-index: 1000;
+}
+.full-img{
+    position: absolute;
+    height: 70%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(0.5);
+    transition: all 0.25 ease-out;
+}
+.full-img.open2{
+    transform: translate(-50%,-50%) scale(1);
+}
+#modal p{
+    color: white;
+    font-size: 2rem;
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translate(-50%,-5%);
+}
+button{
+    position: absolute;
+    font-weight: bold;
+    text-decoration: none;
+    top: 150px;
+    left: 120px;
+    border-color: rgba(0,0,0, 0.3);
+    font-size: 30px;
+    background-color: rgba(0,0,0, 0.3);
+    opacity: 1;
+    color: white;
+    border-radius: 20px;
+}
+.gallery #image:hover button{
+    opacity: 0;
+}

@@ -1,15 +1,6 @@
-
-.container{
-    width: 95%;
-    margin: 10px auto 0px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-}
-
-.container .box{
+.container {
     position: relative;
-    width: 650px;
+    width: auto;
     height: auto ;
     margin: 10px;
     margin-left: 40px;
@@ -17,69 +8,67 @@
     display: inline-block;
 }
 
-.container.box .imgBox{
-    position: relative;
-    overflow: hidden;
-}
-.container .box .imgBox img{
-    max-width: 100% ;
+.container  .imgBox img{
+    max-width: 700px ;
     height: auto ;
-    transition: transform 2s;
+    transition: transform 1s;
     margin-top: 20px;
+    box-shadow: 5px 5px 5px #aaaaaa;
 }
-.container .box:hover .imgBox img{
+.container  img:hover{
     transform: scale(1.1);
+    cursor: pointer;
 }
-.container .box .details{
+.container  .details{
     position: absolute;
     top: 50px;
     left: 40px;
-    transition: transform 2s;
+    transition: transform 1s;
 }
-.container .box:hover .details{
-    transform: translate(-60px,-30px);
+ .imgBox:hover .details{
+    transform: translate(-30px,-30px);
     
 }
-.container .box .details .avatar{  
+.container  .details .avatar{  
     width: 40px ;
     height: 40px ;
     border-radius: 50%;
 }
-.container .box .details .name{
+.container .details .name{
     padding-left: 15px;
     color: white;
     font-weight: bold;
+    text-transform: uppercase;
 }
-.container .box .details .status{
-    
+.container  .details .status{
     font-family: 'Courier New', Courier, monospace;
+    margin:0;
+    width: auto;
     padding-top: 10px;
     padding-left: 5px;
-    font-size: 18px;
-    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px 20px black;
+   
 }
-.container .box .boxButton{
-position: absolute;
-bottom: -10%;
+#box-button{
 overflow: hidden;
-opacity: 1;
+opacity: 0;
+bottom: -10%;
 }
- .box .boxButton .btn{
-    margin-left: 80px;
-    margin-right: 30px;
- 
-}
+// .imgBox .boxButton .btn{
+//     margin-left: 47px;
+// }
 
-.container .box:hover .boxButton{
-    bottom: -5%; 
+.container .imgBox:hover #box-button{
+    bottom: 0%; 
     opacity: 0.9;   
     transition-duration: 1s;
 }
-.container .box .boxButton .btn i{
+.container #box-button .btn i{
     outline: none;
     color: white;
-   
-    size: 500px;
-    font-size: 40px;
-    padding-right: 30px;
+    font-size: 30px;
+    // padding-right: 30px;
 }

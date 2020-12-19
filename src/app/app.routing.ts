@@ -12,6 +12,10 @@ const routes: Routes = [
     loadChildren: () => import('@layouts/admin/admin.module').then(m => m.AdminModule)
   },
   {
+    path: 'page',
+    loadChildren: () => import('@page/mainpage/mainpage.module').then(m => m.MainpageModule)
+  },
+  {
     path: 'login',
     loadChildren: () => import('@layouts/login/login.module').then(m => m.LoginModule)
   },
@@ -38,6 +42,10 @@ const routes: Routes = [
   {
     path: 'profile',
     loadChildren: () => import('@layouts/profile/profile.module').then(m => m.ProfileModule)
+  },
+  {
+    path: 'users',
+    loadChildren: () => import('@layouts/upload-users/upload-users.module').then(m => m.UploadUsersModule)
   },
   {
     path: '**',

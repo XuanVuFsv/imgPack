@@ -22,8 +22,12 @@ export class CollectionsComponent implements OnInit {
   title: any;
   src: any;
   avatarSource: 'https://vnn-imgs-a1.vgcloud.vn/image1.ictnews.vn/_Files/2020/03/17/trend-avatar-1.jpg';
+<<<<<<< HEAD
 
   constructor(private profileDataService: ProfileDataService) {
+=======
+  constructor() {
+>>>>>>> 36f15a8916c0838e7a33b339181736a1332b942a
   }
 
   ngOnInit(): void {
