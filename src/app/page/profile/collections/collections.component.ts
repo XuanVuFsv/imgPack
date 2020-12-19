@@ -27,11 +27,10 @@ export class CollectionsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.profileDataService.GetProfileData()
+    this.profileDataService.GetCollectionsData()
       .subscribe(data => {
-        this.profileData = data;
-        this.collections = data['collections'];
-        console.log('profile data: ', data);
+        this.collections = data;
+        console.log('collections data: ', data);
       });
   }
 
@@ -90,24 +89,20 @@ export class CollectionsComponent implements OnInit {
   }
 
   AddCollection(): void {
-    let newProfileData: IProfileData;
-    let newCollection: ICollection;
+    // let newProfileData: IProfileData;
+    let newCollection: any;
 
-    newProfileData = this.profileData;
+    // newProfileData = this.profileData;
     newCollection = {
-      id: newProfileData['collections'].length,
-      title: this.newTitle.nativeElement.value,
-      date: (new Date()).toString(),
-      scr: this.newCollectionImages,
-      preview: this.newCollectionImages[0]
+      name: this.newTitle.nativeElement.value,
     };
-    console.log('newCollection Add', newCollection);
-    newProfileData['collections'].push(newCollection);
-    console.log('newProfileData Update', newProfileData);
-    this.profileDataService.UpdateProfileData(newProfileData).subscribe(data => {
-      this.profileData = newProfileData;
-      this.collections = newProfileData['collections'];
+
+    this.profileDataService.AddCollectionsData(newCollection).subscribe(data => {
     });
+
+    console.log('newCollection Add', newCollection);
+    this.collections.push(newCollection);
+    console.log('newCollections Update Local', this.collections);
   }
 
   // add(){

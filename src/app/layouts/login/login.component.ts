@@ -1,6 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { randomInt } from 'crypto';
-import { LoginService } from './login.service';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -17,14 +16,6 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    console.log(Math.random()*100);
-    // this.loginService.RequestLogin({
-    //   email: "thanhan@gmail.com",
-    //   password: "123456"
-    // }).subscribe(data => {
-    //   console.log(data);
-    // });
   }
 
   Login(): void {
@@ -35,7 +26,8 @@ export class LoginComponent implements OnInit {
     console.log(loginInfor);
 
     this.loginService.RequestLogin(loginInfor).subscribe(data => {
-      console.log(data.user);
+      console.log(data.user.token);
+      localStorage.setItem('accessToken', data.user.token);
   });
   }
 }
