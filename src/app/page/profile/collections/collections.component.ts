@@ -13,7 +13,7 @@ export class CollectionsComponent implements OnInit {
   cnfrmMessage: any;
   title: any;
   src: any;
-  avatarSource: 'https://vnn-imgs-a1.vgcloud.vn/image1.ictnews.vn/_Files/2020/03/17/trend-avatar-1.jpg'
+  avatarSource: 'https://vnn-imgs-a1.vgcloud.vn/image1.ictnews.vn/_Files/2020/03/17/trend-avatar-1.jpg';
   constructor() {
   }
 

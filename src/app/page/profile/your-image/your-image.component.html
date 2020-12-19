@@ -1,1 +1,10 @@
-<p>your-image works!</p>
+<div class="container  ">
+    <h1 class="my-4 text-center d-flex justify-content-center  text-lg-left">Gallery</h1>
+    <div class="row text-center text-lg-left">
+        <div class="col-lg-3 col-md-4 col-xs-6" *ngFor="let pic of collection">
+            <div class="d-block mb-4 h-100">
+                <img class="img-fluid img-thumbnai" src="{{pic.src}}" >
+            </div>
+        </div>
+    </div>
+</div>

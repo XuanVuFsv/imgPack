@@ -8,10 +8,10 @@ const routes: Routes = [
     path: '',
     component: YourImageComponent
   }
-]
+];
 
 @NgModule({
-  declarations: [],
+  declarations: [YourImageComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes)
