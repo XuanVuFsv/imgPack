@@ -13,13 +13,14 @@ export class GeneralAccountSettingsComponent implements OnInit {
   @ViewChild('selectAvartarSource') selectImageButton: ElementRef;
   // @Output() onChangeAvatar = new EventEmitter<string>();
 
-  constructor(private _userSettingsService: UserSettingsService) { }
+  constructor(private userSettingsService: UserSettingsService) { }
 
   ngOnInit(): void {
-    this._userSettingsService.GetUserSettings()
+    this.userSettingsService.GetUserSettings()
       .subscribe(data => {
         this.userSettings = data;
         console.log(data);
+        console.log(this.userSettings);
       });
   }
 
@@ -30,7 +31,7 @@ export class GeneralAccountSettingsComponent implements OnInit {
       reader.onload = (event: any) => {
         let newUserSettings: IUserSettings = this.userSettings;
         newUserSettings["general"]["avatarSource"] = event.target.result;
-        this._userSettingsService.UpdateUserSettings(newUserSettings).subscribe(data => {
+        this.userSettingsService.UpdateUserSettings(newUserSettings).subscribe(data => {
           this.userSettings = newUserSettings;
         });
       };
