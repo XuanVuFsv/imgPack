@@ -16,7 +16,7 @@
       </svg>
 
 
-      <form class="login-form" #formSignup="ngForm">
+      <form class="login-form" #formSignup="ngForm" (ngSubmit)="onSubmit(formSignup.value)">
         <input type="text" placeholder="Email" name="email" ngModel name="email" required email />
         <p
           *ngIf="(formSignup.controls.email?.errors?.required || formSignup.controls.email?.errors?.email) && formSignup.controls.email.touched">
@@ -25,7 +25,9 @@
         <input type="text" placeholder="name" ngModel #name="ngModel" name="name" required appForbiddenName="name"
           required />
         <p *ngIf="name.touched &&  name.errors?.required ">Name is not valid</p>
-        <input type="password" placeholder="password" />
+        <input type="password" placeholder="password" name="password" ngModel />
+        <input type="password" placeholder="confirmPassword" name="confirmpassword" ngModel />
+
         <input type="text" placeholder="age" style="width: 48%; margin-right: 2%;" ngModel #age="ngModel" name="age"
           required />
         <select style="width: 48%; margin-left: 2%;">
