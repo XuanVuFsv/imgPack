@@ -50,7 +50,7 @@
   border: 0px;
 }
 
-.description {
+.inputtext {
   width: 100%;
   display: inline-block;
   margin-bottom: 15px;
@@ -59,10 +59,11 @@
 
 .topic {
   border-radius: 30px;
-  border: 1px solid black;
+  border: 0px solid black;
   font-size: 20px;
   padding: 5px 20px 5px 20px;
   background-color: #ffffff;
+  width: fit-content;
 }
 
 .add {

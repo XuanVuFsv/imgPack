@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UploadComponent implements OnInit {
 
-  constructor() { }
+data:any;
+  constructor() {}
+
 
   ngOnInit(): void {
+  }
+
+  topiclist=  ["go","toopodaso"];
+  addtopic(topic){
+  this.topiclist.push(topic.value);
+  topic.value="";
   }
 
 }

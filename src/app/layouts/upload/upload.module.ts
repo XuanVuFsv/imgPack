@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UploadComponent } from './upload.component';
 import { NavbarModule } from '@components/general/navbar/navbar.module';
+import { HttpClientModule} from '@angular/common/http';
 
 const routes: Routes = [
   {
@@ -16,6 +17,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     NavbarModule,
+    HttpClientModule,
     RouterModule.forChild(routes)
   ]
 })
