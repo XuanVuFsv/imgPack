@@ -22,12 +22,8 @@ export class CollectionsComponent implements OnInit {
   title: any;
   src: any;
   avatarSource: 'https://vnn-imgs-a1.vgcloud.vn/image1.ictnews.vn/_Files/2020/03/17/trend-avatar-1.jpg';
-<<<<<<< HEAD
 
   constructor(private profileDataService: ProfileDataService) {
-=======
-  constructor() {
->>>>>>> 36f15a8916c0838e7a33b339181736a1332b942a
   }
 
   ngOnInit(): void {
@@ -108,24 +104,4 @@ export class CollectionsComponent implements OnInit {
     this.collections.push(newCollection);
     console.log('newCollections Update Local', this.collections);
   }
-
-  // add(){
-  //   this.title = (document.getElementById("title") as HTMLInputElement).value;
-  //   this.src = (document.getElementById("src") as HTMLInputElement).value;
-  //   this.collection.push({Client.id: this.title});
-  // }
-  //
-  // removeIndex(arr: Client,value){
-  //   var index = Clients.indexOf(value);
-  //   if(index === arr.id)
-  //   {
-  //     Clients.slice(index, 1);
-  //   }
-  //   return arr;
-  // }
-
-  // Testing(){
-  //   var name = $('#txtName').val();
-  //   alert(name);
-  // }
 }

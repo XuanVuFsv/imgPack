@@ -34,7 +34,7 @@ export const Clients: Client[] = [
         id: 4,
         title: 'B',
         date: new Date('2019-01-05'),
-        src: 'https://cdn.pixabay.com/photo/2020/09/17/05/19/women-5578067__340.jpg',
+        src: 'https://i.pinimg.com/236x/bd/85/61/bd85616fa1c2ce1c9ca5ece939ef7469.jpg',
     },
     {
         id: 5,
@@ -53,6 +53,18 @@ export const Clients: Client[] = [
         title: 'F',
         date: new Date('2019-01-03'),
         src: 'https://cdn.pixabay.com/photo/2020/08/30/09/22/people-5528959__340.jpg',
+    },
+    {
+        id: 8,
+        title: 'M',
+        date: new Date('2019-01-20'),
+        src: 'https://cdn.pixabay.com/photo/2020/12/02/00/57/mountain-5795883__340.jpg',
+    },
+    {
+        id: 8,
+        title: 'M',
+        date: new Date('2019-01-20'),
+        src: 'https://cdn.pixabay.com/photo/2020/12/02/00/57/mountain-5795883__340.jpg',
     },
     {
         id: 8,
