@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { UploadComponent } from './upload.component';
 import { NavbarModule } from '@components/general/navbar/navbar.module';
 import { HttpClientModule} from '@angular/common/http';
+import { ProfileDataService} from '../../services/profile-data.service'
 
 const routes: Routes = [
   {
@@ -19,6 +20,8 @@ const routes: Routes = [
     NavbarModule,
     HttpClientModule,
     RouterModule.forChild(routes)
-  ]
+  ],
+  providers: [ProfileDataService]
+
 })
 export class UploadModule { }

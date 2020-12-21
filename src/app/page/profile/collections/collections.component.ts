@@ -27,6 +27,7 @@ export class CollectionsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log('aaaaaaaaaaaaa');
     this.profileDataService.GetCollectionsData()
       .subscribe(data => {
         this.collections = data;
@@ -91,6 +92,7 @@ export class CollectionsComponent implements OnInit {
   AddCollection(): void {
     // let newProfileData: IProfileData;
     let newCollection: any;
+    console.log('Collections', this.collections);
 
     // newProfileData = this.profileData;
     newCollection = {
@@ -101,7 +103,5 @@ export class CollectionsComponent implements OnInit {
     });
 
     console.log('newCollection Add', newCollection);
-    this.collections.push(newCollection);
-    console.log('newCollections Update Local', this.collections);
   }
 }
