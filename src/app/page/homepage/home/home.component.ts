@@ -23,14 +23,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   loadData() {
     this.subscription = this._getImageService.getImage().subscribe(data => {
       console.log(data);
-<<<<<<< HEAD
       this.clients = data['data'];
       console.log(this.clients);
-=======
-     // tslint:disable-next-line: align
-     this.clients = data['data'];
-     console.log(this.clients);
->>>>>>> 3f2516262bdc8d1b94d79b8c06bb5ec20aee738d
     }, error => {
       console.log(error);
     });
