@@ -1,8 +1,8 @@
-export interface Client {
-    id: number;
+export class IPersonalUsers{
+    id: string;
+    name: string;
     source: string;
     description: string;
-    collectionId: string;
     author: {
         avatar: string;
         _id: string;

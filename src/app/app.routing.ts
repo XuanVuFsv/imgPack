@@ -5,7 +5,7 @@ import { NavbarComponent } from '@components/general/navbar/navbar.component';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('@layouts/client/client.module').then(m => m.ClientModule)
+    loadChildren: () => import('@page/mainpage/mainpage.module').then(m => m.MainpageModule)
   },
   {
     path: 'admin',

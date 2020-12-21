@@ -25,18 +25,18 @@ export class ProfileDataService {
     return this.http.post<any>(this.collectionsURL, collection, { headers: this.httpHeaders });
   }
 
-  UpdateCollectionsDataByID(collectionsData: any, ID: any): Observable<any> {
-    const httpOptions = {
-      headers: this.httpHeaders,
-      params: new HttpParams({
-        fromObject: {
-          id: ID
-        }
-      })
-    };
+  // UpdateCollectionsDataByID(collectionsData: any, ID: any): Observable<any> {
+  //   const httpOptions = {
+  //     headers: this.httpHeaders,
+  //     params: new HttpParams({
+  //       fromObject: {
+  //         id: ID
+  //       }
+  //     })
+  //   };
 
-    return this.http.post<any>(this.collectionsURL, collectionsData, httpOptions);
-  }
+  //   return this.http.post<any>(this.collectionsURL, collectionsData, httpOptions);
+  // }
 
   // GetProfileData(): Observable<IProfileData> {
   //   return this.http.get<IProfileData>(this.testURL, {

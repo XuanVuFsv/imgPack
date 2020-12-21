@@ -1,54 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body >
-    <header>
-        <div class="container">
-            <nav class="nav">
-                <div class="menu-toggle" (click)="open()" >
-                    <i class="fas fa-bars"  ></i>
-                    <i class="fas fa-times"></i>
-                </div>
-                <a href=""><img src="../../../assets/Logo/logo.png" id="logo" alt=""></a>
-                <ul class="nav-list">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">Sign In</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">Sign Up</a>
-                    </li>
+
+<body>
+    <!-- HEADER -->
+    <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-branch" href="http://localhost:4200/page">
+                <img id="logo" src="../../../assets/Logo/logo.png" height="50">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link active" href="http://localhost:4200/page">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="http://localhost:4200/login">Log in</a></li>
+                    <li class="nav-item"><a class="nav-link" href="http://localhost:4200/signup">Sign up</a></li>
                 </ul>
-            </nav>
-        </div>
-    </header>
-    <!-- Header End -->
-    <section class="hero" id="hero">
-        <div class="container">
-            <h2 class="sub-headline">
-                <span class="first-letter">W</span>elcome
-            </h2>
-            <h1 class="headline">IMG Pack</h1>
-            <div class="headline-description">
-                <div class="separator">
-                    <div class="line line-left"></div>
-                    <div class="asterisk"><i class="fas fa-asterisk"></i></div>
-                    <div class="line line-right"></div>
-                </div>
-                <div class="single-animation">
-                    <h5>Ready to be opened</h5>
-                    <a href="#" class="btn cta-btn"></a>
-                </div>
             </div>
         </div>
-    </section>
-    <!-- Hero End -->
+    </nav>
+    <!-- HEADER END -->
+    <!-- <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img class="d-block w-100" src="../../../assets/picture/port-5788261_1920.jpg" alt="First slide">
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" src="../../../assets/picture/cup-5752775_1920.jpg" alt="Second slide">
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" src="../../../assets/picture/decao.jpg" alt="Third slide">
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div> -->
 
+    <header id="showcase" class="grid">
+        <div class="content-wrap">
+            <h1 id="title">IMG Pack</h1>
+            <p>Take photo save memories!</p>
+            <a href="http://localhost:4200/login" class="btn">Get Started</a>
+
+        </div>
+
+    </header>
+
+    <!-- Main Area -->
+    <main id="main">
+        <!-- Section A -->
+        <!-- <section id="section-all" class="grid"> -->
+
+
+
+        <!-- Section B -->
+        <section id="section-b" class="grid">
+
+            <ul>
+                <li>
+
+                    <div class="card">
+                        <div class="content-wrap">
+                            <h2 class="content-title">WELCOME</h2>
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eaque necessitatibus quia error
+                                veniam
+                                beatae aspernatur quisquam exercitationem accusantium, recusandae doloribus.</p>
+                        </div>
+                        <img id="img1" src="../../../assets/picture/takephoto.jpg" alt="">
+                        <div class="card-content">
+                            <h3 class="card-title">TITLE</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos quaerat commodi
+                                blanditiis tempore tenetur nesciunt aliquid culpa reprehenderit vero?</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="card">
+                        <img src="../../../assets/picture/memories.jpg" alt="">
+                        <div class="card-content1">
+                            <h3 class="card-title">Save memories</h3>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="card">
+                        <div class="card-content">
+                            <h3 class="card-title">MOMENTS</h3>
+                            <hr width="200px">
+                        </div>
+                        <div class="container-fluid w-100" id="moments">
+                            <div class="row">
+                                <div class="column">
+                                    <img src="https://images.pexels.com/photos/1262302/pexels-photo-1262302.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+                                    <img src="https://images.pexels.com/photos/691114/pexels-photo-691114.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+                                    <img src="https://images.pexels.com/photos/6030263/pexels-photo-6030263.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+                               
+                                   
+                                  
+                                </div>
+                                <div class="column">
+                                    <img src="https://cdn.pixabay.com/photo/2017/01/28/02/24/japan-2014618__340.jpg">
+                                    <img src="../../../assets/picture/smile.jpg">
+                                    <img src="https://cdn.pixabay.com/photo/2015/08/23/18/50/frogs-903158__340.jpg">
+
+                                </div>
+                                <div class="column">
+                                    <img src="../../../assets/picture/choiguitar.jpg">
+                                    <img src="https://cdn.pixabay.com/photo/2015/07/30/17/24/audience-868074__340.jpg">
+                                    <img src="https://cdn.pixabay.com/photo/2020/11/17/02/16/dog-5751151__340.jpg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </section>
+        <!-- </section> -->
+        <!-- Section-C -->
+        <!-- <section id="section-c" class="grid">
+            <div class="content-wrap">
+                <h2 class="content-title">We handle all of your digital</h2>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur, provident.</p>
+            </div>
+        </section> -->
+
+        <!-- Section-D -->
+        <!-- <section id="section-d" class="grid">
+            <div class="box">
+                <h2 class="content-title">About Our Team</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus corrupti quis sed
+                    perferendis
+                    voluptatem, maiores facilis itaque quod deleniti soluta ex in minus distinctio? Quam a accusamus
+                    dolor eius architecto!</p>
+            </div>
+        </section> -->
+
+    </main>
+
+    <!-- Footer -->
+    <footer id="main-footer" class="grid">
+        <div>IGM Pack</div>
+        <div>Project By</div>
+    </footer>
 </body>
+
 </html>

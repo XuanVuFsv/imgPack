@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { UploadUsersComponent } from './upload-users.component';
+import { UserImagesComponent } from '@page/homepage/user-images/user-images/user-images.component';
+import { LeftSidebarComponent } from './left-sidebar.component';
+
 
 const routes: Routes = [{
     path: '',
-    component: UploadUsersComponent,
+    component: LeftSidebarComponent,
     children: [
         // {
         //   path: 'upload',
@@ -13,7 +15,7 @@ const routes: Routes = [{
         //   .then(m => m.GeneralAccountSettingsModule)
         // },
         {
-            path: 'usersImage/:id',
+            path: 'usersImage/:id', component: UserImagesComponent,
             loadChildren: () => import('@page/homepage/user-images/user-images/user-images.module').then(m => m.UserImagesModule)
         }
     ]
@@ -21,6 +23,8 @@ const routes: Routes = [{
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule]
+    exports: [RouterModule,
+        LeftSidebarComponent,
+        UserImagesComponent]
 })
 export class UploadUsersRoutingModule { }
