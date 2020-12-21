@@ -9,7 +9,6 @@ export class ImageComponent implements OnInit, AfterViewInit {
 
   @ViewChild('image') imageElement: ElementRef;
   @Input() source: string;
-  @Input() dataSildeTo: number;
   @Output() viewImage = new EventEmitter<any>();
 
   constructor() { }

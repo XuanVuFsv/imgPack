@@ -51,19 +51,19 @@ const routes: Routes = [
     path: '**',
     redirectTo: '404',
     pathMatch: 'full',
-  }
+  }  
 ];
 
-const routesSamePage: Routes = [
-  {
-    path: 'accountSettings/*#',
-    component: NavbarComponent
-  }
-];
+// const routesSamePage: Routes = [
+//   {
+//     path: 'accountSettings/*#',
+//     component: NavbarComponent
+//   }
+// ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
-  RouterModule.forRoot(routesSamePage, { anchorScrolling: 'enabled'})],
+  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
