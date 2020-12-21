@@ -14,13 +14,12 @@
         </div>
         <div class="grid">
             <div class="gallery" *ngFor="let client of clients">
-                <img id="image" src="{{client.src}}" data-original=" hi" />  
+                <img id="image" src="{{user.source}}" data-original=" hi" />  
                 <div id="modal" >
                     <img src="{{client.src}}" class="full-img">
                     <p class="caption">{{client.status}}</p>
                 </div>
                 <button class="btn" (click)="openImage()"> View</button>
-              
             </div>
         </div>
 

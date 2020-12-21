@@ -1,25 +1,17 @@
 <div class="left-sidebar h-100 w-25 px-0  ">
     <div class="sidebar " id="sidebar1">
-        <a class="element " href="http://localhost:4200/home" ><span class="fas fa-home"></span> Home</a>
-       <a class="element " href="http://localhost:4200/homepage/following-tab" id="following-tab"> <span class="fas fa-heart "></span> Following</a>
+        <a class="element " href="http://localhost:4200/home"><span class="fas fa-home"></span> Home</a>
+        <a class="element " href="http://localhost:4200/homepage/following-tab" id="following-tab"> <span
+                class="fas fa-heart "></span> Following</a>
         <a class="element " href="http://localhost:4200/homepage/library"><span class="fas fa-book"></span> Library</a>
     </div>
     <br><br>
     <hr>
     <h5>Bookmark Creator </h5>
-    <div class="sidebar " id="sidebar2">
-        <a class="info " href=""><img class="rounded-circle"
-                src="https://www.somagnews.com/wp-content/uploads/2020/03/12-5-e1584831494917.jpg" alt=""> Tô Thanh
-            An</a>
-        <a class="info" href=""><img class="rounded-circle"
-                src="https://www.somagnews.com/wp-content/uploads/2020/03/12-5-e1584831494917.jpg">Tô Thanh An</a>
-        <a class="info" href=""><img class="rounded-circle"
-                src="https://www.somagnews.com/wp-content/uploads/2020/03/12-5-e1584831494917.jpg" alt="">Tô Thanh
-            An</a>
-        <a class="info" href=""><img class="rounded-circle"
-                src="https://www.somagnews.com/wp-content/uploads/2020/03/12-5-e1584831494917.jpg" alt="">Tô Thanh
-            An</a>
-    </div>
+    <ul class="sidebar" id="sidebar2" >
+        <li (click)="onSelect(client)" *ngFor="let client of datas" class="info"><img class="rounded-circle"
+                src="https://imgpack.herokuapp.com/{{client.source}}" alt=""> {{client.author.username}}</li>
+    </ul>
     <a class="fas fa-angle-down text-decoration-none" id="seeMore" href="http://localhost:4200/homepage/following-tab">
         See more</a>
 </div>

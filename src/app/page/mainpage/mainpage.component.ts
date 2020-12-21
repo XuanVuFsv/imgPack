@@ -11,12 +11,4 @@ export class MainpageComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  open(){
-    const selectElement = (element) => {
-      return document.querySelector(element);
-    };
-    const body = selectElement('body');
-    body.classList.toggle('open');
-    console.log('hi');
-  }
 }

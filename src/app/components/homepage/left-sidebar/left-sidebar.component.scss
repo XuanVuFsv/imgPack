@@ -42,11 +42,13 @@ h5{
 #sidebar2{
     font-size: 15px;
     padding: 0px;
-    max-width: 260px; 
+    width: 200px; 
     max-height: 300px;
+    overflow: hidden;
 }
 .info:hover{
     transform: scale(1.1);
+    color: #064579;;
 }
 .element{
     padding-top: 20px;
@@ -54,9 +56,12 @@ h5{
 .info{
     padding: 5px;
     border-style: solid;
-    box-sizing: border-box;
-    border-width: 1px;
+    // box-sizing: border-box;
+    // border-width: 1px;
+    cursor: pointer;
     margin-top: 20px;
+    margin-left: 30px;
+    list-style: none;
     border-color: white;
     background-color: white;
     border-radius: 10px;

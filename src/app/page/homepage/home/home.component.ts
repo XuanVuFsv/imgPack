@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
   loadData(){
     this.subscription = this._getImageService.getImage().subscribe(data => {
       console.log(data);
+     // tslint:disable-next-line: align
      this.clients = data['data'];
      console.log(this.clients);
     }, error => {

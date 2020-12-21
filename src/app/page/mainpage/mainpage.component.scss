@@ -1,131 +1,182 @@
-
-#logo{
-   width: 200px;
-   height: 200px;
-   max-width: 100%;
-}
-::before,
-::after{
+body{
+    width: 100%;
+    height: 100%;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    font-size: 1.1em;
+    line-height: 1.5;
+    text-align: center;
 }
-
-:root{
-    --main-font: 'Source Sans Pro', sans-serif;
-    --secondary-font: 'Herr Von Muellerhoff', cursive;
-    --body-font: 'Cabin', sans-serif;
-    --main-font-color-dark: #252525;
-    --secondary-font-color: #c59d5f;
-    --body-font-color: #515151;
+img{
+    display: block;
+    width: 100%;
+    height: auto;
 }
-
-html{
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 10px;
-    color: #515151;
-    scroll-behavior: smooth;
+h1, h2, h3{
+    margin: 0;
+    padding: 1em 0;
 }
-
-section{
-    padding: 3.9rem 0;
-}
-
-a{
-    text-decoration: none;
-}
-
 p{
-    font-size: 1.6rem;
+    margin: 0;
+    padding: 1em 0;
 }
-
-.container{
+.btn{
+    display: inline-block;
+    background: #333;
+    color: #fff;
+    text-decoration: none;
+    padding: 1em 2em;
+    border: 1px solid #666;
+    margin: .5em 0;
+}
+.btn:hover{
+    background: #eaeaea;
+    color: #333;
+}
+/*Header showcase*/
+#showcase{
+    min-height: 450px;
+    color: #fff;
+    text-align: center;
+    background: #333 url('../../../assets/picture/doigiay.jpg'); 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     width: 100%;
-    max-width: 122.5rem;
-    margin: 0 auto;
-    padding: 0 2.4rem;
+    height: 450px; 
+}
+#title{
+    padding-top: 100px;
+    padding-bottom: 0;
+    font-size: 66px;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
-// header
-header{
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    background-image: linear-gradient(to bottom, rgba(0,0,0, .5), transparent);
+#showcase .content-wrap,#section-a .content-wrap{
+    padding: 0 1.5em;
 }
 
-.nav{
-    height: 7.2rem;
+// Section A
+
+#img1{
+    width: 1000px;
+    height: auto;
+    margin-left: 300px;
+}
+// Section B
+#section-b{
+    padding: 1em 1em 1em;
+
+}
+#section-b ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+#section-b li{
+    margin-bottom: 0.2em;
+    background:#eaeaea;
+    color: #333;
+}
+#section-b .card{
+    background-color: #eaeaea;
+}
+#section-b .card img{
     display: flex;
     align-items: center;
-    justify-content: center;
+    text-align: center;
 }
-
-.menu-toggle{
-    color: #fff;
-    font-size: 2.2rem;
+.card-content{
+    padding: 1.5em;
+}
+.card-content1{
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 2.5rem;
-    cursor: pointer;
-    z-index: 1500;
-}
-
-.fa-times{
-    display: none;
-}
-
-.nav-list{
-    list-style: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 80%;
-    height: 100vh;
-    background-color: #252525;
-    padding: 4.4rem;
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    z-index: 1250;
-    transform: translateX(-100%);
-    transition: transform .5s;
+    color: white;
+    top: 10px;
+    left: 600px;
+    align-items: center;
+    text-align: center;
+    text-shadow: 2px 2px 10px black;
+    .card-title{
+        font-size: 50px;
+        font-weight:bold;
+        text-transform:capitalize;
+        font-style: italic;
+    }
+}
+// Section C
+#section-c{
+    background: #fff;
+    color: #333;
+    padding: 2em;
+}
+#moments{
+    margin-bottom: 200px;
+}
+hr{
+    border:1px solid black;
+}
+.row{
+    display: flex;
+    flex-wrap: wrap;
+}
+.column{
+    flex: 33.3%;
+    width: auto;
+    overflow: hidden;
+    padding: 0 4px;
+    height: 100%;
+}
+.row .column img{
+    margin-top: 2%;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    filter: grayscale(1) brightness(0.5);
+    border-radius: 5px;
+    transition: 0.3s linear;
+}
+.row .column img:hover{
+    filter: grayscale(0) brightness(1);
 }
 
-.nav::before{
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0,0,0, .8);
-    z-index: 1000;
-    opacity: 0;
-    transform: scale(0);
-    transition: opacity .5s;
+// Footer
+#main-footer{
+    padding: 2em;
+    background: #000;
+    color: #fff;
+    text-align: center ;
 }
 
-.open .fa-times{
-    display: block;
+.navbar{
+    background-color: rgba(0,0,0, 0.9) !important;
+   
+}
+.navbar li a{
+    color: white;
+    // margin-right: 100px;
+}
+.navbar li a:hover{
+    opacity: 0.7;
+}
+#logo{
+    width:50px;
+    height: 50px;
 }
 
-.open .fa-bars{
-    display: none;
+@media only screen and (max-width: 800px){
+    .row .column{
+        flex: 50%;
+    }
 }
-
-.open .nav-list{
-    transform: translateX(0);
+@media only screen and (max-width: 680px){
+    .row .column{
+        flex: 100%;
+    }
+    .row .column img{
+        filter: grayscale(0) brightness(1);
+     
+    }
 }
-
-.open .nav::before{
-    opacity: 1;
-    transform: scale(1);
-}
-
-
-
-
