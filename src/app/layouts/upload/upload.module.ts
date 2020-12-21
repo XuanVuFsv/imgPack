@@ -12,7 +12,7 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  declarations: [],
+  declarations: [UploadComponent],
   imports: [
     CommonModule,
     NavbarModule,
