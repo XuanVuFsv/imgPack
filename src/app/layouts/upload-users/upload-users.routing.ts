@@ -13,7 +13,7 @@ const routes: Routes = [{
         //   .then(m => m.GeneralAccountSettingsModule)
         // },
         {
-            path: 'usersImage/:id',
+            path: 'usersImage',
             loadChildren: () => import('@page/homepage/user-images/user-images/user-images.module').then(m => m.UserImagesModule)
         }
     ]

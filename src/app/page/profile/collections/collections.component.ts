@@ -101,7 +101,5 @@ export class CollectionsComponent implements OnInit {
     });
 
     console.log('newCollection Add', newCollection);
-    this.collections.push(newCollection);
-    console.log('newCollections Update Local', this.collections);
   }
 }

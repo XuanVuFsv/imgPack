@@ -116,3 +116,15 @@ h1 {
 .container .info span .fa {
   color: #ef3b3a;
 }
+
+#login-button {
+  background-color: #00ACEE;
+  color: white;
+  width: 100%;
+}
+
+.error {
+  color: rgba(253, 0, 0, 0.8);
+  font-weight: 500;
+  font-style: italic;
+}

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./client.component.scss']
 })
 export class ClientComponent implements OnInit {
+  currentURL: string;
 
-  constructor() { }
+  constructor(private router: Router) {
+    if (!window.localStorage.getItem('accessToken')) {
+      console.log('Not Account');
+      this.router.navigate(['/login']);
+    }
+  }
 
   ngOnInit(): void {
   }
-
 }

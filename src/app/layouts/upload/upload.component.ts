@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UploadComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private router: Router) {
   }
 
+  ngOnInit(): void {
+    if (!window.localStorage.getItem('accessToken'))
+    {
+      console.log('Not Account');
+      this.router.navigate(['/login']);
+    }
+    // else {
+    //   document.getElementById('layout-upload').style.display = "initial";
+    // }
+  }
 }

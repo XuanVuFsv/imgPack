@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { UserSettingsService } from './../../services/user-settings.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,13 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountSettingsComponent implements OnInit {
 
-  // avatarSource: string;
-  constructor(private _userSettingsService: UserSettingsService) { }
+  currentURL: string;
+
+  constructor(private router: Router) {
+  }
 
   ngOnInit(): void {
-    // this._userSettingsService.GetUserSettings().subscribe(data => {
-    //   this.avatarSource = data["general"]["avatarSource"];
-    // });
+    if (!window.localStorage.getItem('accessToken'))
+    {
+      console.log('Not Account');
+      this.router.navigate(['/login']);
+    }
+    // else {
+    //   document.getElementById('layout-account-settings').style.display = "initial";
+    // }
   }
 
 }

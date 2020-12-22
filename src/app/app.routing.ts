@@ -51,7 +51,7 @@ const routes: Routes = [
     path: '**',
     redirectTo: '404',
     pathMatch: 'full',
-  }  
+  }
 ];
 
 // const routesSamePage: Routes = [

@@ -27,22 +27,11 @@
                 </div>
             </div>
         </div>
-<<<<<<< HEAD
         <div class="row px-0 justify-content-center" id="gallery">
             <div *ngFor="let columImage of imagesByColumn; let i = index">
                 <div class="col-2 mx-0 px-2 py-2" *ngFor="let image of imagesByColumn[i]">
                     <app-image (viewImage)="ShowFullImage($event)" [source]="image"></app-image>
                 </div>
-=======
-        <div class="grid">
-            <div class="gallery" *ngFor="let client of clients">
-                <img id="image" src="{{user.source}}" data-original=" hi" />  
-                <div id="modal" >
-                    <img src="{{client.src}}" class="full-img">
-                    <p class="caption">{{client.status}}</p>
-                </div>
-                <button class="btn" (click)="openImage()"> View</button>
->>>>>>> 3f2516262bdc8d1b94d79b8c06bb5ec20aee738d
             </div>
         </div>
     </div>

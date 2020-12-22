@@ -23,7 +23,7 @@ export class LeftSidebarComponent implements OnInit {
   }
 
   onSelect(client){
-    this.router.navigate(['/users/usersImage/', client.id]);
+    this.router.navigate(['/users/usersImage/', client.data._id]);
   }
   // loadData(){
   //   this.subscription = this._getImageService.getImage().subscribe(data => {
