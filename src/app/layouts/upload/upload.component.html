@@ -3,36 +3,37 @@
     <app-navbar></app-navbar>
 
   </div>
-  <div class="formupload h-90 w-50 ">
-    <div class="row">
-      <div class="frameupload col-md-6">
-        <div class="inframe">
-          <label for="file-upload" style="width: 100%; height:100%">
-            <input class="spaceupload" id="file-upload" type="file" name="fileUpload" accept="image/*" />
-          </label>
-          <!-- <div class="spaceupload">
+  <form #formUpload="ngForm">
+
+    <div class="formupload h-90 w-50 ">
+      <div class="row">
+        <div class="frameupload col-md-6">
+          <div class="inframe">
+            <label for="file-upload" style="width: 100%; height:100%">
+              <input #Img class="spaceupload" id="file-upload" type="file" name="fileUpload" accept="image/*" (change)="InputFile($event.target.files)"/>
+            </label>
+            <!-- <div class="spaceupload">
               <img src="../../../assets/icon/up-arrow.svg" width=50px height=auto>
               <p>Kéo thả hoặc nhấp vào đây để tải lên</p>
 
             </div> -->
-          <p
-            style="font-size: 13px;position: absolute; bottom: 0px; left: 0px;padding:0px 25px 15px 25px;text-align: center;">
-            Khuyến nghị:
-            Sử dụng tập tin .jpg
-            chất lượng cao có kích thước dưới 20MB</p>
+            <p
+              style="font-size: 13px;position: absolute; bottom: 0px; left: 0px;padding:0px 25px 15px 25px;text-align: center;">
+              Khuyến nghị:
+              Sử dụng tập tin .jpg
+              chất lượng cao có kích thước dưới 20MB</p>
+          </div>
         </div>
-      </div>
-      <div class="info col-md-5">
-        <form>
-          <input class="inputtext" placeholder="Description">
-          <input #inputtopic class="inputtext" placeholder="Topic">
+        <div class="info col-md-5">
+          <input class="inputtext" #description placeholder="Description" ngModel name="description">
+          <input #inputtopic class="inputtext" placeholder="Topic" ngModel>
           <input (click)="addtopic(inputtopic)" class="topic" type="button" value="+">
           <div *ngFor="let i of topiclist" style="padding-left:15px;">
             <p style="display: list-item;margin-bottom: 0; ">{{i}}</p>
           </div>
 
           <div class="collection">
-            <select class="add">
+            <select #collection ngModel name="collection" class="add">
               <option>Choose Collections</option>
               <option *ngFor="let l of collections" value="{{l.collection._id}}">{{l.collection.name}}</option>
             </select>
@@ -44,18 +45,18 @@
           </div> -->
 
 
-
           <!-- <button class="add"><svg width="30" height="30" viewBox="0 0 53 51" fill="none"
               xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd" clip-rule="evenodd"
                 d="M19.7893 10.7403V14.9211H24.0876C25.2745 14.9211 26.2367 15.857 26.2367 17.0115C26.2367 18.166 25.2745 19.1019 24.0876 19.1019H19.7893V23.2827C19.7893 24.4372 18.8271 25.3731 17.6402 25.3731C16.4533 25.3731 15.4911 24.4372 15.4911 23.2827V19.1019H11.1928C10.0059 19.1019 9.0437 18.166 9.0437 17.0115C9.0437 15.857 10.0059 14.9211 11.1928 14.9211H15.4911V10.7403C15.4911 9.5858 16.4533 8.6499 17.6402 8.6499C18.8271 8.6499 19.7893 9.5858 19.7893 10.7403ZM26.2367 23.1923C26.2367 22.0877 27.1322 21.1923 28.2367 21.1923H41.4297C42.5343 21.1923 43.4297 22.0877 43.4297 23.1923V23.3731C43.4297 24.4776 42.5343 25.3731 41.4297 25.3731H28.2367C27.1322 25.3731 26.2367 24.4776 26.2367 23.3731V23.1923ZM19.6401 29.5539C18.5356 29.5539 17.6401 30.4493 17.6401 31.5539V31.7347C17.6401 32.8392 18.5356 33.7347 19.6401 33.7347H41.4296C42.5342 33.7347 43.4296 32.8392 43.4296 31.7347V31.5539C43.4296 30.4493 42.5342 29.5539 41.4296 29.5539H19.6401ZM19.6401 37.9154C18.5356 37.9154 17.6401 38.8108 17.6401 39.9154V40.0962C17.6401 41.2008 18.5356 42.0962 19.6401 42.0962H41.4296C42.5342 42.0962 43.4296 41.2008 43.4296 40.0962V39.9154C43.4296 38.8108 42.5342 37.9154 41.4296 37.9154H19.6401Z"
                 fill="black" />
             </svg>Choose Collection</button> -->
-        </form>
+        </div>
+      </div>
+      <div class="post">
+        <button class="btnpost" (click)="onPost(Img,description,collection,topiclist)">POST</button>
       </div>
     </div>
-    <div class="post">
-      <button class="btnpost">POST</button>
-    </div>
-  </div>
+  </form>
+
 </div>
