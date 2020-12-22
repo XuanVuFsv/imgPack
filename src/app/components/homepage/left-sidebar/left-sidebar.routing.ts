@@ -1,6 +1,6 @@
+import { UserImagesComponent } from '@page/homepage/user-images/user-images/user-images.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { UserImagesComponent } from '@page/homepage/user-images/user-images/user-images.component';
 import { LeftSidebarComponent } from './left-sidebar.component';
 
 

@@ -25,7 +25,7 @@ export class UserSettingsService {
   constructor(private http: HttpClient) { }
 
   GetUserSettings(): Observable<IUserSettings> {
-    console.log (this.httpHeaders);
+    // console.log (this.httpHeaders);
     return this.http.get<IUserSettings>(this.testURL, {
       headers: this.httpHeaders
     });
