@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { UploadComponent } from './upload.component';
 import { NavbarModule } from '@components/general/navbar/navbar.module';
 import { HttpClientModule} from '@angular/common/http';
-import { ProfileDataService} from '../../services/profile-data.service'
+import { CollectionsService} from '../../services/collections.service'
 import { FormsModule} from '@angular/forms'
 
 
@@ -24,7 +24,7 @@ const routes: Routes = [
     FormsModule,
     RouterModule.forChild(routes)
   ],
-  providers: [ProfileDataService]
+  providers: [CollectionsService]
 
 })
 export class UploadModule { }

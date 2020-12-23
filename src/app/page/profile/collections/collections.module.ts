@@ -1,4 +1,4 @@
-import { ProfileDataService } from './../../../services/profile-data.service';
+import { CollectionsService } from '../../../services/collections.service';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -17,6 +17,6 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes)
   ],
-  providers: [ProfileDataService]
+  providers: [CollectionsService]
 })
 export class CollectionsModule { }

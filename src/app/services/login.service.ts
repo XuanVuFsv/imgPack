@@ -8,7 +8,7 @@ import { catchError, retry } from 'rxjs/operators';
 
 export class LoginService {
 
-  private testURL: string = 'https://img-pack.herokuapp.com/api/v1/sign-in';
+  private testURL: string = 'https://imgpack.herokuapp.com/api/v1/sign-in';
 
   httpOptions = {
     headers: new HttpHeaders({

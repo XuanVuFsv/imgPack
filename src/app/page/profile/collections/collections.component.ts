@@ -1,5 +1,5 @@
 import { IProfileData, ICollection } from './../../../models/profileData';
-import { ProfileDataService } from './../../../services/profile-data.service';
+import { CollectionsService } from '../../../services/collections.service';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Collection } from 'typescript';
 import { Client, Clients } from '../../../components/general/client-collection/client-collection';
@@ -23,7 +23,7 @@ export class CollectionsComponent implements OnInit {
   src: any;
   avatarSource: 'https://vnn-imgs-a1.vgcloud.vn/image1.ictnews.vn/_Files/2020/03/17/trend-avatar-1.jpg';
 
-  constructor(private profileDataService: ProfileDataService) {
+  constructor(private profileDataService: CollectionsService) {
   }
 
   ngOnInit(): void {

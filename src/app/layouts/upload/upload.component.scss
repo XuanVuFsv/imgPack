@@ -1,15 +1,11 @@
-#layout-upload {
-}
-
 .container-fluid {
   margin-top: 100px;
 }
+
 .formupload {
   background-color: #efefef;
   border-radius: 10px;
-
   position: absolute;
-
   left: 50%;
   transform: translate(-50%);
 }
@@ -45,12 +41,22 @@
   padding-left: 0px;
 }
 
-.title {
+.title, .description {
   width: 100%;
-  font-size: 30px;
+  height: 50px;
+  font-size: 20px;
   display: inline-block;
-  margin-bottom: 15px;
-  border: 0px;
+  padding: 5px;
+  margin: 10px;
+}
+
+.input {
+  border: 2px solid #00ACEE;
+  outline: none;
+  border-radius: 10px;
+}
+.input:focus {
+  border-color: #00ACEE;
 }
 
 .inputtext {
@@ -61,12 +67,13 @@
 }
 
 .topic {
-  border-radius: 30px;
-  border: 0px solid black;
+  height: 50px;
+  width: 270px;
+  border-radius: 10px;
   font-size: 20px;
-  padding: 5px 20px 5px 20px;
+  padding: 5px;
   background-color: #ffffff;
-  width: fit-content;
+  margin: 10px;
 }
 
 .add {
@@ -78,9 +85,12 @@
   border: 0px;
   padding: 15px;
   background-color: #ffffff;
+  border: 2px solid #00ACEE;
+  outline: none;
+  border-radius: 10px;
 }
 .post {
-  padding: 25px;
+  padding: px;
   width: 100%;
 }
 
@@ -89,5 +99,19 @@
   font-size: 30px;
   border: 0px;
   border-radius: 20px;
-  background-color: #ffffff;
+  background-color: #00ACEE;
+  color: white;
+  font-weight: 500;
 }
+
+.btnpost:hover {
+  background-color: #007bff;
+}
+ .listTopic {
+   height: 220px;
+   margin: 10px;
+ }
+
+ .collection {
+
+ }
