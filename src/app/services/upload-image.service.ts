@@ -16,15 +16,15 @@ export class UploadImageService {
   };
 
   httpHeaders = new HttpHeaders({
-    'content-type': 'application/json',
-    Authorization: localStorage.getItem('accessToken')
+   Authorization: localStorage.getItem('accessToken')
   });
 
   constructor(private http: HttpClient) { }
   Upload(data): Observable<any> {
     // Make http post request over api
     // with formData as req
-    return this.http.post(this.URL, data);
+    console.log('service', data);
+    return this.http.post(this.URL, data, { headers: this.httpHeaders});
   }
 
 }

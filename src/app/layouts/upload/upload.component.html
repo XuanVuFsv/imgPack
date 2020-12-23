@@ -9,6 +9,8 @@
           <i type="button" id="cancelUpload" (click)="onCancelUpload()" class="fas fa-window-close fa-2x"></i>
           <img style="width: 334px; height: auto;" [src]="currentImageUpload" alt="">
           <div id='uploadFrame'>
+
+            
             <input id="file-upload" hidden type="file" name="fileUpload" (change)="onSelectImage($event)" />
             <label type="button" for="file-upload">
               <div style="color: #00ACEE;" class="spaceupload fas fa-upload fa-3x">
@@ -39,7 +41,7 @@
 
           <div class="row align-items-center justify-content-between mt-2">
             <div class="col-7">
-              <select #collection ngModel name="collection" class="input add">
+              <select #collectionValue ngModel name="collection" class="input add">
                 <option value="" disabled selected>Choose collection</option>
                 <option *ngFor="let l of collections" value="{{l.collection._id}}">{{l.collection.name}}</option>
               </select>

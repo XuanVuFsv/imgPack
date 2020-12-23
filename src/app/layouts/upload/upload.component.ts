@@ -27,6 +27,12 @@ export class UploadComponent implements OnInit {
 
   collections: any[] = new Array();
   nameCollection = [];
+  dataUpload = {
+    source: null,
+    description: '',
+    collectionId: '',
+    topics: []
+  };
 
   constructor(private collectionsService: CollectionsService, private uploadImageService: UploadImageService, private router: Router) { }
 
@@ -39,8 +45,8 @@ export class UploadComponent implements OnInit {
     }
 
     this.collectionsService.GetCollectionsData().subscribe(data => {
-      console.log('collections', data);
       this.collections = data.data;
+      console.log('collections', this.collections[0]['_id']);
     });
     this.nameCollection = this.collections.map(x => x.name);
 
@@ -54,7 +60,9 @@ export class UploadComponent implements OnInit {
     if (this.topicList.indexOf(this.topicValue.nativeElement.value) < 0 || this.topicValue.nativeElement.value !== '') {
       console.log(this.topicValue.nativeElement.value);
       this.topicList.push(this.topicValue.nativeElement.value);
+      this.dataUpload.topics = this.topicList;
       console.log(this.topicList);
+      // console.log('Test data: ', this.collectionValue.nativeElement.value, this.descriptionValue.nativeElement.value);
     }
   }
 
@@ -70,17 +78,27 @@ export class UploadComponent implements OnInit {
     document.getElementById('mainFrame').style.backgroundColor = "wheat";
     document.getElementById('cancelUpload').style.visibility = "visible";
     if (file.target.files) {
-      console.log('file: ', file.target.files[0]);
-      for (const childFile of file.target.files) {
-        const reader = new FileReader();
-        reader.readAsDataURL(childFile);
-        this.imageFileUpload = childFile;
-        console.log(this.imageFileUpload);
 
-        reader.onload = (event: any) => {
-          this.currentImageUpload = event.target.result;
-        };
-      }
+      const reader = new FileReader();
+      reader.readAsDataURL(file.target.files[0]);
+      reader.onload = (event: any) => {
+        console.log('file: ', file.target.files[0]);
+        this.imageFileUpload = file.target.files[0];
+        const formData: FormData = new FormData();
+        // formData.append('Image', file.target.files[0], file.target.files[0].name);
+        formData.set('file', file.target.files[0], file.target.files[0].name);
+        this.dataUpload.source = formData;
+        console.log('formData', formData);
+        this.currentImageUpload = event.target.result;
+      };
+      console.log(this.imageFileUpload);
+
+      // for (const childFile of file.target.files) {
+      //   const reader = new FileReader();
+      //   reader.readAsDataURL(childFile);
+      //   this.imageFileUpload = childFile;
+      //   console.log(this.imageFileUpload);
+      // }
     }
   }
   onCancelUpload(): void {
@@ -93,18 +111,18 @@ export class UploadComponent implements OnInit {
   Post(): void {
     console.log('Post');
     // Create form data
-    const formData = new FormData();
+    // let formData = new FormData();
     // Store form name as "file" with file data
-    formData.append('file', this.imageFileUpload, this.imageFileUpload.name);
-    console.log('Post', formData);
-    let data = {
-      source: formData,
-      description: this.descriptionValue.nativeElement.value,
-      collectionId: this.collectionValue.nativeElement.value,
-      topics: this.topicList
-    };
-    console.log('Image upload:', data);
-    this.uploadImageService.Upload(data).subscribe(data => {
+    // console.log('Post', formData);
+    // formData.append('file', this.imageFileUpload, this.imageFileUpload.name);
+    // console.log('Post', formData);
+
+
+    console.log('Test data: ', this.collectionValue.nativeElement.value, this.descriptionValue.nativeElement.value);
+    this.dataUpload.collectionId = this.collections[0]['_id'];
+    this.dataUpload.description = this.descriptionValue.nativeElement.value;
+    console.log('Image upload:', this.dataUpload);
+    this.uploadImageService.Upload(this.dataUpload).subscribe(data => {
       console.log(data);
     });
   }
