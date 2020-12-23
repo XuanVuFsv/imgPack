@@ -2,92 +2,103 @@
   <div class="row h-10">
     <app-navbar></app-navbar>
   </div>
-
   <div class="formupload h-90 w-50 ">
     <div class="row">
       <div class="frameupload col-md-6">
-        <div class="inframe">
-          <input id="file-upload" hidden type="file" name="fileUpload" accept="image/*" />
-          <label type="button" for="file-upload">
-            <div class="spaceupload fas fa-upload fa-3x">
-              <p style="font-size: 15px; font-weight: 100;">Kéo thả hoặc nhấp vào đây để tải lên
-              </p>
-            </div>
-          </label>
-          <p
-            style="font-size: 13px;position: absolute; bottom: 0px; left: 0px;padding:0px 25px 15px 25px;text-align: center;">
-            Khuyến nghị:
-            Sử dụng tập tin .jpg
-            chất lượng cao có kích thước dưới 20MB</p>
+        <div class="inframe" id="mainFrame">
+          <i type="button" id="cancelUpload" (click)="onCancelUpload()" class="fas fa-window-close fa-2x"></i>
+          <img style="width: 334px; height: auto;" [src]="currentImageUpload" alt="">
+          <div id='uploadFrame'>
+            <input id="file-upload" hidden type="file" name="fileUpload" (change)="onSelectImage($event)" />
+            <label type="button" for="file-upload">
+              <div style="color: #00ACEE;" class="spaceupload fas fa-upload fa-3x">
+                <p style="font-size: 15px; font-weight: 100; color: #00ACEE;">Kéo thả hoặc nhấp vào đây để tải lên
+                </p>
+              </div>
+            </label>
+            <p
+              style="font-size: 13px;position: absolute; bottom: 0px; left: 0px;padding:0px 25px 15px 25px;text-align: center;">
+              Khuyến nghị:
+              Sử dụng tập tin .jpg
+              chất lượng cao có kích thước dưới 20MB</p>
+          </div>
         </div>
       </div>
       <div class="info col-md-5">
-        <form>
-          <div class="row">
-            <input class="input title" placeholder="Title">
-            <input class="input description" placeholder="Description">
-            <div class="row align-items-center justify-content-between">
-              <div class="col-7">
-                <input #topicValue class="input topic" placeholder="Topic">
-              </div>
-              <div class="col-2 mr-4">
-                <button class="addTopic btn-primary fas fa-plus fa-2x" (click)="AddTopic()"></button>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="listTopic">
-              <ul>
-                <li *ngFor="let topic of topicList">{{topic}}</li>
-              </ul>
-            </div>
-          </div>
-          <div class="row collection justify-content-between ml-1">
-            <div class="col-7">
-              <select #collection ngModel name="collection" class="add">
-                <option value="" disabled selected>Choose collection</option>
-                <option *ngFor="let l of collections" value="{{l.collection._id}}">{{l.collection.name}}</option>
-                <option value="" >Add new collection...
+        <div class="row">
+          <input #descriptionValue class="input description" placeholder="Description">
 
-                  <!-- <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-info" id="add">Add New</button> -->
-                
-                </option>
-              </select>
+          <div class="row align-items-center justify-content-between">
+            <div class="col-7">
+              <input #topicValue class="input topic" placeholder="Topic">
             </div>
-            <div class="col-2 mr-4 mb-2">
+            <div class="col-2 mr-4">
               <button class="addTopic btn-primary fas fa-plus fa-2x" (click)="AddTopic()"></button>
             </div>
           </div>
-        </form>
+
+          <div class="row align-items-center justify-content-between mt-2">
+            <div class="col-7">
+              <select #collection ngModel name="collection" class="input add">
+                <option value="" disabled selected>Choose collection</option>
+                <option *ngFor="let l of collections" value="{{l.collection._id}}">{{l.collection.name}}</option>
+              </select>
+            </div>
+            <div class="col-2 mr-4">
+              <button class="addTopic btn-primary fas fa-plus fa-2x" (click)="AddTopic()"></button>
+            </div>
+          </div>
+
+          <!-- <div class="row justify-content-between align-items-center mt-5 ml-1">
+              <div class="col-7">
+                <select #collection ngModel name="collection">
+                  <option value="" disabled selected>Choose collection</option>
+                  <option *ngFor="let l of collections" value="{{l.collection._id}}">{{l.collection.name}}</option>
+                </select>
+              </div>
+              <div class="col-3">
+                <button class="addTopic btn-primary fas fa-plus fa-2x" (click)="AddTopic()"></button>
+              </div>
+            </div> -->
+        </div>
+
+        <div class="row">
+          <div class="listTopic">
+            <ul>
+              <li *ngFor="let topic of topicList">{{topic}}</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
     <div class="post">
-      <button class="btnpost">POST</button>
+      <button (click)="Post()" class="btnpost">POST</button>
     </div>
   </div>
 
-<!--Modal-->
-  <div class="modal fade bd-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <!--Modal-->
+  <div class="modal fade bd-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog " role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel">Add Collections</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
-            </div>
-            <div class="modal-body">
-                <div class="container-fluid">
-                    <div class="row justify-content-start px-2 py-2">
-                        <div class="col col-6">
-                            <span>TITLE: <input type="text" #title id="title"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" (click)="AddCollection()">Add</button>
-            </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="myModalLabel">Add Collections</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+              aria-hidden="true">&times;</span></button>
         </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+            <div class="row justify-content-start px-2 py-2">
+              <div class="col col-6">
+                <span>TITLE: <input type="text" #title id="title"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="AddCollection()">Add</button>
+        </div>
+      </div>
     </div>
-</div>
+  </div>

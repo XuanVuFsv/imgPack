@@ -23,7 +23,7 @@
   width: 100%;
   height: 100%;
   padding: 15px;
-  border: 3px dashed black;
+  border: 3px solid salmon;
   border-radius: 10px;
 }
 
@@ -77,17 +77,17 @@
 }
 
 .add {
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
   font-size: 20px;
   border-radius: 10px;
   border: 0px;
-  padding: 15px;
+  padding: 5px;
   background-color: #ffffff;
   border: 2px solid #00ACEE;
   outline: none;
   border-radius: 10px;
+  height: 50px;
+  margin-left: 10px;
+  width: 270px;
 }
 .post {
   padding: px;
@@ -112,6 +112,7 @@
    margin: 10px;
  }
 
- .collection {
-
- }
+ #cancelUpload {
+   color: rgb(255, 0, 43);
+  float: right;
+  }
