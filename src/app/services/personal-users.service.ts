@@ -6,7 +6,7 @@ import {Client} from '../models/homePage';
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'Application/json'})
 };
-const API = 'https://img-pack.herokuapp.com/api/v1/';
+const API = 'https://imgpack.herokuapp.com/api/v1/';
 @Injectable({
   providedIn: 'root'
 })

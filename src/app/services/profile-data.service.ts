@@ -8,7 +8,7 @@ import { Observable, throwError } from 'rxjs';
 })
 export class ProfileDataService {
 
-  private collectionsURL = 'https://img-pack.herokuapp.com/api/v1/newfeeds/collections';
+  private collectionsURL = 'https://imgpack.herokuapp.com/api/v1/newfeeds/collections';
 
   httpHeaders = new HttpHeaders({
     'content-type': 'application/json',
