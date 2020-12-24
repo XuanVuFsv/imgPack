@@ -49,40 +49,24 @@
 <!-- Button trigger modal -->
 
 <!-- Modal -->
-<div class="modal fade bd-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog " role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel">Add Collections</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
-            </div>
-            <div class="modal-body">
-                <div class="container-fluid">
-                    <div class="row justify-content-start px-2 py-2">
-                        <div class="col col-6">
-                            <span>TITLE: <input type="text" #title id="title"></span>
-                            <br>
-                            <br>
-                            <!-- <input multiple type="file" id="src"> -->
-                            <div class="choose-img-collection">
-                                <label type="button" class="my-1 selectImageButton" for="selectAvartarSource">Choose your Image</label>
-                                <input multiple type="file" hidden id="selectAvartarSource" name="selectAvartarSource"
-                                    (change)="onSelectImage($event)">
-                            </div>
-                        </div>
-                        <div class="col col-6 border border-dark">
-                            <img [src]="previewCollectionImage" alt="preview"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" (click)="AddCollection()">Add</button>
-            </div>
-        </div>
+
+<div class="modal fade bd-example-modal-lg" id="myModal" tabindex="-1" role="dialog"
+aria-labelledby="myModelAddCollection" aria-hidden="true">
+<div class="modal-dialog " role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title" id="myModalLabel">Add Collections</h4>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+          aria-hidden="true">&times;</span></button>
     </div>
+    <div class="modal-body">
+      <span>TITLE: <input type="text" #title id="title" class="w-100"></span>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="AddCollection()" data-dismiss="modal">Add</button>
+    </div>
+  </div>
+</div>
 </div>
 
 <!-- <div class="row">

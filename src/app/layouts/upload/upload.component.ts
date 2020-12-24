@@ -14,16 +14,18 @@ import { UploadService } from '@services/upload.service';
 })
 export class UploadComponent implements OnInit {
 
-  fileToUpload = File = null;
   @ViewChild('topicValue') topicValue: ElementRef;
   @ViewChild('descriptionValue') descriptionValue: ElementRef;
   @ViewChild('collectionValue') collectionValue: ElementRef;
   @ViewChild('uploadFrame') uploadFrame: ElementRef;
+  @ViewChild('title') newTitle: ElementRef;
+
   topicList: string[] = new Array();
   collectionIDList: string[] = new Array();
-  isDisabled: boolean;
   currentImageUpload: string;
-  imageFileUpload: File = null;
+  imgs: string[];
+  imageFileUpload: any;
+
 
   collections: any[] = new Array();
   nameCollection = [];
@@ -34,7 +36,8 @@ export class UploadComponent implements OnInit {
     topics: []
   };
 
-  constructor(private collectionsService: CollectionsService, private uploadImageService: UploadImageService, private router: Router) { }
+  constructor(private profileDataService: CollectionsService, private collectionsService: CollectionsService, private uploadImageService: UploadImageService, private router: Router) {
+  }
 
   ngOnInit(): void {
     document.getElementById('cancelUpload').style.visibility = "hidden";
@@ -46,30 +49,47 @@ export class UploadComponent implements OnInit {
 
     this.collectionsService.GetCollectionsData().subscribe(data => {
       this.collections = data.data;
-      console.log('collections', this.collections[0]['_id']);
+      console.log(this.collections);
+      this.nameCollection = this.collections.map(x => x.name);
+      this.collectionIDList = this.collections.map(x => x._id);
+      console.log('collections', this.collectionIDList, this.nameCollection);
     });
-    this.nameCollection = this.collections.map(x => x.name);
 
-    this.collectionsService.Test().subscribe(data => {
-      // console.log(data);
-      this.collections = data.data;
+    this.uploadImageService.LoadImage().subscribe(data => {
+      console.log('my Image', data);
+      this.imgs = data['data'].map(x => x['source']);
     });
   }
 
   AddTopic(): void {
-    if (this.topicList.indexOf(this.topicValue.nativeElement.value) < 0 || this.topicValue.nativeElement.value !== '') {
+    if (this.topicList.indexOf(this.topicValue.nativeElement.value) < 0 && this.topicValue.nativeElement.value !== '') {
       console.log(this.topicValue.nativeElement.value);
       this.topicList.push(this.topicValue.nativeElement.value);
       this.dataUpload.topics = this.topicList;
       console.log(this.topicList);
-      // console.log('Test data: ', this.collectionValue.nativeElement.value, this.descriptionValue.nativeElement.value);
     }
   }
 
   AddCollection(): void {
-    if (this.collectionIDList.indexOf(this.collectionValue.nativeElement.value) < 0) {
-      // console.log(this.collectionValue.nativeElement.value);
-      this.collectionIDList.push(this.collectionValue.nativeElement.value);
+    if (this.nameCollection.indexOf(this.newTitle.nativeElement.value) < 0 && this.newTitle.nativeElement.value !== '') {
+      let newCollection: any;
+      newCollection = {
+        name: this.newTitle.nativeElement.value,
+      };
+      this.profileDataService.AddCollectionsData(newCollection).subscribe(data => {
+        console.log(data);
+        this.collectionIDList.push(data.data._id);
+        this.nameCollection.push(data.data.name);
+        this.collections.push({
+          _id: data.data._id,
+          name: data.data.name
+        });
+      });
+      this.nameCollection.push(this.newTitle.nativeElement.value);
+      console.log('new collections', this.collectionIDList, this.nameCollection, this.collections);
+    }
+    else {
+      console.log('match name');
     }
   }
 
@@ -78,27 +98,13 @@ export class UploadComponent implements OnInit {
     document.getElementById('mainFrame').style.backgroundColor = "wheat";
     document.getElementById('cancelUpload').style.visibility = "visible";
     if (file.target.files) {
-
       const reader = new FileReader();
       reader.readAsDataURL(file.target.files[0]);
       reader.onload = (event: any) => {
-        console.log('file: ', file.target.files[0]);
-        this.imageFileUpload = file.target.files[0];
-        const formData: FormData = new FormData();
-        // formData.append('Image', file.target.files[0], file.target.files[0].name);
-        formData.set('file', file.target.files[0], file.target.files[0].name);
-        this.dataUpload.source = formData;
-        console.log('formData', formData);
         this.currentImageUpload = event.target.result;
       };
-      console.log(this.imageFileUpload);
+      this.imageFileUpload = file.target.files.item(0);
 
-      // for (const childFile of file.target.files) {
-      //   const reader = new FileReader();
-      //   reader.readAsDataURL(childFile);
-      //   this.imageFileUpload = childFile;
-      //   console.log(this.imageFileUpload);
-      // }
     }
   }
   onCancelUpload(): void {
@@ -110,20 +116,24 @@ export class UploadComponent implements OnInit {
 
   Post(): void {
     console.log('Post');
-    // Create form data
-    // let formData = new FormData();
-    // Store form name as "file" with file data
-    // console.log('Post', formData);
-    // formData.append('file', this.imageFileUpload, this.imageFileUpload.name);
-    // console.log('Post', formData);
-
-
-    console.log('Test data: ', this.collectionValue.nativeElement.value, this.descriptionValue.nativeElement.value);
-    this.dataUpload.collectionId = this.collections[0]['_id'];
+    this.dataUpload.collectionId = this.collectionValue.nativeElement.value;
     this.dataUpload.description = this.descriptionValue.nativeElement.value;
-    console.log('Image upload:', this.dataUpload);
-    this.uploadImageService.Upload(this.dataUpload).subscribe(data => {
-      console.log(data);
-    });
+
+    console.log(this.dataUpload.collectionId, this.dataUpload.description, this.imageFileUpload);
+
+    const formData = new FormData();
+    formData.append('source', this.imageFileUpload);
+    if (this.dataUpload.collectionId && this.dataUpload.description && this.dataUpload.topics && this.dataUpload.source) {
+      this.uploadImageService.UploadS3(formData).subscribe(data => {
+        console.log(data);
+        this.dataUpload.source = data;
+        this.uploadImageService.UpdateImageUpload(this.dataUpload).subscribe(data => {
+          console.log(data);
+        });
+      });
+    }
+    else {
+      console.log('thieu');
+    }
   }
 }
