@@ -28,6 +28,10 @@ const routes: Routes = [{
     {
       path: 'library',
       loadChildren: () => import('@page/homepage/library/library.module').then(m => m.LibraryModule)
+    },
+    {
+      path: 'topic',
+      loadChildren: () => import('@page/homepage/topic/topic.module').then(m => m.TopicModule)
     }
   ]
 }];

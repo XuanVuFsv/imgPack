@@ -7,7 +7,7 @@ import {Client} from '../models/homePage';
 })
 export class GetImageService {
 
-  public API: string = 'https://img-pack.herokuapp.com/api/v1/';
+  public API: string = 'https://imgpack.herokuapp.com/api/v1/';
 
   constructor(public http: HttpClient) { }
 

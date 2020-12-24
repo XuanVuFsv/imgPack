@@ -3,7 +3,7 @@
     <div class="row w-100 ">
       <div class="col-lg-2 ml-0 d-flex p-0">
         <div class="logo">
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="http://localhost:4200/homepage/home">
             <img id="logo" src="../../../../assets/Logo/logo.png" alt="Logo">
             <span class="sr-only sr-only-focusable">Home</span></a>
         </div>
@@ -11,10 +11,36 @@
 
       <div class="col-lg-8 d-flex p-0">
         <form class="form-inline w-100 my-2 my-lg-0">
-          <input class="form-control w-75 mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <i id="search-icon" class="fas fa-search"></i>
-          <button class="btn btn-primary w-auto my-2 my-sm-0">Search</button>
+          <!-- <i id="search-icon" class="fas fa-search"></i>
+          <button class="btn btn-primary w-auto my-2 my-sm-0">Search</button> -->
         </form>
+      </div>
+
+      <div class="search-bar">
+        <input [(ngModel)]="searchText" #searchbar (keyup)="fetchSeries($event)" 
+          class="form-control w-75 mr-sm-2" type="text" placeholder="Search" aria-label="Search" />
+
+        <ul>
+          <li *ngFor="let show of searchResult">
+            <ng-container *ngIf="value; else elseTemplate">
+              <p (click)="onSelect(show)"><img class="rounded-circle" id="avatar" src="{{show.avatar}}" > {{ show.username }}</p>
+            </ng-container>
+            <ng-template #elseTemplate>
+              <p (click)="onSelect1(show)"> {{ show.name }}</p>
+            </ng-template>
+          </li>
+        </ul>
+      </div>
+
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          {{dropDown}}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a (click)="change1()" class="dropdown-item">Users</a>
+          <a (click)="change2()" class="dropdown-item">Topics</a>
+        </div>
       </div>
 
       <div class="col-lg-2 d-flex p-0">
@@ -36,11 +62,11 @@
             <li class="nav-item mx-2 my-auto rounded-pill p-0" id="profile">
               <a class="nav-link p-0" href="#">
                 <div class="row">
-                  <div class="col-6">
-                    <img class="profileAvatar rounded-circle" [src]="avatarSource" alt="avatar" />
+                  <div class="col-5">
+                    <img class="profileAvatar rounded-circle" [src]="me.users['avatar']" alt="avatar" />
                   </div>
                   <div class="col-6 my-auto">
-                    <span id="username">ABC</span>
+                    <span id="username">{{me.users['username']}}</span>
                   </div>
                 </div>
               </a>
