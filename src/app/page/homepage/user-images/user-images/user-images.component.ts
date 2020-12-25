@@ -20,6 +20,7 @@ export class UserImagesComponent implements OnInit {
   public userId;
   datas: IProFile;
   datasImage: IImageUsers[] = [];
+  images: string[];
   // images: string[] = ['https://znews-photo.zadn.vn/w660/Uploaded/bzcwvobl/2020_05_16/Ronaldo.jpg',
   //   'https://media.thethao247.vn/upload/cuongnm/2019/12/10/ronaldo-hoi-han-khi-roi-real-madrid1575955497.jpg',
   //   'https://znews-photo.zadn.vn/w660/Uploaded/ofh_huqfztmf/2020_02_05/ro.jpeg',
@@ -52,34 +53,38 @@ export class UserImagesComponent implements OnInit {
     this.route.queryParamMap.subscribe((params: ParamMap) => {
       let id = params.get('id');
       this.userId = id;
-      console.log('id',  this.userId);
+      console.log('id', this.userId);
       // get profile by id
       this.userData = this.proFileService.getUsers(this.userId).subscribe(data => {
         this.datas = data['data'];
-       });
-      //  get image by id
-       this.userImage = this.proFileService.getImageUsers(this.userId).subscribe(data => { 
+      });
+      //  get image by userid
+      this.userImage = this.proFileService.getImageUsers(this.userId).subscribe(data => {
         this.datasImage = data['data'];
-        console.log('data images', this.datasImage);
-        console.log('source', this.datasImage.map(x => x['source']));
+        // console.log('data images', this.datasImage);
+        // console.log('source', this.datasImage.map(x => x['source']));
+        this.images = this.datasImage.map(x => x['source']);
+        this.CreateImageByColumn();
       });
     });
+  }
+
+  CreateImageByColumn(): void {
     let count = 0;
-    // console.log('images', this.images);
-    for (let i = 0; i < 6; i++)
-    {
+    console.log('images', this.images);
+    for (let i = 0; i < 6; i++) {
       this.imagesByColumn[i] = new Array();
     }
     // console.log('images by column', this.imagesByColumn);
 
-    for (let image of this.datasImage.map(x => x['source']))
-    {
+    for (let image of this.images) {
       // console.log('image', image);
       this.imagesByColumn[count % 6].push(image);
       count++;
     }
-    // console.log('images by column', this.imagesByColumn);
+    console.log('images by column', this.imagesByColumn);
   }
+
   ShowFullImage(dataImage: object): void {
     this.fullImageSource = dataImage['source'];
     this.currentWidth = dataImage['width'] * 4;
