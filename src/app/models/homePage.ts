@@ -1,5 +1,5 @@
 export interface Client {
-    id: number;
+    _id: number;
     source: string;
     description: string;
     collectionId: string;

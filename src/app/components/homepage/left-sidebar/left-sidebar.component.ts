@@ -1,29 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import {PersonalUsersService} from '../../../services/personal-users.service';
-import {IPersonalUsers} from '../../../models/personalUsers';
+import {BookmarkCreatorService } from '../../../services/bookmark-creator.service';
+import {IBookMarkCreator} from '../../../models/bookMarkCreator';
 import {Subscription} from 'rxjs/subscription';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-left-sidebar',
   templateUrl: './left-sidebar.component.html',
   styleUrls: ['./left-sidebar.component.scss']
 })
 export class LeftSidebarComponent implements OnInit {
-  datas: IPersonalUsers[] = [];
+  datas: IBookMarkCreator[] = [];
   subscription: Subscription;
-  constructor(private personalUsersService: PersonalUsersService, private router: Router) { }
+  constructor(private bookMarkCreatorService: BookmarkCreatorService, private router: Router) { }
 
   ngOnInit(): void {
-    this.getBookmarkCreator();
+    this.getUsers();
   }
-  getBookmarkCreator(){
-   this.subscription = this.personalUsersService.getBookmarkCreator().subscribe((data: any ) => {
+  getUsers(){
+    this.bookMarkCreatorService.getUsers().subscribe(data => {
       this.datas = data['data'];
     });
   }
 
   onSelect(client){
-    this.router.navigate(['/users/usersImage/', client.data._id]);
+    this.router.navigate(['/users/usersImage/'], {queryParams: {id : client._id}});
   }
   // loadData(){
   //   this.subscription = this._getImageService.getImage().subscribe(data => {
