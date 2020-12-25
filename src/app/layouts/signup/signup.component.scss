@@ -129,3 +129,12 @@ h1 {
 .container .info span .fa {
   color: #ef3b3a;
 }
+
+.error {
+  color: red;
+  text-align: left;
+}
+
+.form button:disabled {
+  background: #bbbbbb !important;
+}
