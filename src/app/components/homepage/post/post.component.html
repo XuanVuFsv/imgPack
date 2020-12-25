@@ -23,7 +23,7 @@
                 </div>
             </div> -->
         </div>
-        
+
         <div class="details">
             <div class="AvatarAndName" (click)=" onSelect(client)">
                 <img src="{{client.author.avatar}}" alt="avatar" class="avatar">
@@ -32,7 +32,21 @@
             </div>
             <p class="status">{{client.description}}</p>
         </div>
+        <div *ngIf="client['author']._id != idPersonal">
 
+            <ng-container *ngIf="save; else elseTemplate">
+                <div class="box" id="unSave" (click)="onUnSave(client._id)">
+                    UnSave
+                </div>
+            </ng-container>
+            <ng-template #elseTemplate>
+                <div class="box" id="save" (click)="onSave(client._id)">
+                    Save
+                </div>
+            </ng-template>
+
+
+        </div>
     </div>
 
 </div>

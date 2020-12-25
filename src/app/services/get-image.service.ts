@@ -12,11 +12,17 @@ httpHeaders = new HttpHeaders({
 
 
   public API: string = 'https://imgpack.herokuapp.com/api/v1/';
-
+  public baseURL: string = 'https://imgpack.herokuapp.com/api/v1/newfeeds/library';
   constructor(public http: HttpClient) { }
 
   getImage(): Observable<Client[]>{
     return this.http.get<Client[]>(this.API,{ headers: this.httpHeaders });
+  }
+  saveImage(id): Observable<Client[]>{
+    return this.http.post<Client[]>(`${this.baseURL}/save/${id}`,{},{ headers: this.httpHeaders })
+  }
+  unSaveImage(id): Observable<Client[]>{
+    return this.http.put<Client[]>(`${this.baseURL}/unsave/${id}`,{},{ headers: this.httpHeaders })
   }
   handleError(err){
     if (err.error instanceof Error){
