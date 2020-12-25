@@ -19,6 +19,7 @@
     text-decoration: none;
     color: black;
     display: block;
+    cursor: pointer;
   }
 .sidebar a:hover{
     color: #064579;
@@ -33,7 +34,7 @@
     background-color: white;
     border-radius: 10px;
     box-shadow: 2px 2px 5px #888888;
-    transition: transform 1s;
+    transition: transform 0.5s;
 }
 .info:hover{
     transform: scale(1.1);

@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.subscription = this._getImageService.getImage().subscribe(data => {
       console.log(data);
       this.clients = data['data'];
-      console.log(this.clients);
+      console.log('datas', this.clients);
     }, error => {
       console.log(error);
     });

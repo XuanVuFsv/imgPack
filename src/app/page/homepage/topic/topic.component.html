@@ -1,0 +1,21 @@
+<h1 class="library text-center">≈ TOPIC {{datas.topicName}} ≈</h1>
+<hr >
+<body>
+    <div class="container w-100  ">
+        <div class="box" *ngFor="let img of datas['images']">
+            <img src="{{img.source}}">
+         
+            <!-- <h2>{{client.title}}</h2> -->
+            <a (click)="onSelect(img)" class=" text-decoration-none " >
+                
+                <h6 class="name">
+                    <img src="{{img.author['avatar']}}" alt="" class="avatar rounded-circle " id="avatar">
+                    {{img.author['username']}}
+                </h6>
+            </a>
+            <p>
+                {{img.description}}
+            </p>
+        </div>
+    </div>
+</body>
