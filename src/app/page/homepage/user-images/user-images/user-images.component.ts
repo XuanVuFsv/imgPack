@@ -56,6 +56,8 @@ export class UserImagesComponent implements OnInit {
       // get profile by id
       this.userData = this.proFileService.getUsers(this.userId).subscribe(data => {
         this.datas = data['data'];
+        console.log('data cua tui', this.datas);
+        
        });
       //  get image by id
        this.userImage = this.proFileService.getImageUsers(this.userId).subscribe(data => { 

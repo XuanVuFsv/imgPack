@@ -36,6 +36,15 @@
             </div>
             <div class="row px-0 justify-content-center">
                 <h1 id="name">{{datas.users.username}}</h1>
+                <ng-container *ngIf="datas.analytics.isFollowed; else elseTemplate">
+                    <p>Following</p>
+                </ng-container>
+                <ng-template #elseTemplate>
+                    <p>Follow</p>    
+                </ng-template>
+                
+                        
+                
             </div>
             <div class="row px-0 justify-content-center">
                 <p id="follow"> {{datas.analytics.followers}} người đang theo dõi - Đang theo dõi {{datas.analytics.followings}} người</p>
