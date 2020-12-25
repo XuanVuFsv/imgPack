@@ -5,8 +5,7 @@ import { UploadComponent } from './upload.component';
 import { NavbarModule } from '@components/general/navbar/navbar.module';
 import { HttpClientModule} from '@angular/common/http';
 import { CollectionsService} from '../../services/collections.service'
-import { FormsModule} from '@angular/forms'
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -22,6 +21,7 @@ const routes: Routes = [
     NavbarModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
   providers: [CollectionsService]

@@ -30,8 +30,8 @@ export class CollectionsComponent implements OnInit {
     console.log('aaaaaaaaaaaaa');
     this.profileDataService.GetCollectionsData()
       .subscribe(data => {
-        this.collections = data;
-        console.log('collections data: ', data);
+        this.collections = data.data;
+        console.log('collections data: ', this.collections);
       });
   }
 
@@ -83,7 +83,7 @@ export class CollectionsComponent implements OnInit {
           {
           this.previewCollectionImage = event.target.result;
           count++;
-          }
+          }8
         };
       }
     }

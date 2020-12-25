@@ -79,10 +79,13 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     this.searchText = "";
     this.searchResult = [];
   }
-
+  onSelectMe(me){
+    this.router.navigate(['/users/usersImage/'], {queryParams: {id : me.users._id}});
+  }
   getMe(){
     this.meService.getMe().subscribe(data => {
       this.me = data['data'];
+      console.log('tao ne', this.me);
     });
   }
   ngOnInit(): void

@@ -9,7 +9,7 @@
     <hr>
     <h5>Bookmark Creator </h5>
     <ul class="sidebar" id="sidebar2" >
-        <li (click)="onSelect(client)" *ngFor="let client of datas" class="info"><img class="rounded-circle"
+        <li (click)="onSelect(client)" *ngFor="let client of datas.slice(0,3)" class="info"><img class="rounded-circle"
                 src="{{client.avatar}}" alt=""> {{client.username}}</li>
     </ul>
     <a class="fas fa-angle-down text-decoration-none" id="seeMore" href="http://localhost:4200/homepage/following-tab">

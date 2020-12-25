@@ -2,6 +2,8 @@ import { FollowingTabComponent } from './following-tab.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {HttpClientModule} from '@angular/common/http'
+
 
 const routes: Routes = [
   {
@@ -11,10 +13,12 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [],
+  declarations: [FollowingTabComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    HttpClientModule,
+
   ]
 })
 export class FollowingTabModule { }

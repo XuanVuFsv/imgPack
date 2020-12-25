@@ -12,4 +12,4 @@ export class ISearch{
             name: string;
         }
     ]
- } 
+ }

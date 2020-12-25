@@ -51,16 +51,16 @@
         <div class="collapse navbar-collapse p-0" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item mx-2 my-auto">
-              <a [class]="isHover['upload']?mouseHoverClasses['upload']:mouseNormalClasses['upload']" href="#"
+              <a [class]="isHover['upload']?mouseHoverClasses['upload']:mouseNormalClasses['upload']" href="http://localhost:4200/upload"
                 (mouseover)="ChangeMouseStatus('upload')" (mouseout)="ChangeMouseStatus('upload')"></a>
             </li>
             <li class="nav-item mx-2 my-auto">
               <a [class]="isHover['notification']?mouseHoverClasses['notification']:mouseNormalClasses['notification']"
-                href="#" (mouseover)="ChangeMouseStatus('notification')"
+                href="http://localhost:4200/account-settings/notifications" (mouseover)="ChangeMouseStatus('notification')"
                 (mouseout)="ChangeMouseStatus('notification')"></a>
             </li>
             <li class="nav-item mx-2 my-auto rounded-pill p-0" id="profile">
-              <a class="nav-link p-0" href="#">
+              <a class="nav-link p-0" (click)="onSelectMe(me)">
                 <div class="row">
                   <div class="col-5">
                     <img class="profileAvatar rounded-circle" [src]="me.users['avatar']" alt="avatar" />

@@ -2,9 +2,9 @@
     <div class="imgBox d-flex justify-content-center">
         <div class="row position-relative d-flex justify-content-center align-items-end ">
             <div class="col overflow-hidden">
-                <img src="https://imgpack.herokuapp.com/{{client.source}}" alt="pic" class="img">
+                <img src="{{client.source}}" alt="pic" class="img">
             </div>
-            <div class="row position-absolute " id="box-button"  >
+            <!-- <div class="row position-absolute " id="box-button"  >
                 <div class="col">
                     <button class="btn btn-primary">
                         <i class="fas fa-star "></i>
@@ -21,12 +21,12 @@
                         <i class="fas fa-share"></i>
                     </button>
                 </div>
-            </div>
+            </div> -->
         </div>
         
         <div class="details">
-            <div class="AvatarAndName">
-                <img src="https://imgpack.herokuapp.com/{{client.author.avatar}}" alt="avatar" class="avatar">
+            <div class="AvatarAndName" (click)=" onSelect(client)">
+                <img src="{{client.author.avatar}}" alt="avatar" class="avatar">
                 <span class="name ">{{client.author.username}}</span>
 
             </div>
