@@ -1,29 +1,39 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
-import {IPersonalUsers} from '../models/personalUsers';
-import {Client} from '../models/homePage';
+import {ITopic} from '../models/topic';
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'Application/json'})
 };
-const API = 'https://imgpack.herokuapp.com/api/v1/';
+const API = 'https://imgpack.herokuapp.com/api/v1/topic/';
+const imagesAPI = 'https://imgpack.herokuapp.com/api/v1/newfeeds/images/users/';
 @Injectable({
   providedIn: 'root'
 })
-export class PersonalUsersService {
+
+
+
+export class GetImageTopicService {
+httpHeaders = new HttpHeaders({
+  Authorization: localStorage.getItem('accessToken')
+});
+
   find(id: any) {
     throw new Error('Method not implemented.');
   }
 
   constructor(private httpClient: HttpClient) { }
-  getBookmarkCreator(): Observable<IPersonalUsers[]>{
-    return this.httpClient.get<IPersonalUsers[]>(API).pipe();
+  getUsers(id): Observable<ITopic[]>{
+    return this.httpClient.get<ITopic[]>(API + id, { headers: this.httpHeaders }).pipe();
   }
 
   // tslint:disable-next-line: whitespace
-  findIdUsers(id: number): Observable<IPersonalUsers>{
-    return this.httpClient.get<IPersonalUsers>(`${API}/${id}`).pipe();
-  }
+//   findIdUsers(id: number): Observable<IProFile>{
+//     return this.httpClient.get<IProFile>(`${API}/${id}`).pipe();
+//   }
+//   getImageUsers(id): Observable<IImageUsers[]>{
+//     return this.httpClient.get<IImageUsers[]>( imagesAPI + id, { headers: this.httpHeaders }).pipe();
+//   }
 
   // searchUsers(id: string): Observable<Client[]> {
   //   if (!name.trim()) {

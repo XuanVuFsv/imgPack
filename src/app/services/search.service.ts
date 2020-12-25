@@ -1,28 +1,34 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
-import {IPersonalUsers} from '../models/personalUsers';
-import {Client} from '../models/homePage';
+import {ISearch} from '../models/search';
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'Application/json'})
 };
-const API = 'https://imgpack.herokuapp.com/api/v1/';
+const API = 'https://imgpack.herokuapp.com/api/v1/search';
 @Injectable({
   providedIn: 'root'
 })
-export class PersonalUsersService {
+export class SearchService {
   find(id: any) {
     throw new Error('Method not implemented.');
   }
 
-  constructor(private httpClient: HttpClient) { }
-  getBookmarkCreator(): Observable<IPersonalUsers[]>{
-    return this.httpClient.get<IPersonalUsers[]>(API).pipe();
-  }
+  httpHeaders = new HttpHeaders({
+    Authorization: localStorage.getItem('accessToken')
+  });
 
+  constructor(private httpClient: HttpClient) { }
+  getUsers(): Observable<ISearch[]>{
+    return this.httpClient.get<ISearch[]>(API ,{ headers: this.httpHeaders }).pipe();
+  }
+  Test(): Observable<any> {
+    console.log(this.httpHeaders);
+    return this.httpClient.get<any>('https://imgpack.herokuapp.com/api/v1/followings', { headers: this.httpHeaders });
+  }
   // tslint:disable-next-line: whitespace
-  findIdUsers(id: number): Observable<IPersonalUsers>{
-    return this.httpClient.get<IPersonalUsers>(`${API}/${id}`).pipe();
+  findIdUsers(id: number): Observable<ISearch>{
+    return this.httpClient.get<ISearch>(`${API}/${id}`).pipe();
   }
 
   // searchUsers(id: string): Observable<Client[]> {
