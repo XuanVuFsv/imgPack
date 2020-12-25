@@ -1,1 +1,16 @@
-<div class="follwing-tab h-100 px-0 text-center">following tab work!</div>
+<p>Danh sach users</p>
+<p>{{Users[2].username}}</p>
+
+
+<div *ngFor="let i of Users">
+  <div class="blocknote row" *ngIf="userID!=i._id">
+    <div class="text col-10">
+      <p style="margin: 10px;"><img class="rounded-circle" width=100px height=100px src={{i.avatar}} alt="">
+        {{i.username}}</p>
+    </div>
+    <div class="col-2">
+      <button class="btnFollow" (click)="onFollow(i)" [style.background]="i.isFollow ? '#ebeef0' : '#00ACEE'"
+        [style.color]="i.isFollow ? 'black' : 'white'">{{i.sttFollow}}</button>
+    </div>
+  </div>
+</div>

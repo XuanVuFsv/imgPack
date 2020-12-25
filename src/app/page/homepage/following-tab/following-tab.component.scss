@@ -1,3 +1,21 @@
-.follwing-tab{
-    background-color: lime;
+.follwing-tab {
+  background-color: lime;
+}
+.blocknote {
+  margin: 50px 75px 0px 75px;
+  border-radius: 30px;
+  border: 1px solid #e6e3e3;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.col-2 {
+  position: relative;
+}
+.btnFollow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  border: 1px solid #e6e3e3;
+  padding: 10px;
 }
