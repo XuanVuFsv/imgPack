@@ -1,7 +1,7 @@
 <div class="home h-100 px-0 text-center">
     
     <h4 class="text-center">HomePage</h4>
-    <div *ngFor="let client of clients">
+    <div *ngFor="let client of clients;let i = index">
         <app-post [client]="client"></app-post>
     </div>
   

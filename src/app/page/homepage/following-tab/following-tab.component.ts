@@ -26,7 +26,7 @@ export class FollowingTabComponent implements OnInit {
     else {
       this.postData.postFollow(i._id) .subscribe((result)=>{console.log(result)});
       i.isFollow=true;
-      i.sttFollow="Unfollow";
+      i.sttFollow="Following";
       console.log("Followed");
 
     }
@@ -60,7 +60,7 @@ export class FollowingTabComponent implements OnInit {
       for (let index = 0; index < this.Users.length; index++) {
         const element = this.Users[index];
         this.Users[index].isFollow = this.data['followed'].includes(element._id)
-        if(this.Users[index].isFollow) this.Users[index].sttFollow="Unfollow"
+        if(this.Users[index].isFollow) this.Users[index].sttFollow="Following"
         else this.Users[index].sttFollow="Follow";
       }
       console.log("Data: ", this.data);

@@ -34,17 +34,22 @@
         </div>
         <div *ngIf="client['author']._id != idPersonal">
 
-            <ng-container *ngIf="save; else elseTemplate">
-                <div class="box" id="unSave" (click)="onUnSave(client._id)">
-                    UnSave
-                </div>
+            <!-- <ng-container  *ngIf="idLibrary.includes(client._id); else elseTemplate">
+               
+                    <button class="box" id="unSave" (click)="onUnSave(client._id)">
+                        {{unsaveV}}
+                    </button>
+         
             </ng-container>
             <ng-template #elseTemplate>
-                <div class="box" id="save" (click)="onSave(client._id)">
-                    Save
-                </div>
-            </ng-template>
+             
+                    <button class="box" id="save" (click)="onSave(client._id)">
+                        {{saveV}}
+                    </button>
+             
+            </ng-template> -->
 
+            <button type="button" class="btn btn-primary" (click)="changeSave(client._id, saveV)" > {{saveV}}</button>
 
         </div>
     </div>

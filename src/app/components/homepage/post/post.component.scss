@@ -11,7 +11,7 @@
 .container  .imgBox img{
     width: 600px ;
     height: auto ;
-    transition: transform 1s;
+    transition: transform 0.5s;
     margin-top: 20px;
     box-shadow: 5px 5px 5px #aaaaaa;
 }
@@ -23,7 +23,7 @@
     position: absolute;
     top: 50px;
     left: 40px;
-    transition: transform 1s;
+    transition: transform 0.5s;
 }
  .imgBox:hover .details{
     transform: translate(-30px,-30px);
@@ -76,10 +76,16 @@ bottom: -10%;
     font-size: 30px;
     // padding-right: 30px;
 }
-.box{
+.btn{
     position: absolute;
-    left: 630px;
-    top: 50%;
+    left: 510px;
+    top: 50px;
     border: 1px solid black;
     font-size: 20px;
+    cursor: pointer;
+    transition: transform 0.5s;
+}
+.imgBox:hover .btn{
+    transform: translate(20px,-30px);
+    
 }
