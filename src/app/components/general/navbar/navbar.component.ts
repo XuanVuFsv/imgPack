@@ -44,7 +44,7 @@ export class NavbarComponent implements OnInit {
   }
   getUsers(){
     this.searchService.getUsers().subscribe(data => {
-      this.datas = data['data']; 
+      this.datas = data['data'];
     });
   }
   fetchSeries(event: any) {
@@ -88,16 +88,37 @@ export class NavbarComponent implements OnInit {
       console.log('tao ne', this.me);
     });
   }
+
+  onLogout(){
+    localStorage.removeItem('accessToken');
+  }
+
   ngOnInit(): void
   {
     this.getMe();
     this.getUsers();
     this.isCollapse = true;
+<<<<<<< HEAD
     // this._userSetingsService.GetUserSettings()
     // .subscribe((data: any) => 
     // {
     //   this.avatarSource = data["general"]["avatarSource"];
     // });  
+=======
+    this._userSetingsService.GetUserSettings()
+    .subscribe((data: any) =>
+    {
+      this.avatarSource = data["general"]["avatarSource"];
+    });
+  }
+
+  ngAfterViewInit() {
+
+  }
+
+  GotoElement(id: string): void {
+    this.viewportScroller.scrollToAnchor(id);
+>>>>>>> f13c04a831919de2abedc08b3134d565cb3b9e08
   }
 
   ChangeMouseStatus(element: string) {

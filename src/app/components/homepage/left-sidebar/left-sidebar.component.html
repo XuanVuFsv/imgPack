@@ -1,17 +1,19 @@
 <div class="left-sidebar h-100 w-25 px-0  ">
-    <div class="sidebar " id="sidebar1">
-        <a class="element " href="/homepage/home"><span class="fas fa-home"></span> Home</a>
-        <a class="element " href="/homepage/following-tab" id="following-tab"> <span
-                class="fas fa-heart "></span> Following</a>
-        <a class="element " href="/homepage/library"><span class="fas fa-book"></span> Library</a>
-    </div>
-    <br><br>
-    <hr>
-    <h5>Bookmark Creator </h5>
-    <ul class="sidebar" id="sidebar2" >
-        <li (click)="onSelect(client)" *ngFor="let client of datas.slice(0,3)" class="info"><img class="rounded-circle"
-                src="{{client.avatar}}" alt=""> {{client.username}}</li>
-    </ul>
-    <a class="fas fa-angle-down text-decoration-none" id="seeMore" href="https://imgpackweb.web.app/homepage/following-tab">
-        See more</a>
+  <div class="sidebar " id="sidebar1">
+    <a class="element " href="/homepage/home"><span class="fas fa-home"></span> Home</a>
+    <a class="element " href="/homepage/following-tab" id="following-tab"> <span class="fas fa-heart "></span>
+      Following</a>
+    <a class="element " href="/homepage/library"><span class="fas fa-book"></span> Library</a>
+    <a class="element " href="/profile/collections"><span class="fas fa-images"></span> Collections</a>
+  </div>
+  <br><br>
+  <hr>
+  <h5>Bookmark Creator </h5>
+  <ul class="sidebar" id="sidebar2">
+    <li (click)="onSelect(client)" *ngFor="let client of datas.slice(0,3)" class="info"><img class="rounded-circle"
+        src="{{client.avatar}}" alt=""> {{client.username}}</li>
+  </ul>
+  <a class="fas fa-angle-down text-decoration-none" id="seeMore"
+    href="https://imgpackweb.web.app/homepage/following-tab">
+    See more</a>
 </div>

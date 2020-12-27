@@ -1,6 +1,6 @@
 hr{
     width: 50%;
-    
+
 }
 body{
     margin: 0;
@@ -9,11 +9,11 @@ body{
 
 }
 .container{
- 
+
     margin: 20px auto;
     columns: 3;
     column-gap: 5px;
-} 
+}
 .container .box{
     width: 100%;
     margin: 0 0 20px;
@@ -27,7 +27,7 @@ body{
 .container .box img{
     max-width: 100%;
     height: auto;
-    border-radius: 15px;   
+    border-radius: 15px;
 
 }
 
@@ -61,12 +61,12 @@ body{
     top: 20px;
     left: 160px;
     border-radius: 25px;
-    cursor: pointer; 
+    cursor: pointer;
 }
 .container .box .border:hover {
     opacity: 1;
     transition: ease-in-out 0.5s;
-    
+
 }
 .container .box .details{
     opacity: 0;
@@ -77,15 +77,15 @@ body{
 }
 .container .box .border:hover + .details{
     opacity: 1;
-   
+
 }
 
 
 .img:hover img {
     transform: scale(1.5);
     transition: all ease-in-out 0.5s;
- 
- 
+
+
 }
 
 
@@ -104,6 +104,8 @@ body{
     .container{
         columns: 3;
         width: calc(100% - 40px);
-       
-    } 
+
+    }
 }
+
+
