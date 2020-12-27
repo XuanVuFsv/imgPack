@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
       email: this.email.nativeElement.value,
       password: this.password.nativeElement.value
     };
-    console.log(loginInfor);
+    // console.log(loginInfor);
 
     this.loginService.RequestLogin(loginInfor).subscribe(data => {
       localStorage.setItem('accessToken', data.user.token);

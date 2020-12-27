@@ -24,6 +24,7 @@ export class UserImagesComponent implements OnInit {
   images: string[];
   personal:IProFile;
   idPersonal: any;
+  isOwner: boolean;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,17 +33,17 @@ export class UserImagesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMe();
-  
+
     this.route.queryParamMap.subscribe((params: ParamMap) => {
       let id = params.get('id');
       this.userId = id;
-      console.log('id', this.userId);
+      // console.log('id', this.userId);
       // get profile by id
       this.userData = this.proFileService
         .getUsers(this.userId)
         .subscribe((data) => {
           this.datas = data['data'];
-          console.log('data cua tui', this.datas);
+          // console.log('data cua tui', this.datas);
           this.followers = this.datas.analytics.followers;
         });
       //  get image by id
@@ -59,32 +60,31 @@ export class UserImagesComponent implements OnInit {
 
   }
 
-
-
   getMe(){
     this.idPersonal = this.proFileService.getMe().subscribe((data) => {
       this.personal = data['data'];
       this.idPersonal = this.personal.users._id;
-      console.log(this.idPersonal); 
-    })
+      if (this.idPersonal === this.userId) this.isOwner = true;
+      else this.isOwner = false;
+    });
   }
   onSelectFollow() {
     this.proFileService.follow(this.userId).subscribe();
     this.datas.analytics.isFollowed = !this.datas.analytics.isFollowed;
     this.datas.analytics.followers++;
     this.followers = this.datas.analytics.followers;
-    console.log('follow', this.datas.analytics.isFollowed,this.datas.analytics.followers, this.followers);
+    // console.log('follow', this.datas.analytics.isFollowed,this.datas.analytics.followers, this.followers);
   }
   onSelectUnFollow() {
     this.proFileService.unfollow(this.userId).subscribe();
     this.datas.analytics.isFollowed = !this.datas.analytics.isFollowed;
     this.datas.analytics.followers--;
     this.followers = this.datas.analytics.followers;
-    console.log('unfollow', this.datas.analytics.isFollowed,this.datas.analytics.followers,this.followers);
+    // console.log('unfollow', this.datas.analytics.isFollowed,this.datas.analytics.followers,this.followers);
   }
   CreateImageByColumn(): void {
     let count = 0;
-    console.log('images', this.images);
+    // console.log('images', this.images);
     for (let i = 0; i < 6; i++) {
       this.imagesByColumn[i] = new Array();
     }
@@ -95,7 +95,7 @@ export class UserImagesComponent implements OnInit {
       this.imagesByColumn[count % 6].push(image);
       count++;
     }
-    console.log('images by column', this.imagesByColumn);
+    // console.log('images by column', this.imagesByColumn);
   }
 
   ShowFullImage(dataImage: object): void {

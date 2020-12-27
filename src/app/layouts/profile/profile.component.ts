@@ -14,7 +14,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     if (!window.localStorage.getItem('accessToken'))
     {
-      console.log('Not Account');
+      // console.log('Not Account');
       this.router.navigate(['/login']);
     }
     // else {

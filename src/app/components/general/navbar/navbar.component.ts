@@ -85,7 +85,7 @@ export class NavbarComponent implements OnInit {
   getMe(){
     this.meService.getMe().subscribe(data => {
       this.me = data['data'];
-      console.log('tao ne', this.me);
+      // console.log('tao ne', this.me);
     });
   }
 

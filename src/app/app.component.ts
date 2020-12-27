@@ -1,3 +1,4 @@
+import { PersonalProfileService } from './services/personal-profile.service';
 import { OnInit, Component } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -11,6 +12,7 @@ export class AppComponent implements OnInit {
   currentURL: string;
 
   constructor() {
+
   }
 
   ngOnInit(): void {

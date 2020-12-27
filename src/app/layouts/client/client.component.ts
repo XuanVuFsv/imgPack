@@ -11,7 +11,7 @@ export class ClientComponent implements OnInit {
 
   constructor(private router: Router) {
     if (!window.localStorage.getItem('accessToken')) {
-      console.log('Not Account');
+      // console.log('Not Account');
       this.router.navigate(['/login']);
     }
   }

@@ -15,7 +15,7 @@ export class UploadUsersComponent implements OnInit {
   ngOnInit(): void {
     this.getRoute(this.route.snapshot.params['id']);
     if (!window.localStorage.getItem('accessToken')) {
-      console.log('Not Account');
+      // console.log('Not Account');
       this.router.navigate(['/login']);
     }
     // else {

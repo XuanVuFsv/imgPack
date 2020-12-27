@@ -30,10 +30,10 @@ httpHeaders = new HttpHeaders({
   }
   handleError(err){
     if (err.error instanceof Error){
-      console.log(`Client-side error: ${err.error.message}`);
+      // console.log(`Client-side error: ${err.error.message}`);
     }
     else{
-      console.log(`Server-side error: ${err.status} - ${err.error}` );
+      // console.log(`Server-side error: ${err.status} - ${err.error}` );
     }
   }
 }

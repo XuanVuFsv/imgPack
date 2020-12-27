@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.clients = data['data'];
       // console.log('datas', this.clients);
     }, error => {
-      console.log(error);
+      // console.log(error);
     });
   }
   ngOnDestroy() {
