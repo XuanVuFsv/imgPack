@@ -1,11 +1,8 @@
-<p>Danh sach users</p>
-<p>{{Users[2].username}}</p>
-
-
 <div *ngFor="let i of Users">
   <div class="blocknote row" *ngIf="userID!=i._id">
     <div class="text col-10">
-      <p style="margin: 10px;"><img class="rounded-circle" width=100px height=100px src={{i.avatar}} alt="">
+      <p class="txtUser" style="margin: 10px;"><img class="rounded-circle" width=100px height=100px src={{i.avatar}}
+          alt="">
         {{i.username}}</p>
     </div>
     <div class="col-2">
