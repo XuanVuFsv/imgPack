@@ -16,7 +16,7 @@ export class CollectionsComponent implements OnInit {
   collections: any[] = new Array();
   @ViewChild('title') newTitle: ElementRef;
   @ViewChild('fullimage') fullImage: ElementRef;
-  limitSize: number = 470;
+  limitSize: number = 450;
 
   // newCollectionImages: string[] = new Array();
   previewCollectionImage: any;

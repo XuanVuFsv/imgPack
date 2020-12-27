@@ -21,15 +21,17 @@ export class UserImagesComponent implements OnInit {
   public userId;
   datas: IProFile;
   datasImage: IImageUsers[] = [];
-  images: string[];
-  personal:IProFile;
+  images: any[];
+  imagesId: string[];
+  imagesSource: string[];
+  personal: IProFile;
   idPersonal: any;
   isOwner: boolean;
 
   constructor(
     private route: ActivatedRoute,
     private proFileService: PersonalProfileService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getMe();
@@ -47,11 +49,11 @@ export class UserImagesComponent implements OnInit {
           this.followers = this.datas.analytics.followers;
         });
       //  get image by id
-      this.userImage = this.proFileService
+      this.proFileService
         .getImageUsers(this.userId)
         .subscribe((data) => {
           this.datasImage = data['data'];
-          this.images = this.datasImage.map((x) => x['source']);
+          // console.log('1', this.datasImage);
           this.CreateImageByColumn();
           // this.onSelectFollow();
           // this.onSelectUnFollow();
@@ -60,7 +62,7 @@ export class UserImagesComponent implements OnInit {
 
   }
 
-  getMe(){
+  getMe() {
     this.idPersonal = this.proFileService.getMe().subscribe((data) => {
       this.personal = data['data'];
       this.idPersonal = this.personal.users._id;
@@ -90,7 +92,7 @@ export class UserImagesComponent implements OnInit {
     }
     // console.log('images by column', this.imagesByColumn);
 
-    for (let image of this.images) {
+    for (let image of this.datasImage) {
       // console.log('image', image);
       this.imagesByColumn[count % 6].push(image);
       count++;
@@ -128,5 +130,9 @@ export class UserImagesComponent implements OnInit {
     this.fullImage.nativeElement.width = newWidth;
 
     // console.log(newWidth, newHeight);
+  }
+
+  DeleteImage(datatImage): void {
+    this.imagesByColumn[datatImage['i']].splice(datatImage['j'], 1);
   }
 }

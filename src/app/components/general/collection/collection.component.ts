@@ -33,10 +33,14 @@ export class CollectionComponent implements OnInit {
   ResizeImage(): void {
     const width = this.imagePreview.nativeElement.width;
     const height = this.imagePreview.nativeElement.height;
+    if (width / height > 0.5 && width / height < 1) {
+      console.log(width / height);
+      this.limitSize = 250;
+    }
     let newWidth = width;
     let newHeight = height;
 
-    // console.log(width, height);
+    console.log(width, height);
 
     if (width > this.limitSize) {
       newHeight = this.limitSize * height / width;

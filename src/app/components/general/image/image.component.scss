@@ -1,9 +1,22 @@
 img {
     // border: 5px solid wheat;
     border-radius: 10px;
+    position: relative;
  
 }
 img:hover{
     cursor: pointer;
     opacity: 0.8;
+}
+
+
+.btn {
+    position: absolute;
+    top: 8px;
+    left: 158px;
+    opacity: 0;
+}
+
+.btn:hover {
+    opacity: 1;
 }

@@ -49,6 +49,7 @@ export class GeneralAccountSettingsComponent implements OnInit {
   }
 
   UpdateSettings(): void {
+    document.getElementById('updateSet').innerHTML = 'Updatting';
     if (this.avatar) {
       const formData = new FormData();
       formData.append('source', this.avatar);
@@ -57,12 +58,22 @@ export class GeneralAccountSettingsComponent implements OnInit {
         this.newSetting['avatar'] = data;
         // console.log(this.newSetting);
         this.myService.UpdateProfile(this.newSetting).subscribe(data => {
+          document.getElementById('updateSet').innerHTML = 'Update Your Profile';
+          document.getElementById('success').innerHTML = 'Update Success!!!';
+          setTimeout(() => {
+            document.getElementById('success').innerHTML = '';
+          }, 2000);
           // console.log(data);
         });
       });
     } else {
       // console.log(this.newSetting);
       this.myService.UpdateProfile(this.newSetting).subscribe(data => {
+        document.getElementById('updateSet').innerHTML = 'Update Your Profile';
+        document.getElementById('success').innerHTML = 'Update Success!!!';
+        setTimeout(() => {
+          document.getElementById('success').innerHTML = '';
+        }, 2000);
         // console.log(data);
       });
     }
@@ -76,9 +87,11 @@ export class GeneralAccountSettingsComponent implements OnInit {
     }
     else {
       document.getElementById('alert').style.visibility = "hidden";
+      document.getElementById('updatePass').innerHTML = 'Updatting';
       // console.log(this.newPassword);
       this.myService.UpdateProfile(this.newPassword).subscribe(data => {
         // console.log(data);
+        document.getElementById('updatePass').innerHTML = 'Update Your Password';
         localStorage.removeItem('accessToken');
         this.router.navigate(['/login']);
       });

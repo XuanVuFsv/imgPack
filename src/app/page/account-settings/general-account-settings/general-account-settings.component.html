@@ -47,8 +47,8 @@
 
             <div class="row justify-content-center px-4">
                 <div class="col-4 mt-3">
-                    <label for="inputEmail"><span class="bold">Email address</span></label>
-                    <input id="iputEmail" type="email" class="form-control inputField" aria-describedby="emailHelp"
+                    <label for="inputEmail"><span class="bold">Email address <span style="font-style: italic; font-weight: 300; color: red;">(**can't change**)</span></span></label>
+                    <input onkeydown="return false" id="iputEmail" type="email" class="form-control inputField" aria-describedby="emailHelp"
                         placeholder="Enter email" (change)="OnChangeEmail($event)" [value]="userSettings.email">
                 </div>
             </div>
@@ -65,8 +65,9 @@
                 </div>
             </div>
             <div class="row justify-content-center px-4 py-2">
-                <button (click)="UpdateSettings()" id="submit" class="btn btn-primary">Update Your Profile</button>
+                <button (click)="UpdateSettings()" id="updateSet" class="btn btn-primary">Update Your Profile</button>
             </div>
+            <p style="text-align: center; color: rgb(0, 194, 0); font-weight: 500; font-style: italic; font-size: 20px;" id="success"></p>
 
             <div class="row justify-content-center px-4">
                 <div class="col-4 mt-5">
@@ -101,7 +102,7 @@
                 </div>
             </div>
             <div class="row justify-content-center px-4 py-2">
-                <button  (click)="UpdatePassword()" id="submit" class="btn btn-primary">Update Your Password</button>
+                <button  (click)="UpdatePassword()" id="updatePass" class="btn btn-primary">Update Your Password</button>
             </div>
         </div>
     </div>
