@@ -51,6 +51,11 @@ export class PersonalProfileService {
       .pipe();
   }
 
+  UpdateProfile(newInfor: any): Observable<any> {
+    return this.httpClient
+      .put<any>(APIme, newInfor, { headers: this.httpHeaders });
+  }
+
   // tslint:disable-next-line: whitespace
   findIdUsers(id: number): Observable<IProFile> {
     return this.httpClient.get<IProFile>(`${API}/${id}`).pipe();

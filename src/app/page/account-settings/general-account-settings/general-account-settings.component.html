@@ -1,92 +1,109 @@
 <div class="general-account-settings h-100">
-    <div class="container-fluid">
-        <div class="row justify-content-start px-2 py-2">
+    <div class="container-fluid py-2">
+        <div class="row justify-content-between py-2">
             <div class="col col-6">
-                <strong id="pageTitle" class="justify-content-start">Edit Profile</strong>
+                <strong id="pageTitle" class="justify-content-center">Edit Profile</strong>
             </div>
             <div class="w-100"></div>
             <div class="col col-6">
-                <small id="describe-feature" class="form-text text-muted justify-content-start">Everyone on ImgPack will
+                <small id="describe-feature" class="form-text text-muted justify-content-center">Everyone on ImgPack
+                    will
                     know you through the information below.</small>
                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
                     else.</small>
             </div>
         </div>
+        <div class="mt-n5">
+            <div class="row justify-content-center ml-5 px-5">
+                <div class="col col-2 mt-n5">
+                    <img class="rounded-circle avatar my-2 float-left" [src]="myData['users']['avatar']" />
+                </div>
+                <div class="col col-3 ml-n3 mt-n5">
+                    <form>
+                        <div class="form-group my-4 ml-n5">
+                            <div class="row">
+                                <span class="username strong my-1">{{myData['users']['username']}}</span>
+                            </div>
+                            <div class="row">
+                                <label type="button" class="my-1 selectImageButton" for="selectAvartarSource">Change
+                                    Your
+                                    Avatar</label>
+                                <input type="file" hidden #selectAvartarSource id="selectAvartarSource"
+                                    name="selectAvartarSource" (change)="onSelectImage($event)">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
 
-        <div class="row justify-content-start px-2">
-            <div class="col col-2">
-                <img class="rounded-circle avatar my-2 float-left" [src]="userSettings['general']['avatarSource']"/>
+            <div class="row justify-content-center px-4">
+                <div class="col-4 mt-3">
+                    <label for="inputUserName"><span class="bold">Username</span></label>
+                    <input type="text" class="form-control inputField" id="iputUserName" #inputUserName
+                        placeholder="Enter Username" (change)="OnChangeUsername($event)"
+                        [value]="userSettings.username">
+                </div>
             </div>
-            <div class="col col-3 ml-n3">
-                <form>
-                    <div class="form-group my-4">
-                        <div class="row">
-                            <span class="username strong my-1">{{userSettings["general"]["username"]}}</span>
-                        </div>
-                        <div class="row">
-                            <label type="button" class="my-1 selectImageButton" for="selectAvartarSource">Change Your
-                                Avatar</label>
-                            <input type="file" hidden #selectAvartarSource id="selectAvartarSource" name="selectAvartarSource"
-                                (change)="onSelectImage($event)">
-                        </div>
-                    </div>
-                </form>
+
+            <div class="row justify-content-center px-4">
+                <div class="col-4 mt-3">
+                    <label for="inputEmail"><span class="bold">Email address</span></label>
+                    <input id="iputEmail" type="email" class="form-control inputField" aria-describedby="emailHelp"
+                        placeholder="Enter email" (change)="OnChangeEmail($event)" [value]="userSettings.email">
+                </div>
             </div>
-        </div>
-        <div class="row justify-content-start px-4">
-            <form>
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col">
-                            <label for="inputFirstName">Firstname</label>
-                            <input type="text" class="form-control inputField" id="inputFirstName"
-                                placeholder="Enter firstname">
-                        </div>
-                        <div class="col">
-                            <label for="inputLastName">Lastname</label>
-                            <input type="text" class="form-control inputField" id="inputLastName"
-                                placeholder="Enter lastname">
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputUserName">Username</label>
-                    <input type="text" class="form-control inputField" id="inputUserName" placeholder="Enter Username">
-                </div>
-                <div class="form-group">
-                    <label for="inputEmail">Email address</label>
-                    <input type="email" class="form-control inputField" id="inputEmail" aria-describedby="emailHelp"
-                        placeholder="Enter email">
-                </div>
-                <div class="form-group">
-                    <label>Select your gender</label>
-                    <select class="custom-select selectGender">
+
+            <div class="row justify-content-center px-4">
+                <div class="col-4 mt-3">
+                    <label><span class="bold">Selet your gender</span></label>
+                    <select id="Gender" class="custom-select selectGender" (change)="OnChangeGender($event)"
+                        [value]="userSettings.gender">
                         <option selected value="male">Male</option>
                         <option value="female">Female</option>
                         <option value="other">Other</option>
                     </select>
                 </div>
-            </form>
-        </div>
-        <div class="row justify-content-start px-4">
-            <form>
-                <div class="form-group">
-                    <label for="introduceProfile">Introduce about you</label>
-                    <textarea class="form-control inputField" id="introduceProfile" rows="3"
-                        placeholder="Write somthing about you"></textarea>
+            </div>
+            <div class="row justify-content-center px-4 py-2">
+                <button (click)="UpdateSettings()" id="submit" class="btn btn-primary">Update Your Profile</button>
+            </div>
+
+            <div class="row justify-content-center px-4">
+                <div class="col-4 mt-5">
+                   <strong style="font-size: 20px;">Change Password</strong>
                 </div>
-            </form>
-        </div>
-        <div class="row justify-content-start px-4">
-            <form>
-                <div class="form-group">
-                    <label for="inputLocation">Your Location</label>
-                    <input type="text" class="form-control inputField" id="inputLocation" placeholder="Ví dụ: TPHCM, Viet Nam">
+            </div>
+            <div class="row justify-content-center px-4">
+                <div class="col-4 mt-3">
+                    <label for="inputPass"><span class="bold">Password</span></label>
+                    <input (change)="OnChangePassword($event)" type="password" class="form-control inputField" id="inputPass"
+                        placeholder="Enter your password">
                 </div>
-            </form>
-        </div>
-        <div class="row justify-content-start px-4 py-2">
-            <button type="submit" id="submit" class="btn btn-primary">Done</button>
+            </div>
+            <div class="row justify-content-center px-4">
+                <div class="col-4 mt-3">
+                    <label for="inputNewPass"><span class="bold">New Password</span></label>
+                    <input (change)="OnChangeNewPassword($event)" type="password" class="form-control inputField" id="inputNewPass"
+                        placeholder="Enter new password">
+                </div>
+            </div>
+            
+            <div class="row justify-content-center px-4">
+                <div class="col-4 mt-3">
+                    <label for="inputCNewPassword"><span class="bold">Confirm New Password</span></label>
+                    <input (change)="OnChangeConfirmPassword($event)" type="password" class="form-control inputField" id="inputCNewPassword"
+                        placeholder="Type new password again">
+                </div>
+            </div>
+            <div class="row justify-content-center px-4">
+                <div class="col-4 mt-3">
+                    <p id="alert" style="color: red; font-size: 15px; font-style: italic;">Confirm password wrong!!!</p>
+                </div>
+            </div>
+            <div class="row justify-content-center px-4 py-2">
+                <button  (click)="UpdatePassword()" id="submit" class="btn btn-primary">Update Your Password</button>
+            </div>
         </div>
     </div>
+
 </div>

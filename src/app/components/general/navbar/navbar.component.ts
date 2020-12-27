@@ -11,7 +11,7 @@ import {PersonalProfileService} from '../../../services/personal-profile.service
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit, AfterViewInit {
+export class NavbarComponent implements OnInit {
   public dropDown = "Users";
   public value : boolean = true;
   public searchText = "";
@@ -93,19 +93,11 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     this.getMe();
     this.getUsers();
     this.isCollapse = true;
-    this._userSetingsService.GetUserSettings()
-    .subscribe((data: any) => 
-    {
-      this.avatarSource = data["general"]["avatarSource"];
-    });  
-  }
-
-  ngAfterViewInit() {
-
-  }
-
-  GotoElement(id: string): void {
-    this.viewportScroller.scrollToAnchor(id);
+    // this._userSetingsService.GetUserSettings()
+    // .subscribe((data: any) => 
+    // {
+    //   this.avatarSource = data["general"]["avatarSource"];
+    // });  
   }
 
   ChangeMouseStatus(element: string) {

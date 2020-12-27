@@ -28,7 +28,9 @@ export class ViewImageCollectionComponent implements OnInit {
   currentFullImageIndex: number = 0;
 
   imagesByColumn: any[] = new Array();
+  imagesIdByColumn: any[] = new Array();
   images: string[];
+  idImage: string[];
   currentFullImageInfor = {
     name: '',
     date: null,
@@ -46,7 +48,9 @@ export class ViewImageCollectionComponent implements OnInit {
           this.currentCollectionName = data.data[currentCollectionIndex]['name'];
           this.profileDataService.GetImageByCollection(data.data[currentCollectionIndex]['_id']).subscribe(images => {
             this.collection['src'] = images['data']['images'].map(x => x['source']);
+            this.collection['idImage'] = images['data']['images'].map(x => x['_id']);
             this.images = this.collection['src'];
+            this.idImage = this.collection['idImage'];
             if (this.images.length > 0) {
               this.isHasImage = true;
             } else {
@@ -64,18 +68,20 @@ export class ViewImageCollectionComponent implements OnInit {
 
   CreateImageByColumn(): void {
     let count = 0;
-    console.log('images', this.images);
+    // console.log('images', this.images);
     for (let i = 0; i < 6; i++) {
       this.imagesByColumn[i] = new Array();
     }
     // console.log('images by column', this.imagesByColumn);
 
-    for (let image of this.images) {
+    for (let [index, imageSource] of this.images.entries()) {
       // console.log('image', image);
-      this.imagesByColumn[count % 6].push(image);
+      this.imagesByColumn[count % 6].push({
+        source: imageSource,
+        id: this.idImage[index]
+      });
       count++;
     }
-    console.log('images by column', this.imagesByColumn);
   }
 
   ShowFullImage(dataImage: object): void {
@@ -93,45 +99,56 @@ export class ViewImageCollectionComponent implements OnInit {
   }
 
   ResizeImage(): void {
-    console.log('w:', this.fullImage.nativeElement.width, 'h: ', this.fullImage.nativeElement.height);
     const width = this.fullImage.nativeElement.width * 4;
     const height = this.fullImage.nativeElement.height * 4;
     let newWidth = width;
     let newHeight = height;
     let isVertical: boolean;
 
-    console.log(newWidth, newHeight);
-
     if (width > this.limitSize) {
       newHeight = this.limitSize * height / width;
       newWidth = this.limitSize;
     }
-    console.log(newWidth, newHeight);
 
     if (newHeight > this.limitSize) {
       newWidth = this.limitSize * newWidth / newHeight;
       newHeight = this.limitSize;
     }
-    console.log(newWidth, newHeight);
 
     this.ApplySize(newHeight, newWidth);
-    console.log(isVertical);
   }
 
   ApplySize(newHeight: number, newWidth: number) {
-    console.log('apply');
     this.fullImage.nativeElement.height = newHeight;
     this.fullImage.nativeElement.width = newWidth;
   }
 
+  DeleteImage(id: string): void {
+    let pIndex: number = -1;
+    let childIndex: number = -1;
+
+    for (let [index, imageColumn] of this.imagesByColumn.entries()) {
+      let temp = imageColumn.map(x => x.id).indexOf(id);
+      if (temp >= 0) {
+        childIndex = temp;
+        pIndex = index;
+      }
+      if (pIndex > -1 && childIndex > -1)
+      {
+        this.imagesByColumn[pIndex].splice(childIndex, 1);
+        return;
+      }
+    }
+  }
+
   ChangeFullImage(isPrevious: boolean) {
     if (isPrevious) {
-      this.currentFullImageIndex === this.collection['src'].length - 1 ? this.currentFullImageIndex = 0
-        : this.currentFullImageIndex++;
-    }
-    else {
       this.currentFullImageIndex === 0 ? this.currentFullImageIndex = this.collection['src'].length - 1
         : this.currentFullImageIndex--;
+    }
+    else {
+      this.currentFullImageIndex === this.collection['src'].length - 1 ? this.currentFullImageIndex = 0
+        : this.currentFullImageIndex++;
     }
     this.fullImageSource = this.collection['src'][this.currentFullImageIndex];
     this.currentFullImageInfor.position = (this.collection['src'].length > 0 ? (this.currentFullImageIndex + 1) : 0)

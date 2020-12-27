@@ -12,7 +12,12 @@ httpHeaders = new HttpHeaders({
 
   public API: string = 'https://imgpack.herokuapp.com/api/v1/';
   public baseURL: string = 'https://imgpack.herokuapp.com/api/v1/newfeeds/library';
+  public imageAPI: string = 'https://imgpack.herokuapp.com/api/v1/newfeeds/images';
   constructor(public http: HttpClient) { }
+
+  DeleteImage(id: string): Observable<any> {
+    return this.http.delete<any>(`${this.imageAPI}/${id}`, { headers: this.httpHeaders });
+  }
 
   getImage(): Observable<Client[]>{
     return this.http.get<Client[]>(this.API,{ headers: this.httpHeaders });
