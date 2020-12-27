@@ -19,3 +19,13 @@ img {
     border-radius: 15px;
 }
 
+.btn {
+    position: absolute;
+    top: 8px;
+    left: 280px;
+    opacity: 0;
+}
+
+.btn:hover {
+    opacity: 1;
+}
