@@ -53,13 +53,15 @@
           <div class="container-fluid navbar-nav mr-auto px-0 mx-0">
             <div class="row w-100 justify-content-end px-0 mx-0">
               <div class="col-2 nav-item mx-2 my-auto">
-                <a [class]="isHover['upload']?mouseHoverClasses['upload']:mouseNormalClasses['upload']" href="#"
-                  ></a>
+                <a [class]="isHover['upload']?mouseHoverClasses['upload']:mouseNormalClasses['upload']" href="#"></a>
               </div>
               <div class="col-2 nav-item mx-2 my-auto">
                 <a [class]="isHover['notification']?mouseHoverClasses['notification']:mouseNormalClasses['notification']"
-                  href="#" ></a>
+                  href="#"></a>
               </div>
+
+
+
               <div class="col-5 nav-item mx-2 my-auto rounded-pill p-0 ml-4" id="profile">
                 <a class="nav-link p-0" href="#">
                   <div class="container-fluid px-0">
@@ -73,7 +75,17 @@
                     </div>
                   </div>
                 </a>
+
+                <div class="dropdown-content">
+                  <a href="/account-settings"><img src="../../../../assets/icon/settings.png" width="20px"
+                      style="margin-right: 10px;">Setting</a>
+                  <a href="#" (click)="onLogout()"><img src="../../../../assets/icon/logout.png" width="20px"
+                      style="margin-right: 10px;">Logout</a>
+                </div>
+
               </div>
+
+
             </div>
           </div>
           <!-- <ul class="navbar-nav mr-auto">

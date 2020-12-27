@@ -44,7 +44,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   }
   getUsers(){
     this.searchService.getUsers().subscribe(data => {
-      this.datas = data['data']; 
+      this.datas = data['data'];
     });
   }
   fetchSeries(event: any) {
@@ -88,16 +88,21 @@ export class NavbarComponent implements OnInit, AfterViewInit {
       console.log('tao ne', this.me);
     });
   }
+
+  onLogout(){
+    localStorage.removeItem('accessToken');
+  }
+
   ngOnInit(): void
   {
     this.getMe();
     this.getUsers();
     this.isCollapse = true;
     this._userSetingsService.GetUserSettings()
-    .subscribe((data: any) => 
+    .subscribe((data: any) =>
     {
       this.avatarSource = data["general"]["avatarSource"];
-    });  
+    });
   }
 
   ngAfterViewInit() {
