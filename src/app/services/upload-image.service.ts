@@ -22,7 +22,7 @@ export class UploadImageService {
     // formData.append('source', data['source'], data['source'].name);
     // console.log('form', formData);
     // data['source'] = formData;
-    console.log('source Amazon', data);
+    // console.log('source Amazon', data);
     return this.http.post(this.s3, data, { headers: this.httpHeaders });
   }
 
@@ -33,7 +33,7 @@ export class UploadImageService {
     // formData.append('source', data['source'], data['source'].name);
     // console.log('form', formData);
     // data['source'] = formData;
-    console.log('data upload', data);
+    // console.log('data upload', data);
     return this.http.post(this.URL, data, { headers: this.httpHeaders });
   }
   LoadImage(): Observable<any> {

@@ -16,7 +16,7 @@ export class AdminComponent implements OnInit {
   ngOnInit(): void {
     if (!window.localStorage.getItem('accessToken'))
     {
-      console.log('Not Account');
+      // console.log('Not Account');
       this.router.navigate(['/login']);
     }
   }

@@ -30,7 +30,7 @@ export class PersonalProfileService {
       .pipe();
   }
   follow(id): Observable<IProFile[]> {
-    console.log(this.httpHeaders);
+    // console.log(this.httpHeaders);
     return this.httpClient
       .post<IProFile[]>(`${baseURL}/follow/${id}`,{}, {
         headers: this.httpHeaders,
@@ -38,7 +38,7 @@ export class PersonalProfileService {
       .pipe();
   }
   unfollow(id): Observable<IProFile[]> {
-    console.log(this.httpHeaders);
+    // console.log(this.httpHeaders);
     return this.httpClient
       .put<IProFile[]>(`${baseURL}/follow/${id}`,{}, {
         headers: this.httpHeaders,

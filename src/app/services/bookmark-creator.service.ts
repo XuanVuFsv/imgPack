@@ -27,7 +27,7 @@ export class BookmarkCreatorService {
     return this.httpClient.get<ITrendingCreator[]>('https://imgpack.herokuapp.com/api/v1/trending' , { headers: this.httpHeaders }).pipe();
   }
   Test(): Observable<any> {
-    console.log(this.httpHeaders);
+    // console.log(this.httpHeaders);
     return this.httpClient.get<any>('https://imgpack.herokuapp.com/api/v1/followings', { headers: this.httpHeaders });
   }
   // tslint:disable-next-line: whitespace

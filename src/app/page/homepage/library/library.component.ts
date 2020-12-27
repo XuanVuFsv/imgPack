@@ -20,7 +20,7 @@ export class LibraryComponent implements OnInit {
   getLibrary(){
       this.libraryService.getLibrary().subscribe((data) => {
       this.datas = data['data'];
-      console.log('datas',this.datas);
+      // console.log('datas',this.datas);
     })
   }
   onUnSave(client,index){

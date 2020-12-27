@@ -16,7 +16,7 @@ export class CollectionsComponent implements OnInit {
   collections: any[] = new Array();
   @ViewChild('title') newTitle: ElementRef;
   @ViewChild('fullimage') fullImage: ElementRef;
-  limitSize: number = 480;
+  limitSize: number = 470;
 
   // newCollectionImages: string[] = new Array();
   previewCollectionImage: any;
@@ -94,13 +94,13 @@ export class CollectionsComponent implements OnInit {
       // console.log('newCollection Add', newCollection);
     }
     else {
-      console.log('match name');
+      alert('Match Name');
     }
   }
 
   ShowFullImage(collectionIndex: number): void {
     this.profileDataService.UpdateCollectionIndex(collectionIndex);
-    console.log(this.profileDataService.GetCollectionIndex());
+    // console.log(this.profileDataService.GetCollectionIndex());
     this.router.navigate(['profile/view-collection'], {queryParams: {id : collectionIndex}});
   }
 }

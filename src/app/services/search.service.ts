@@ -23,7 +23,7 @@ export class SearchService {
     return this.httpClient.get<ISearch[]>(API ,{ headers: this.httpHeaders }).pipe();
   }
   Test(): Observable<any> {
-    console.log(this.httpHeaders);
+    // console.log(this.httpHeaders);
     return this.httpClient.get<any>('https://imgpack.herokuapp.com/api/v1/followings', { headers: this.httpHeaders });
   }
   // tslint:disable-next-line: whitespace

@@ -1,3 +1,6 @@
-
-<img #image class="my-image" [src]="source" width="236px" height="auto" (click)="ViewImage()" data-toggle="modal" data-target="#full-image-modal">
-<button (click)="DeleteImage()" class="btn btn-danger">Remove</button>
+<img #image class="my-image" [src]="source" width="236px" height="auto" (click)="ViewImage()" data-toggle="modal"
+    data-target="#full-image-modal">
+    
+<div *ngIf="isOwner === true">
+    <button (click)="DeleteImage()" class="btn btn-danger">Remove</button>
+</div>

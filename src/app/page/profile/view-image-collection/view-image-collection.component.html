@@ -61,7 +61,7 @@
                 <div class="row px-0 justify-content-center" id="gallery">
                     <div *ngFor="let columImage of imagesByColumn; let i = index">
                         <div class="col-2 mx-0 px-2 py-2" *ngFor="let image of imagesByColumn[i]; let i = index">
-                            <app-image (deleteImage)="DeleteImage($event)" (viewImage)="ShowFullImage($event)" [source]="image.source" [index]="i" [id]="image.id"></app-image>
+                            <app-image [isOwner]="true" (deleteImage)="DeleteImage($event)" (viewImage)="ShowFullImage($event)" [source]="image.source" [index]="i" [id]="image.id"></app-image>
                         </div>
                     </div>
                 </div>

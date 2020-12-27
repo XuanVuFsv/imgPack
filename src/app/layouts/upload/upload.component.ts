@@ -43,30 +43,30 @@ export class UploadComponent implements OnInit {
     document.getElementById('cancelUpload').style.visibility = "hidden";
 
     if (!window.localStorage.getItem('accessToken')) {
-      console.log('Not Account');
+      // console.log('Not Account');
       this.router.navigate(['/login']);
     }
 
     this.collectionsService.GetCollectionsData().subscribe(data => {
       this.collections = data.data;
-      console.log(this.collections);
+      // console.log(this.collections);
       this.nameCollection = this.collections.map(x => x.name);
       this.collectionIDList = this.collections.map(x => x._id);
-      console.log('collections', this.collectionIDList, this.nameCollection);
+      // console.log('collections', this.collectionIDList, this.nameCollection);
     });
 
     this.uploadImageService.LoadImage().subscribe(data => {
-      console.log('my Image', data);
+      // console.log('my Image', data);
       this.imgs = data['data'].map(x => x['source']);
     });
   }
 
   AddTopic(): void {
     if (this.topicList.indexOf(this.topicValue.nativeElement.value) < 0 && this.topicValue.nativeElement.value !== '') {
-      console.log(this.topicValue.nativeElement.value);
+      // console.log(this.topicValue.nativeElement.value);
       this.topicList.push(this.topicValue.nativeElement.value);
       this.dataUpload.topics = this.topicList;
-      console.log(this.topicList);
+      // console.log(this.topicList);
     }
   }
 
@@ -91,7 +91,7 @@ export class UploadComponent implements OnInit {
       // console.log('new collections', this.collectionIDList, this.nameCollection, this.collections);
     }
     else {
-      console.log('match name');
+      // console.log('match name');
     }
   }
 
@@ -114,31 +114,34 @@ export class UploadComponent implements OnInit {
     document.getElementById('mainFrame').style.backgroundColor = "white";
     document.getElementById('cancelUpload').style.visibility = "hidden";
     this.currentImageUpload = null;
+    this.topicList = new Array();
   }
 
   Post(): void {
-    console.log('Post');
+    document.getElementById('PostButton').innerHTML = 'UPLOADING';
     this.dataUpload.collectionId = this.collectionValue.nativeElement.value;
     this.dataUpload.description = this.descriptionValue.nativeElement.value;
-
-    console.log(this.dataUpload.collectionId, this.dataUpload.description, this.imageFileUpload);
 
     const formData = new FormData();
     formData.append('source', this.imageFileUpload);
     if (this.dataUpload.collectionId && this.dataUpload.description && this.dataUpload.topics) {
       this.uploadImageService.UploadS3(formData).subscribe(data => {
-        console.log(data);
+        // console.log(data);
         this.dataUpload.source = data;
         if (this.dataUpload.source) {
           this.uploadImageService.UpdateImageUpload(this.dataUpload).subscribe(data => {
-            console.log(data);
+            document.getElementById('PostButton').innerHTML = 'POST';
+            // console.log(data);
           });
         }
-        else console.log('thieu');
+         else
+         {
+          alert("No Image to Upload");
+         }
       });
     }
     else {
-      console.log('thieu');
+      alert('Check your information again');
     }
   }
 }
