@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { PersonalProfileService } from '../../../../services/personal-profile.service';
 import { IProFile } from '../../../../models/proFile';

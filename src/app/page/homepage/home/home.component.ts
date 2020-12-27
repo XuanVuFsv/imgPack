@@ -22,9 +22,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
   loadData() {
     this.subscription = this._getImageService.getImage().subscribe(data => {
-      console.log(data);
+      // console.log(data);
       this.clients = data['data'];
-      console.log('datas', this.clients);
+      // console.log('datas', this.clients);
     }, error => {
       console.log(error);
     });

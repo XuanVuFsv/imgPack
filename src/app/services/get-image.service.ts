@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable} from 'rxjs/observable';
 import {Client} from '../models/homePage';
 @Injectable({
@@ -8,11 +8,14 @@ import {Client} from '../models/homePage';
 export class GetImageService {
 
   public API: string = 'https://imgpack.herokuapp.com/api/v1/';
+  httpHeaders = new HttpHeaders({
+    Authorization: localStorage.getItem('accessToken')
+  });
 
   constructor(public http: HttpClient) { }
 
   getImage(): Observable<Client[]>{
-    return this.http.get<Client[]>(this.API);
+    return this.http.get<Client[]>(this.API, { headers: this.httpHeaders});
   }
   handleError(err){
     if (err.error instanceof Error){

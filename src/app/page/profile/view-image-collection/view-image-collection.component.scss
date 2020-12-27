@@ -1,0 +1,36 @@
+.modal-content {
+    margin: auto;
+    width: 700px;
+    height: 700px;
+    border: 5px solid wheat;
+    border-radius: 20px;
+  }
+  
+  .modal-header, .modal-footer {
+    background-color: white;
+    margin: 0px;
+    height: 50px;
+  }
+  
+  .modal-body {
+    background-color: black;
+    margin: 0px;
+  }
+  
+  .image-modal {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  
+  #avatar{
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+  }
+  #name{
+    display: block;
+  }

@@ -26,7 +26,11 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              { "glob": "user-settings.json", "input": "./", "output": "./assets/" }
+              {
+                "glob": "user-settings.json",
+                "input": "./",
+                "output": "./assets/"
+              }
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
@@ -63,8 +67,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
+                  "maximumWarning": "170kb",
+                  "maximumError": "170kb"
                 }
               ]
             }

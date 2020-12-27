@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild, AfterViewInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ElementRef, ViewChild, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-image',
@@ -9,6 +9,7 @@ export class ImageComponent implements OnInit, AfterViewInit {
 
   @ViewChild('image') imageElement: ElementRef;
   @Input() source: string;
+  @Input() index: number;
   @Output() viewImage = new EventEmitter<any>();
 
   constructor() { }
@@ -24,7 +25,8 @@ export class ImageComponent implements OnInit, AfterViewInit {
       {
         source: this.source,
         width: this.imageElement.nativeElement.width,
-        height: this.imageElement.nativeElement.height
+        height: this.imageElement.nativeElement.height,
+        index: this.index
       }
     );
   }

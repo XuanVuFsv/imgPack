@@ -31,7 +31,12 @@ const routes: Routes = [{
         {
             path: 'upload',
             loadChildren: () => import('@page/profile/upload/upload.module').then(m => m.UploadModule)
-        }
+        },
+        {
+            path: 'view-collection',
+            loadChildren: () => import('@page/profile/view-image-collection/view-image-collection.module')
+            .then(m => m.ViewImageCollectionModule)
+        },
     ]
 }];
 

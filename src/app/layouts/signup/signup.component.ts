@@ -14,7 +14,7 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit(data){
-    this.http.post('https://img-pack.herokuapp.com/api/v1/sign-up',data)
+    this.http.post('https://imgpack.herokuapp.com/api/v1/sign-up',data)
     .subscribe((result)=>{
       console.log("result",result)
     })

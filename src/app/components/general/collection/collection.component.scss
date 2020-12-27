@@ -1,0 +1,18 @@
+.text-collection {
+    color: black;
+    font-weight: 500;
+}
+
+.collection {
+    background-color: rgb(231, 231, 231);
+    border: black solid 7px;
+    border-radius: 20px;
+}
+
+.collection:hover {
+    border-width: 20px;
+}
+
+img {
+    border-radius: 15px;
+}

@@ -1,6 +1,8 @@
+import { Router } from '@angular/router';
+import { PersonalProfileService } from './../../../services/personal-profile.service';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { IProfileData, ICollection } from './../../../models/profileData';
 import { CollectionsService } from '../../../services/collections.service';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Collection } from 'typescript';
 import { Client, Clients } from '../../../components/general/client-collection/client-collection';
 import * as $ from "jquery";
@@ -11,28 +13,37 @@ import * as bootstrap from 'bootstrap';
   styleUrls: ['./collections.component.scss']
 })
 export class CollectionsComponent implements OnInit {
-  profileData: IProfileData;
-  collections: ICollection[] = new Array();
+  collections: any[] = new Array();
   @ViewChild('title') newTitle: ElementRef;
-  newCollectionImages: string[] = new Array();
+  @ViewChild('fullimage') fullImage: ElementRef;
+  limitSize: number = 480;
+
+  // newCollectionImages: string[] = new Array();
   previewCollectionImage: any;
+  currentCollectionIndex: number;
+  currentCollectionName: string;
 
   collection: Client[] = Clients;
   cnfrmMessage: any;
-  title: any;
-  src: any;
-  avatarSource: 'https://vnn-imgs-a1.vgcloud.vn/image1.ictnews.vn/_Files/2020/03/17/trend-avatar-1.jpg';
 
-  constructor(private profileDataService: CollectionsService) {
+  constructor(private profileDataService: CollectionsService, private personalProfileService: PersonalProfileService, private router: Router) {
   }
 
   ngOnInit(): void {
-    console.log('aaaaaaaaaaaaa');
     this.profileDataService.GetCollectionsData()
       .subscribe(data => {
         this.collections = data.data;
-        console.log('collections data: ', this.collections);
+        for (let collection of this.collections) {
+          this.profileDataService.GetImageByCollection(collection['_id']).subscribe(images => {
+            // console.log(images.data.images);
+            collection['src'] = images['data']['images'].map(x => x['source']);
+          });
+        }
+        // console.log(this.collections);
       });
+  }
+
+  View(): void {
   }
 
   sort(): void {
@@ -69,39 +80,27 @@ export class CollectionsComponent implements OnInit {
     }
   }
 
-  onSelectImage(file: any): void {
-    let count = 0;
-    if (file.target.files) {
-      console.log(file.target.files.length);
-      for (const childFile of file.target.files) {
-        const reader = new FileReader();
-        reader.readAsDataURL(childFile);
+  AddCollection(): void {
+    if (this.collections.map(x => x.name).indexOf(this.newTitle.nativeElement.value) < 0 && this.newTitle.nativeElement.value !== '') {
+      let newCollection: any;
 
-        reader.onload = (event: any) => {
-          this.newCollectionImages.push(event.target.result);
-          if (count === 0)
-          {
-          this.previewCollectionImage = event.target.result;
-          count++;
-          }8
-        };
-      }
+      newCollection = {
+        name: this.newTitle.nativeElement.value,
+      };
+
+      this.profileDataService.AddCollectionsData(newCollection).subscribe(data => {
+      });
+
+      // console.log('newCollection Add', newCollection);
+    }
+    else {
+      console.log('match name');
     }
   }
 
-  AddCollection(): void {
-    // let newProfileData: IProfileData;
-    let newCollection: any;
-    console.log('Collections', this.collections);
-
-    // newProfileData = this.profileData;
-    newCollection = {
-      name: this.newTitle.nativeElement.value,
-    };
-
-    this.profileDataService.AddCollectionsData(newCollection).subscribe(data => {
-    });
-
-    console.log('newCollection Add', newCollection);
+  ShowFullImage(collectionIndex: number): void {
+    this.profileDataService.UpdateCollectionIndex(collectionIndex);
+    console.log(this.profileDataService.GetCollectionIndex());
+    this.router.navigate(['profile/view-collection'], {queryParams: {id : collectionIndex}});
   }
 }

@@ -1,0 +1,10 @@
+<div class="collection container-fluid" id="collection" style="width: 355px; height: 355px;" (click)="ViewCollection()">
+    <div class="row align-items-center justify-content-center">
+        <div *ngIf="isHasImage; else elseBlock" style="margin-top: -1px;">
+            <img #imagePreview [src]="preview" (load)="ResizeImage()">
+        </div>
+        <ng-template #elseBlock> <img class="mt-5" src="https://static.thenounproject.com/png/836287-200.png" style="width: 200px; height: 200px;"></ng-template>
+    </div>
+</div>
+<p style="margin-left: 20px;" class="text-collection">Name: {{name}} <br/> Has {{num}} image</p>
+

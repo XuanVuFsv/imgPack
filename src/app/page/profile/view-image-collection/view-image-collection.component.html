@@ -1,0 +1,69 @@
+<div class="user-images">
+    <h1 style="text-align: center; margin-top: 20px;">{{currentCollectionName}}</h1>
+    <h6 style="text-align: center; margin-top: 20px;">Has {{images.length}} images</h6>
+    <h6 *ngIf="!isHasImage" style="text-align: center; margin-top: 20px;">No image in this collection</h6>
+
+    <div class="container-fluid">
+
+        <div class="row px-0 justify-content-center mt-n5">
+            <div class="col">
+                <div class="modal fade " id="full-image-modal" tabindex="-1" role="dialog"
+                    aria-labelledby="full-image=-entered" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg px-0" role="document">
+                        <div class="modal-content mx-0">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="full-image-title">{{currentCollectionName}}</h5> <button
+                                    type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container-fluid w-100 h-100">
+                                    <div class="row justify-content-between align-items-center w-100 h-100">
+                                        <div class="col-1">
+                                            <i (click)="ChangeFullImage(true)" type="button"
+                                                class="fas fa-arrow-circle-left fa-2x"></i>
+                                        </div>
+                                        <div class="col-9">
+                                            <img class="image-modal" #fullimage [src]="fullImageSource" alt=""
+                                                (load)="ResizeImage()">
+                                        </div>
+                                        <div class="col-1">
+                                            <i (click)="ChangeFullImage(false)" type="button"
+                                                class="fas fa-arrow-circle-right fa-2x"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <div class="container-fluid w-100 h-100">
+                                    <div class="row w-100 h-100">
+                                        <div class="col-6">
+                                            <span class="titleInfor">Create At: </span><span
+                                                class="titleContentInfor">{{currentFullImageInfor.date}}</span>
+                                        </div>
+                                        <div class="col-4">
+                                            <span class="titleInfor">Name:</span><span
+                                                class="titleContentInfor">{{currentFullImageInfor.name}}</span>
+                                        </div>
+                                        <div class="col-2">
+                                            <span class="titleInfor">{{currentFullImageInfor.position}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br><br><br><br>
+
+                <div class="row px-0 justify-content-center" id="gallery">
+                    <div *ngFor="let columImage of imagesByColumn; let i = index">
+                        <div class="col-2 mx-0 px-2 py-2" *ngFor="let image of imagesByColumn[i]; let i = index">
+                            <app-image (viewImage)="ShowFullImage($event)" [source]="image" [index]="i"></app-image>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

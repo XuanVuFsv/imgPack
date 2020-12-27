@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve` for a dev server. Navigate to `https://imgpackweb.web.app/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
@@ -34,11 +34,11 @@ services: chứa các services, khi sử dụng services thì lưu trong này, n
 Còn các thành phần còn lại là cơ bản của angular generate rồi
 
 Phần routing tạm thời như sau:
-http://localhost:4200/login trang đăng nhập có gì nếu chưa có tài khoản mình hiện thêm component phần đăng kí ở đây luôn.
+https://imgpackweb.web.app/login trang đăng nhập có gì nếu chưa có tài khoản mình hiện thêm component phần đăng kí ở đây luôn.
 
-http://localhost:4200/homepage/home giao diện chính của trang homepage, hiển thị newfeed
-http://localhost:4200/home/following-tab giao diện của trang the following-tab
+https://imgpackweb.web.app/homepage/home giao diện chính của trang homepage, hiển thị newfeed
+https://imgpackweb.web.app/home/following-tab giao diện của trang the following-tab
 
-http://localhost:4200/accountSettings/general giao diện của account settings chỉnh các thông tin như tên, giới tính, mail. cái mình là trên figma t nghĩ nên gộp cái sửa tên với giới tính, mail lại một trang luôn cho tiện. Có gì thay đổi sau
-http://localhost:4200/accountSettings/notifications giao diện settings phần thông báo
-http://localhost:4200/accountSettings/security giao diện settings phần security
+https://imgpackweb.web.app/accountSettings/general giao diện của account settings chỉnh các thông tin như tên, giới tính, mail. cái mình là trên figma t nghĩ nên gộp cái sửa tên với giới tính, mail lại một trang luôn cho tiện. Có gì thay đổi sau
+https://imgpackweb.web.app/accountSettings/notifications giao diện settings phần thông báo
+https://imgpackweb.web.app/accountSettings/security giao diện settings phần security

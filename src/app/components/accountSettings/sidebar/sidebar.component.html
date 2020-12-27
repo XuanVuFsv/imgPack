@@ -10,11 +10,11 @@
     <div class="col-6">
       <div class="sidebar h-100 text-center">
         <a class="fas fa-user float-left" [class.active]="buttonStatus[0]"
-          href="http://localhost:4200/account-settings/general">Account Settings</a>
+          [href]="URL[0]">Account Settings</a>
         <a class="fas fa-bell float-left" [class.active]="buttonStatus[1]"
-          href="http://localhost:4200/account-settings/notifications">Notifications</a>
+        [href]="URL[1]">Notifications</a>
         <a class="fas fa-shield float-left" [class.active]="buttonStatus[2]"
-          href="http://localhost:4200/account-settings/security">Security</a>
+        [href]="URL[2]">Security</a>
       </div>
     </div>
   </div>

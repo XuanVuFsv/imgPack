@@ -1,8 +1,8 @@
+import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { UploadImageService } from './../../services/upload-image.service';
 import { Router } from '@angular/router';
 import { IProfileData, ICollection } from '../../models/profileData';
 import { CollectionsService } from '../../services/collections.service';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Collection } from 'typescript';
 import { Client, Clients } from '../../components/general/client-collection/client-collection';
 import { UploadService } from '@services/upload.service';
@@ -73,11 +73,13 @@ export class UploadComponent implements OnInit {
   AddCollection(): void {
     if (this.nameCollection.indexOf(this.newTitle.nativeElement.value) < 0 && this.newTitle.nativeElement.value !== '') {
       let newCollection: any;
+
       newCollection = {
         name: this.newTitle.nativeElement.value,
       };
+
       this.profileDataService.AddCollectionsData(newCollection).subscribe(data => {
-        console.log(data);
+        // console.log(data);
         this.collectionIDList.push(data.data._id);
         this.nameCollection.push(data.data.name);
         this.collections.push({
@@ -86,7 +88,7 @@ export class UploadComponent implements OnInit {
         });
       });
       this.nameCollection.push(this.newTitle.nativeElement.value);
-      console.log('new collections', this.collectionIDList, this.nameCollection, this.collections);
+      // console.log('new collections', this.collectionIDList, this.nameCollection, this.collections);
     }
     else {
       console.log('match name');
@@ -123,13 +125,16 @@ export class UploadComponent implements OnInit {
 
     const formData = new FormData();
     formData.append('source', this.imageFileUpload);
-    if (this.dataUpload.collectionId && this.dataUpload.description && this.dataUpload.topics && this.dataUpload.source) {
+    if (this.dataUpload.collectionId && this.dataUpload.description && this.dataUpload.topics) {
       this.uploadImageService.UploadS3(formData).subscribe(data => {
         console.log(data);
         this.dataUpload.source = data;
-        this.uploadImageService.UpdateImageUpload(this.dataUpload).subscribe(data => {
-          console.log(data);
-        });
+        if (this.dataUpload.source) {
+          this.uploadImageService.UpdateImageUpload(this.dataUpload).subscribe(data => {
+            console.log(data);
+          });
+        }
+        else console.log('thieu');
       });
     }
     else {

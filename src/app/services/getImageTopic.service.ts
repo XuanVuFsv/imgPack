@@ -7,11 +7,10 @@ const httpOptions = {
 };
 const API = 'https://imgpack.herokuapp.com/api/v1/topic/';
 const imagesAPI = 'https://imgpack.herokuapp.com/api/v1/newfeeds/images/users/';
+
 @Injectable({
   providedIn: 'root'
 })
-
-
 
 export class GetImageTopicService {
 httpHeaders = new HttpHeaders({

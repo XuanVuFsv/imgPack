@@ -1,5 +1,5 @@
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Component, OnInit, Injectable } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
@@ -16,8 +16,11 @@ export class SidebarComponent implements OnInit {
     this.currentURL = router.url;
   }
 
-  ngOnInit(): void
-  {
+  URL = ['https://imgpackweb.web.app/account-settings/general',
+    'https://imgpackweb.web.app/account-settings/notifications',
+    'https://imgpackweb.web.app/account-settings/security'];
+
+  ngOnInit(): void {
     this.changeStatusButton(this.currentURL);
   }
 
@@ -35,8 +38,7 @@ export class SidebarComponent implements OnInit {
     }
 
     this.buttonStatus = this.buttonStatus.map((status, index) => {
-      if (index === currentIndex)
-      {
+      if (index === currentIndex) {
         return true;
       }
       return false;

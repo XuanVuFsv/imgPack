@@ -15,6 +15,16 @@ export class CollectionsService {
     Authorization: localStorage.getItem('accessToken')
   });
 
+  currentCollectionIndex: number;
+
+  UpdateCollectionIndex(index: number): void {
+    this.currentCollectionIndex = index;
+  }
+
+  GetCollectionIndex(): number {
+    return this.currentCollectionIndex;
+  }
+
   constructor(private http: HttpClient) { }
 
   GetCollectionsData(): Observable<any> {
@@ -23,6 +33,10 @@ export class CollectionsService {
 
   AddCollectionsData(collection: any): Observable<any> {
     return this.http.post<any>(this.collectionsURL, collection, { headers: this.httpHeaders });
+  }
+
+  GetImageByCollection(id: string): Observable<any> {
+    return this.http.get<any>(`${this.collectionsURL}/${id}`, { headers: this.httpHeaders });
   }
 
   Test(): Observable<any> {

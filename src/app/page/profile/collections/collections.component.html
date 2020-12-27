@@ -1,7 +1,6 @@
 <div class="collections h-100 px-0 ">
 
     <div class="toolsBar w-100 d-flex justify-content-around ">
-        <p>Tool Bar</p>
         <button type="button" class="btn  btn-info" (click)="sort()">A -> Z</button>
         <div class="dropdown">
             <button type="button" class="btn dropdown-toggle btn-success" id="dropdownMenuButton" data-toggle="dropdown"
@@ -13,7 +12,8 @@
 
         </div>
 
-        <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-info" id="add">Add New</button>
+        <button type="button" data-toggle="modal" data-target="#addCollectionModal" class="btn btn-info" id="add">Add
+            New</button>
 
         <div class="dropdown">
             <button type="button" class="btn dropdown-toggle btn-danger" id="delete" data-toggle="dropdown"
@@ -26,18 +26,10 @@
     </div>
     <div class="gallery w-100 h-100 ">
         <div class="grid-container">
-            <div class="image-list" id="image-list" *ngFor="let pic of collections">
-                <a class="title d-flex justify-content-center align-items-center">
-                    {{pic.name}}
-                </a>
-                <a href="#" id="date" class="date d-flex justify-content-center align-items-center ">
-                    Created at: {{pic.date}}
-                </a>
-                <div class="image" id="image">
-                    <a href="#">
-                        <img src="{{pic.preview}}">
-                    </a>
-                </div>
+            <div class="image-list" id="image-list" *ngFor="let pic of collections; let i=index">
+                <app-collection (viewCollection)="ShowFullImage($event)" [name]="pic.name" [date]="pic.date"
+                    [preview]="pic.src[0]" [num]="pic.src.length" [index]="i">
+                </app-collection>
             </div>
         </div>
     </div>
@@ -50,23 +42,24 @@
 
 <!-- Modal -->
 
-<div class="modal fade bd-example-modal-lg" id="myModal" tabindex="-1" role="dialog"
-aria-labelledby="myModelAddCollection" aria-hidden="true">
-<div class="modal-dialog " role="document">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h4 class="modal-title" id="myModalLabel">Add Collections</h4>
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-          aria-hidden="true">&times;</span></button>
+<div class="modal fade bd-example-modal-lg" id="addCollectionModal" tabindex="-1" role="dialog"
+    aria-labelledby="myModelAddCollection" aria-hidden="true">
+    <div style="height: 228px;" class="modal-dialog" role="document">
+        <div class="modal-content h-100">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Add Collections</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <span>TITLE: <input type="text" #title id="title" class="w-100"></span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="AddCollection()"
+                    data-dismiss="modal">Add</button>
+            </div>
+        </div>
     </div>
-    <div class="modal-body">
-      <span>TITLE: <input type="text" #title id="title" class="w-100"></span>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-primary" (click)="AddCollection()" data-dismiss="modal">Add</button>
-    </div>
-  </div>
-</div>
 </div>
 
 <!-- <div class="row">
