@@ -6,16 +6,22 @@ import {Client} from '../models/homePage';
   providedIn: 'root'
 })
 export class GetImageService {
+httpHeaders = new HttpHeaders({
+  Authorization: localStorage.getItem('accessToken')
+});
 
   public API: string = 'https://imgpack.herokuapp.com/api/v1/';
-  httpHeaders = new HttpHeaders({
-    Authorization: localStorage.getItem('accessToken')
-  });
-
+  public baseURL: string = 'https://imgpack.herokuapp.com/api/v1/newfeeds/library';
   constructor(public http: HttpClient) { }
 
   getImage(): Observable<Client[]>{
-    return this.http.get<Client[]>(this.API, { headers: this.httpHeaders});
+    return this.http.get<Client[]>(this.API,{ headers: this.httpHeaders });
+  }
+  saveImage(id): Observable<Client[]>{
+    return this.http.post<Client[]>(`${this.baseURL}/save/${id}`,{},{ headers: this.httpHeaders })
+  }
+  unSaveImage(id): Observable<Client[]>{
+    return this.http.put<Client[]>(`${this.baseURL}/unsave/${id}`,{},{ headers: this.httpHeaders })
   }
   handleError(err){
     if (err.error instanceof Error){

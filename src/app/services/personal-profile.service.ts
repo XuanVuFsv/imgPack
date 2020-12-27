@@ -4,31 +4,51 @@ import { Observable, of } from 'rxjs';
 import { IProFile } from '../models/proFile';
 import { IImageUsers } from '../models/imageUsers';
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'Application/json' })
+  headers: new HttpHeaders({ 'Content-Type': 'Application/json' }),
 };
 const API = 'https://imgpack.herokuapp.com/api/v1/profile/';
 const imagesAPI = 'https://imgpack.herokuapp.com/api/v1/newfeeds/images/users/';
 const APIme = 'https://imgpack.herokuapp.com/api/v1/profile/me';
 const yourImageURL = 'https://imgpack.herokuapp.com/api/v1/newfeeds/images';
+const baseURL = 'https://imgpack.herokuapp.com/api/v1';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class PersonalProfileService {
   httpHeaders = new HttpHeaders({
-    Authorization: localStorage.getItem('accessToken')
+    Authorization: localStorage.getItem('accessToken'),
   });
 
   find(id: any) {
     throw new Error('Method not implemented.');
   }
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
   getUsers(id): Observable<IProFile[]> {
-    return this.httpClient.get<IProFile[]>(API + id, { headers: this.httpHeaders }).pipe();
+    return this.httpClient
+      .get<IProFile[]>(API + id, { headers: this.httpHeaders })
+      .pipe();
+  }
+  follow(id): Observable<IProFile[]> {
+    console.log(this.httpHeaders);
+    return this.httpClient
+      .post<IProFile[]>(`${baseURL}/follow/${id}`,{}, {
+        headers: this.httpHeaders,
+      })
+      .pipe();
+  }
+  unfollow(id): Observable<IProFile[]> {
+    console.log(this.httpHeaders);
+    return this.httpClient
+      .put<IProFile[]>(`${baseURL}/follow/${id}`,{}, {
+        headers: this.httpHeaders,
+      })
+      .pipe();
   }
   getMe(): Observable<IProFile[]> {
-    return this.httpClient.get<IProFile[]>(APIme, { headers: this.httpHeaders }).pipe();
+    return this.httpClient
+      .get<IProFile[]>(APIme, { headers: this.httpHeaders })
+      .pipe();
   }
 
   // tslint:disable-next-line: whitespace
@@ -36,7 +56,9 @@ export class PersonalProfileService {
     return this.httpClient.get<IProFile>(`${API}/${id}`).pipe();
   }
   getImageUsers(id): Observable<IImageUsers[]> {
-    return this.httpClient.get<IImageUsers[]>(imagesAPI + id, { headers: this.httpHeaders }).pipe();
+    return this.httpClient
+      .get<IImageUsers[]>(imagesAPI + id, { headers: this.httpHeaders })
+      .pipe();
   }
 
   LoadImage(): Observable<any> {
@@ -56,5 +78,4 @@ export class PersonalProfileService {
   //     catchError(this.handleError<Hero[]>('searchHeroes', []))
   //   );
   // }
-
 }

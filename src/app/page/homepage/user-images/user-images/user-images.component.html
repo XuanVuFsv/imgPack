@@ -35,9 +35,25 @@
             <div class="row px-0 justify-content-center">
                 <h1 id="name">{{datas.users.username}}</h1>
             </div>
+
+            <div id="box" *ngIf="userId != idPersonal">
+                <div id="box-follow">
+                    <ng-container *ngIf="datas.analytics.isFollowed; else elseTemplate">
+                        <div id="box-following" (click)="onSelectUnFollow()">
+                            <p class="content"> Following</p>
+                        </div>
+                    </ng-container>
+                    <ng-template #elseTemplate>
+                        <div id="box-follow1" (click)="onSelectFollow()">
+                            <p class="content">Follow</p>
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+
             <div class="row px-0 justify-content-center">
-                <p id="follow"> {{datas.analytics.followers}} người đang theo dõi - Đang theo dõi
-                    {{datas.analytics.followings}} người</p>
+                <p id="follow" [(ngModel)]="followers"> <span class="followww"> {{followers}} </span> Followers -
+                   <span class="followww"> {{datas.analytics.followings}} </span> Following</p>
             </div>
         </div>
         <br><br>

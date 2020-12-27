@@ -22,6 +22,7 @@ body{
     overflow: hidden;
     break-inside: avoid;
     position: relative;
+    cursor: pointer;
 }
 .container .box img{
     max-width: 100%;
@@ -45,22 +46,22 @@ body{
     box-sizing: border-box;
     opacity: 0;
 }
-.details .name{
+.name{
     font-weight: bolder;
-    bottom: 90px;
-    left: 20px;
-    color: white;
-    position: absolute;
-   
+     cursor: pointer;
+}
+.name:hover{
+    opacity: 0.7;
+}
+.name:active{
+    opacity: 0.9;
 }
 .details .btn{
     position: absolute;
     top: 20px;
-    left: 180px;
+    left: 160px;
     border-radius: 25px;
-   
-  
-    
+    cursor: pointer; 
 }
 .container .box .border:hover {
     opacity: 1;

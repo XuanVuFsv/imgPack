@@ -1,4 +1,9 @@
 img {
     // border: 5px solid wheat;
     border-radius: 10px;
+ 
+}
+img:hover{
+    cursor: pointer;
+    opacity: 0.8;
 }
