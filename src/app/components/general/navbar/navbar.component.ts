@@ -109,7 +109,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   }
 
   ChangeMouseStatus(element: string) {
-    this.isHover[element] = !this.isHover[element];
+    // this.isHover[element] = !this.isHover[element];
   }
 
 }
