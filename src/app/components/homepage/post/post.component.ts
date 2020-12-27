@@ -38,16 +38,17 @@ export class PostComponent implements OnInit, OnDestroy {
     this.getUsers();
     // console.log(this.save);
     // this.saveV = true;
-    this.unsaveV = 'unsave';
-    this.getLibrary();
+    if (this.client.isSave == 'my images') this.saveV = false; 
+    else this.saveV = true;
+    // this.getLibrary();
   }
   getLibrary() {
     this.libraryService.getLibrary().subscribe((data) => {
       this.datasLibrary = data['data'];
       this.idLibrary = this.datasLibrary.map((x) => x._id);
       // console.log('datasLibrary', this.idLibrary);
-      if (this.idLibrary.includes(this.client._id)) { this.saveV = 'unsave'; }
-      else { this.saveV = "save"; }
+      // if (this.idLibrary.includes(this.client._id)) { this.saveV = 'unsave'; }
+      // else { this.saveV = "save"; }
       // console.log('aloha', this.idLibrary.includes(this.client._id));
     });
   }
@@ -63,23 +64,14 @@ export class PostComponent implements OnInit, OnDestroy {
       // console.log('me',this.idPersonal);
     });
   }
-  changeSave(client, stt) {
-    // console.log();
-    if (stt === 'save') {
-      this.saveV = 'unsave';
-      this.getImageService.saveImage(client).subscribe();
-      // this.save = !this.save;
-      // console.log('save',this.save);
-    } else {
-      this.saveV = 'save';
-      this.getImageService.unSaveImage(client).subscribe();
-    }
+  Saving(id) {
+    this.client.isSave = true;
+    this.getImageService.saveImage(id).subscribe();
 
   }
-  onUnSave(client) {
+  unSaving(client) {
+    this.client.isSave = false;
     this.getImageService.unSaveImage(client).subscribe();
-    this.unsaveV = 'save';
-    console.log(this.idLibrary);
   }
   getUsers() {
     this.userData = this.getImageService.getImage().subscribe((data) => {

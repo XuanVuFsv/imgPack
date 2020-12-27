@@ -8,7 +8,7 @@
                     <div class="modal-dialog modal-dialog-centered modal-lg px-0" role="document">
                         <div class="modal-content mx-0">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="full-image-title">=</h5>
+                                <h5 class="modal-title" id="full-image-title"></h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -18,7 +18,7 @@
                                     (load)="ResizeImage()">
                             </div>
                             <div class="modal-footer">
-                                =
+                                
                                 <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
                                 <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
                             </div>
@@ -27,43 +27,47 @@
                 </div>
             </div>
         </div>
-        <br><br><br><br>
-        <div id="user">
-            <div class="row px-0 justify-content-center">
-                <img class="rounded-circle" id="avatar" src="{{datas.users.avatar}}" alt="">
-            </div>
-            <div class="row px-0 justify-content-center">
-                <h1 id="name">{{datas.users.username}}</h1>
-            </div>
+    </div>
+</div>
+<br /><br /><br /><br />
+<div id="user">
+    <div class="row px-0 justify-content-center">
+        <img class="rounded-circle" id="avatar" src="{{ datas.users.avatar }}" alt="" />
+    </div>
 
-            <div id="box" *ngIf="userId != idPersonal">
-                <div id="box-follow">
-                    <ng-container *ngIf="datas.analytics.isFollowed; else elseTemplate">
-                        <div id="box-following" (click)="onSelectUnFollow()">
-                            <p class="content"> Following</p>
-                        </div>
-                    </ng-container>
-                    <ng-template #elseTemplate>
-                        <div id="box-follow1" (click)="onSelectFollow()">
-                            <p class="content">Follow</p>
-                        </div>
-                    </ng-template>
+    <div class="row px-0 justify-content-center">
+        <h1 id="name">{{ datas.users.username }}</h1>
+    </div>
+
+    <div id="box" *ngIf="userId != idPersonal">
+        <div id="box-follow">
+            <ng-container *ngIf="datas.analytics.isFollowed; else elseTemplate">
+                <div id="box-following" (click)="onSelectUnFollow()">
+                    <button class="btn btn-light btn-sm">Following</button>
                 </div>
-            </div>
-
-            <div class="row px-0 justify-content-center">
-                <p id="follow" [(ngModel)]="followers"> <span class="followww"> {{followers}} </span> Followers -
-                   <span class="followww"> {{datas.analytics.followings}} </span> Following</p>
-            </div>
+            </ng-container>
+            <ng-template #elseTemplate>
+                <div id="box-follow1" (click)="onSelectFollow()">
+                    <button class="btn btn-primary btn-sm">Follow</button>
+                </div>
+            </ng-template>
         </div>
-        <br><br>
+    </div>
 
-        <div class="row px-0 justify-content-center" id="gallery">
-            <div *ngFor="let columImage of imagesByColumn; let i = index">
-                <div class="col-2 mx-0 px-2 py-2" *ngFor="let image of imagesByColumn[i]; let j = index">
-                    <app-image (deleteImage)="DeleteImage($event)" (viewImage)="ShowFullImage($event)" [source]="image.source" [isOwner]="isOwner" [index]="i" [indexImg]="j" [id]="image._id"></app-image>
-                </div>
-            </div>
+    <div class="row px-0 justify-content-center">
+        <p id="follow" [(ngModel)]="followers">
+            <span class="followww"> {{ followers }} </span> Followers -
+            <span class="followww"> {{ datas.analytics.followings }} </span> Following
+        </p>
+    </div>
+</div>
+<br /><br />
+
+<div class="row px-0 justify-content-center" id="gallery">
+    <div *ngFor="let columImage of imagesByColumn; let i = index">
+        <div class="col-2 mx-0 px-2 py-2" *ngFor="let image of imagesByColumn[i]; let j = index">
+            <app-image (deleteImage)="DeleteImage($event)" (viewImage)="ShowFullImage($event)" [source]="image.source"
+                [isOwner]="isOwner" [index]="i" [indexImg]="j" [id]="image._id"></app-image>
         </div>
     </div>
 </div>

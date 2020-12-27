@@ -33,7 +33,7 @@ export class TopicComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getLibrary();
+    // this.getLibrary();
     this.route.queryParamMap.subscribe((params: ParamMap) => {
       let id = params.get('id');
       this.topicId = id;
@@ -45,8 +45,7 @@ export class TopicComponent implements OnInit {
           // this.getIdUsers(usr)
         });
     });
-    this.getMe();
-  
+    this.getMe(); 
   }
   // getIdUsers(usr){
   //   this.idUsers =
@@ -64,12 +63,14 @@ export class TopicComponent implements OnInit {
       // console.log('datasLibrary', this.idLibrary);
     });
   }
-  initSaveV(id) {
-    console.log('save' ,this.saveV);
-    this.saveV = this.idLibrary.includes(id) ? "unsave" : "save";
-    
+  Saving(i: any) {
+    i.isSave = true;
+    this.getImageService.saveImage(i._id).subscribe();
   }
- 
+  unSaving(i: any) {
+    i.isSave = false;
+    this.getImageService.unSaveImage(i._id).subscribe();
+  }
   changeSave(client, stt, i) {
     // console.log();
     if (stt === 'save') {
