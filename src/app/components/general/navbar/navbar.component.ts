@@ -98,27 +98,11 @@ export class NavbarComponent implements OnInit {
     this.getMe();
     this.getUsers();
     this.isCollapse = true;
-<<<<<<< HEAD
     // this._userSetingsService.GetUserSettings()
     // .subscribe((data: any) => 
     // {
     //   this.avatarSource = data["general"]["avatarSource"];
     // });  
-=======
-    this._userSetingsService.GetUserSettings()
-    .subscribe((data: any) =>
-    {
-      this.avatarSource = data["general"]["avatarSource"];
-    });
-  }
-
-  ngAfterViewInit() {
-
-  }
-
-  GotoElement(id: string): void {
-    this.viewportScroller.scrollToAnchor(id);
->>>>>>> f13c04a831919de2abedc08b3134d565cb3b9e08
   }
 
   ChangeMouseStatus(element: string) {
