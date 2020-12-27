@@ -1,24 +1,27 @@
-<h1 class="library text-center">Topic: {{datas.topicName}} </h1>
-<hr>
+<h1 class="library text-center">Topic: {{ datas.topicName }}</h1>
+<hr />
 
 <body>
-    <div class="container w-100  ">
-        <div class="box" *ngFor="let img of datas['images']; let i of datas['images']" >
-            
-            <img src="{{img.source}}" (load)="initSaveV(img._id)">
-            <a  class="border">
-            </a>
-            <!-- <h2>{{client.title}}</h2> -->
-            <a (click)="onSelect(img)" class=" text-decoration-none text-center">
-                <h6 class="name">
-                    
-                    {{img.author['username']}}
-                </h6>
-            </a>
-            <div *ngIf="img['author']._id != idPersonal">
-                <button type="button" class="btn btn-danger" (click)="changeSave(img._id, saveV, i)">
-                    {{saveV}} </button>
-            </div>
+  <div class="container w-100">
+    <div class="box" *ngFor="let img of datas['images']">
+      <img src="{{ img.source }}" />
+      <a class="border"> </a>
+      <div class="details">
+        <div *ngIf="img['author']._id != idPersonal">
+          <ng-container *ngIf="img.isSave != 'my images'; else elseTemplate">
+            <ng-container *ngIf="img.isSave; else elseTemplate">
+              <button type="button" class="btn btn-light active" (click)="unSaving(img)">unsave</button>
+            </ng-container>
+            <ng-template #elseTemplate>
+              <button type="button" class="btn btn-danger active" (click)="Saving(img)">save</button>
+            </ng-template>
+          </ng-container>
         </div>
+      </div>
+      <!-- <h2>{{client.title}}</h2> -->
+      <h6 class="name" (click)="onSelect(img)">
+        {{ img.author["username"] }}
+      </h6>
     </div>
+  </div>
 </body>

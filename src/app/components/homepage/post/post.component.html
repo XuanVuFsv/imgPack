@@ -48,8 +48,14 @@
                     </button>
              
             </ng-template> -->
-
-            <button type="button" class="btn btn-primary" (click)="changeSave(client._id, saveV)" > {{saveV}}</button>
+            <ng-container  *ngIf="saveV; else elseTemplate">
+                <ng-container  *ngIf="client.isSave; else elseTemplate">
+                    <button type="button" class="btn btn-light"  (click)="unSaving(client._id)" > unsave </button>
+                </ng-container>
+                <ng-template #elseTemplate>
+                    <button type="button" class="btn btn-danger"  (click)="Saving(client._id)" > save</button>
+                </ng-template> 
+            </ng-container>
 
         </div>
     </div>

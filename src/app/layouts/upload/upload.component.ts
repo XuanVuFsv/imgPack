@@ -131,6 +131,11 @@ export class UploadComponent implements OnInit {
         if (this.dataUpload.source) {
           this.uploadImageService.UpdateImageUpload(this.dataUpload).subscribe(data => {
             document.getElementById('PostButton').innerHTML = 'POST';
+            document.getElementById('notify').innerHTML = `
+            <br>
+            <div class="alert alert-success" role="alert">
+            Bạn đã upload hình ảnh thành công !
+            </div>`
             // console.log(data);
           });
         }

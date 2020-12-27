@@ -28,7 +28,6 @@ export class FollowingTabComponent implements OnInit {
       i.isFollow=true;
       i.sttFollow="Following";
       console.log("Followed");
-
     }
 
     // if(this.blFollow== true) {
