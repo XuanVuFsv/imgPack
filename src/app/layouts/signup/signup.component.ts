@@ -8,6 +8,8 @@ import { HttpClient} from '@angular/common/http'
 })
 export class SignupComponent implements OnInit {
 
+
+
   constructor(private http:HttpClient) { }
 
   ngOnInit(): void {
@@ -17,8 +19,15 @@ export class SignupComponent implements OnInit {
     this.http.post('https://imgpack.herokuapp.com/api/v1/sign-up',data)
     .subscribe((result)=>{
       console.log("result",result)
+      if(result['data']) {
+        alert('Sign Up Success !!');
+      document.location.href = '/login';
+    }
+    else {
+      alert(result['error']['message']);
+    }
     })
-    console.log(data);
+
   }
 
 }

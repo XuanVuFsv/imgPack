@@ -18,15 +18,20 @@
 
       <form class="login-form" #formSignup="ngForm" (ngSubmit)="onSubmit(formSignup.value)">
         <input type="text" placeholder="Email" name="email" ngModel name="email" required email />
-        <p
+        <p class="error"
           *ngIf="(formSignup.controls.email?.errors?.required || formSignup.controls.email?.errors?.email) && formSignup.controls.email.touched">
           Email is
           required !</p>
         <input type="text" placeholder="name" ngModel #name="ngModel" name="name" required appForbiddenName="name"
           required />
-        <p *ngIf="name.touched &&  name.errors?.required ">Name is not valid</p>
-        <input type="password" placeholder="password" name="password" ngModel />
-        <input type="password" placeholder="confirmPassword" name="confirmpassword" ngModel />
+        <p class="error" *ngIf="name.touched &&  name.errors?.required ">Name is not valid</p>
+        <input type="password" placeholder="password" name="password" ngModel #password="ngModel" required />
+        <p class="error" *ngIf="password.errors?.required && password.touched">ConfirmPassword is
+          not valid</p>
+        <input type="password" placeholder="confirmPassword" name="confirmpassword" ngModel
+          #confirmpassword="ngModel" />
+        <p class="error" *ngIf="password.value != confirmpassword.value && confirmpassword.touched">ConfirmPassword is
+          not valid</p>
 
         <input type="text" placeholder="age" style="width: 48%; margin-right: 2%;" ngModel #age="ngModel" name="age"
           required />
@@ -34,9 +39,9 @@
           <option>Nam</option>
           <option>Nữ</option>
         </select>
-        <p *ngIf="(age.value<1 || age.value>100 || age.errors?.required) && age.touched">Age is not valid</p>
-
-        <button>Sign Up NOW</button>
+        <p class="error" *ngIf="(age.value<1 || age.value>100 || age.errors?.required) && age.touched">Age is not valid
+        </p>
+        <button [disabled]="formSignup.invalid">Sign Up NOW</button>
         <p class="message">──────── or sign up with ────────</p>
         <p>
           <img src="../../../assets/login/fb.png" width="50px" height="auto">
