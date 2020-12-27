@@ -60,11 +60,13 @@ body{
 .details .btn{
     position: absolute;
     top: 20px;
-    left: 180px;
+    left: 160px;
     border-radius: 25px;
-   
-  
-    
+    cursor: pointer;
+}
+
+.details {
+    opacity: 0;
 }
 // .container .box .border:hover {
 //     opacity: 1;
@@ -135,7 +137,7 @@ img:hover {
 }
 .border{
     width: 92%;
-    height: 87%;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.52);
     top: 9px;
     left: 10px;
@@ -144,10 +146,14 @@ img:hover {
     border-radius: 15px 15px 15px 15px;
     display: block;
     box-sizing: border-box;
-    opacity: 1;
-    // z-index: 1;
+    opacity: 0;
+    z-index: 1;
+    
 }
  .border:hover {
     opacity: 1;
     transition: ease-in-out 0.5s;
+}
+.border:hover  + .details{
+    opacity: 1;
 }
