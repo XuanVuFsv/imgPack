@@ -12,6 +12,7 @@
 
         </div> -->
 
+        <span style="font-weight: 500; font-size: 25px;">Collections</span>
         <button type="button" data-toggle="modal" data-target="#addCollectionModal" class="btn btn-info" id="add">Add
             New</button>
 
@@ -27,8 +28,8 @@
     <div class="gallery w-100 h-100 ">
         <div class="grid-container">
             <div class="image-list" id="image-list" *ngFor="let pic of collections; let i=index">
-                <app-collection (viewCollection)="ShowFullImage($event)" [name]="pic.name" [date]="pic.date"
-                    [preview]="pic.src[0]" [num]="pic.src.length" [index]="i">
+                <app-collection (deleteCollection)="DeleteCollection($event)" (viewCollection)="ShowFullImage($event)" [name]="pic.name" [date]="pic.date"
+                    [preview]="pic.src[0]" [num]="pic.src.length" [index]="i" [id]="pic._id">
                 </app-collection>
             </div>
         </div>

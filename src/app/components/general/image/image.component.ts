@@ -11,6 +11,7 @@ export class ImageComponent implements OnInit, AfterViewInit {
   @ViewChild('image') imageElement: ElementRef;
   @Input() source: string;
   @Input() index: number;
+  @Input() indexImg: number;
   @Input() id: any;
   @Input() isOwner: boolean;
   @Output() viewImage = new EventEmitter<any>();
@@ -19,7 +20,7 @@ export class ImageComponent implements OnInit, AfterViewInit {
   constructor(private imageService: GetImageService) { }
 
   ngOnInit(): void {
-    console.log(this.isOwner);
+    // console.log(this.isOwner);
   }
 
   ngAfterViewInit(): void {
@@ -31,15 +32,21 @@ export class ImageComponent implements OnInit, AfterViewInit {
         source: this.source,
         width: this.imageElement.nativeElement.width,
         height: this.imageElement.nativeElement.height,
-        index: this.index
+        index: this.index,
+        indexImg: this.indexImg
       }
     );
   }
 
   DeleteImage(): void {
-    this.deleteImage.emit(this.id);
+    this.deleteImage.emit({
+      id: this.id,
+      i: this.index,
+      j: this.indexImg
+    });
+    // console.log('i', this.index, 'j', this.indexImg);
     this.imageService.DeleteImage(this.id).subscribe(data => {
-      // console.log(data);
+      console.log(data);
     });
   }
 }

@@ -31,6 +31,10 @@ export class CollectionsService {
     return this.http.get<any>(this.collectionsURL, { headers: this.httpHeaders });
   }
 
+  DeleteCollection(id: string): Observable<any> {
+    return this.http.delete<any>(`${this.collectionsURL}/${id}`, { headers: this.httpHeaders });
+  }
+
   AddCollectionsData(collection: any): Observable<any> {
     return this.http.post<any>(this.collectionsURL, collection, { headers: this.httpHeaders });
   }

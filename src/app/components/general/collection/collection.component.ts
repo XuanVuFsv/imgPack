@@ -1,3 +1,4 @@
+import { CollectionsService } from './../../../services/collections.service';
 import { Component, OnInit, EventEmitter, Output, Input, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
@@ -11,14 +12,16 @@ export class CollectionComponent implements OnInit {
   @Input() num: number;
   @Input() date: Date;
   @Input() index: number;
+  @Input() id: string;
   @Output() viewCollection = new EventEmitter<number>();
+  @Output() deleteCollection = new EventEmitter<number>();
 
   @ViewChild('imagePreview') imagePreview: ElementRef;
   isHasImage: boolean;
   limitSize: number = 345;
 
   @Output() viewImage = new EventEmitter<any>();
-  constructor() { }
+  constructor(private collectionService: CollectionsService) { }
 
   ngOnInit(): void {
     if (this.preview) {
@@ -33,6 +36,10 @@ export class CollectionComponent implements OnInit {
   ResizeImage(): void {
     const width = this.imagePreview.nativeElement.width;
     const height = this.imagePreview.nativeElement.height;
+    if (width / height > 0.5 && width / height < 1) {
+      // console.log(width / height);
+      this.limitSize = 250;
+    }
     let newWidth = width;
     let newHeight = height;
 
@@ -57,5 +64,11 @@ export class CollectionComponent implements OnInit {
   }
   ViewCollection(): void {
     this.viewCollection.emit(this.index);
+  }
+
+  DeleteCollection(): void {
+    this.deleteCollection.emit(this.index);
+    // console.log(this.index);
+    this.collectionService.DeleteCollection(this.id).subscribe(data => {});
   }
 }

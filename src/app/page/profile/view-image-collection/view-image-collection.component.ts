@@ -86,7 +86,7 @@ export class ViewImageCollectionComponent implements OnInit {
 
   ShowFullImage(dataImage: object): void {
     this.fullImageSource = dataImage['source'];
-    this.currentFullImageIndex = dataImage['index'];
+    this.currentFullImageIndex = dataImage['indexImg'];
     this.currentWidth = dataImage['width'] * 4;
     this.currentHeight = dataImage['height'] * 4;
 

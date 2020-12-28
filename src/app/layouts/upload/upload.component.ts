@@ -135,7 +135,10 @@ export class UploadComponent implements OnInit {
             <br>
             <div class="alert alert-success" role="alert">
             Bạn đã upload hình ảnh thành công !
-            </div>`
+            </div>`;
+            setTimeout(() => {
+              document.getElementById('notify').innerHTML = '';
+            }, 2000);
             // console.log(data);
           });
         }

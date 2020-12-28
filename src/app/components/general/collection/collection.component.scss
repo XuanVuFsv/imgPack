@@ -10,11 +10,22 @@
 }
 
 .collection:hover {
-    border-width: 20px;
-    background-color: rgb(44, 44, 44);
+    border-width: 15px;
+    background-color: rgb(122, 122, 122);
     opacity: 0.8;
 }
 
 img {
     border-radius: 15px;
+}
+
+.btn {
+    position: absolute;
+    top: 8px;
+    left: 280px;
+    opacity: 0;
+}
+
+.btn:hover {
+    opacity: 1;
 }

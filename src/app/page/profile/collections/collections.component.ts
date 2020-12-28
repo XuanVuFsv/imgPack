@@ -16,7 +16,7 @@ export class CollectionsComponent implements OnInit {
   collections: any[] = new Array();
   @ViewChild('title') newTitle: ElementRef;
   @ViewChild('fullimage') fullImage: ElementRef;
-  limitSize: number = 470;
+  limitSize: number = 450;
 
   // newCollectionImages: string[] = new Array();
   previewCollectionImage: any;
@@ -43,43 +43,6 @@ export class CollectionsComponent implements OnInit {
       });
   }
 
-  View(): void {
-  }
-
-  sort(): void {
-    this.collection = this.collection.sort((a1, a2) => {
-      if (a1.title > a2.title) {
-        return 1;
-      }
-
-      if (a1.title < a2.title) {
-        return -1;
-      }
-      return 0;
-    });
-  }
-
-  sortIncrease(): void {
-    this.collection = this.collection.sort((d1, d2) => d1.date.valueOf() - d2.date.valueOf());
-  }
-  sortReduce(): void {
-    this.collection = this.collection.sort((d1, d2) => d2.date.valueOf() - d1.date.valueOf());
-  }
-
-  removeAll(): void {
-    this.cnfrmMessage = confirm('Are u sure?')
-    if (this.cnfrmMessage === true) {
-      $(document).ready(function () {
-        $("#delete").ready(function () {
-          $(".image-list").remove();
-        });
-      });
-    }
-    else {
-      alert('Cancelled..!!!');
-    }
-  }
-
   AddCollection(): void {
     if (this.collections.map(x => x.name).indexOf(this.newTitle.nativeElement.value) < 0 && this.newTitle.nativeElement.value !== '') {
       let newCollection: any;
@@ -96,6 +59,11 @@ export class CollectionsComponent implements OnInit {
     else {
       alert('Match Name');
     }
+  }
+
+  DeleteCollection(index: number): void {
+    console.log(index);
+    this.collections.splice(index, 1);
   }
 
   ShowFullImage(collectionIndex: number): void {
