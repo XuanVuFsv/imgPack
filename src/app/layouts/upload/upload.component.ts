@@ -134,7 +134,7 @@ export class UploadComponent implements OnInit {
             document.getElementById('notify').innerHTML = `
             <br>
             <div class="alert alert-success" role="alert">
-            Bạn đã upload hình ảnh thành công !
+            You have successfully uploaded!
             </div>`;
             setTimeout(() => {
               document.getElementById('notify').innerHTML = '';
@@ -142,10 +142,9 @@ export class UploadComponent implements OnInit {
             // console.log(data);
           });
         }
-         else
-         {
+        else {
           alert("No Image to Upload");
-         }
+        }
       });
     }
     else {

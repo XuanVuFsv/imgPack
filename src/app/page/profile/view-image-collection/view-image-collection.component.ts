@@ -96,6 +96,7 @@ export class ViewImageCollectionComponent implements OnInit {
       date: time.getDate() + '/' + (time.getMonth() + 1) + '/' + time.getFullYear(),
       position: (this.collection['src'].length > 0 ? (dataImage['index'] + 1) : 0) + '/' + this.collection['src'].length
     };
+    console.log(this.currentFullImageInfor);
   }
 
   ResizeImage(): void {
