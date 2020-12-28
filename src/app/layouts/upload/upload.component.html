@@ -2,20 +2,18 @@
   <div class="row h-10">
     <app-navbar></app-navbar>
   </div>
-  <div class="formupload h-90 w-50 ">
+  <div class="formupload h-90 w-50">
     <div class="row">
       <div class="frameupload col-md-6">
         <div class="inframe" id="mainFrame">
           <i type="button" id="cancelUpload" (click)="onCancelUpload()" class="fas fa-window-close fa-2x"></i>
-          <img #imagePreview style="width: 300px; height: auto;" [src]="currentImageUpload" alt="">
-          <div id='uploadFrame'>
-
+          <img #imagePreview style="width: 300px; height: auto" [src]="currentImageUpload" alt="" />
+          <div id="uploadFrame">
             <div class="form-group">
               <!-- <label for="file">Choose File</label> -->
               <label type="button" for="file-upload">
-                <div style="color: #00ACEE;" class="spaceupload fas fa-upload fa-3x">
-                  <p style="font-size: 15px; font-weight: 100; color: #00ACEE;">Kéo thả hoặc nhấp vào đây để tải lên
-                  </p>
+                <div style="color: #00acee" class="spaceupload fas fa-upload fa-3x">
+                  <p style="font-size: 15px; font-weight: 100; color: #00acee">Kéo thả hoặc nhấp vào đây để tải lên</p>
                 </div>
               </label>
               <!-- <input type="file"
@@ -33,11 +31,11 @@
       </div>
       <div class="info col-md-5">
         <div class="row">
-          <input #descriptionValue class="input description" placeholder="Description">
+          <input #descriptionValue class="input description" placeholder="Description" />
 
           <div class="row align-items-center justify-content-between">
             <div class="col-7">
-              <input #topicValue class="input topic" placeholder="Topic">
+              <input #topicValue class="input topic" placeholder="Topic" />
             </div>
             <div class="col-2 mr-4">
               <button class="addTopic btn-primary fas fa-plus fa-2x" (click)="AddTopic()"></button>
@@ -48,12 +46,17 @@
             <div class="col-7">
               <select #collectionValue name="collection" class="input add">
                 <option value="" disabled selected>Choose one your collection</option>
-                <option *ngFor="let l of collections" value="{{l._id}}">{{l.name}}</option>
+                <option *ngFor="let l of collections" value="{{ l._id }}">{{ l.name }}</option>
               </select>
             </div>
             <div class="col-2 mr-4">
-              <button style="width: 45px;" class="addTopic btn-primary fas fa-plus fa-1x" data-toggle="modal"
-                data-target="#addCollectionModal"> <i class="fas fa-images fa-1x"></i>
+              <button
+                style="width: 45px"
+                class="addTopic btn-primary fas fa-plus fa-1x"
+                data-toggle="modal"
+                data-target="#addCollectionModal"
+              >
+                <i class="fas fa-images fa-1x"></i>
               </button>
             </div>
           </div>
@@ -74,31 +77,36 @@
         <h5>Your Image's Topic</h5>
         <div class="row">
           <ul class="listTopic">
-            <li *ngFor="let topic of topicList" [type]="topic">{{topic}}</li>
+            <li *ngFor="let topic of topicList" [type]="topic">{{ topic }}</li>
           </ul>
         </div>
       </div>
     </div>
     <div class="post">
       <button id="PostButton" (click)="Post()" class="btnpost">POST</button>
-      <div id="notify">
-      </div>
+      <div id="notify"></div>
     </div>
   </div>
   <!-- <img *ngFor="let img of imgs" [src]="" alt=""> -->
   <!--Modal-->
-  <div class="modal fade bd-example-modal-lg" id="addCollectionModal" tabindex="-1" role="dialog"
-    aria-labelledby="myModelAddCollection" aria-hidden="true">
-    <div class="modal-dialog " role="document">
+  <div
+    class="modal fade bd-example-modal-lg"
+    id="addCollectionModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="myModelAddCollection"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h4 class="modal-title" id="myModalLabel">Add Collections</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-              aria-hidden="true">&times;</span></button>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
         <div class="modal-body">
-          <span>TITLE: <input type="text" #title id="title" class="w-100"></span>
-          </div>
+          <span>TITLE: <input type="text" #title id="title" class="w-100" /></span>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" (click)="AddCollection()" data-dismiss="modal">Add</button>
@@ -106,3 +114,4 @@
       </div>
     </div>
   </div>
+</div>
