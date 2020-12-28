@@ -7,7 +7,7 @@
       <div class="frameupload col-md-6">
         <div class="inframe" id="mainFrame">
           <i type="button" id="cancelUpload" (click)="onCancelUpload()" class="fas fa-window-close fa-2x"></i>
-          <img style="width: 334px; height: auto;" [src]="currentImageUpload" alt="">
+          <img #imagePreview style="width: 300px; height: auto;" [src]="currentImageUpload" alt="">
           <div id='uploadFrame'>
 
             <div class="form-group">
@@ -23,11 +23,11 @@
                      (change)="handleFileInput($event.target.files)"> -->
               <input id="file-upload" hidden type="file" name="fileUpload" (change)="onSelectImage($event)" />
             </div>
-            <p
+            <!-- <p
               style="font-size: 13px;position: absolute; bottom: 0px; left: 0px;padding:0px 25px 15px 25px;text-align: center;">
               Khuyến nghị:
               Sử dụng tập tin .jpg
-              chất lượng cao có kích thước dưới 20MB</p>
+              chất lượng cao có kích thước dưới 20MB</p> -->
           </div>
         </div>
       </div>
@@ -81,8 +81,7 @@
     </div>
     <div class="post">
       <button id="PostButton" (click)="Post()" class="btnpost">POST</button>
-      <div id="notify"> 
-        
+      <div id="notify">
       </div>
     </div>
   </div>
@@ -99,6 +98,7 @@
         </div>
         <div class="modal-body">
           <span>TITLE: <input type="text" #title id="title" class="w-100"></span>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" (click)="AddCollection()" data-dismiss="modal">Add</button>

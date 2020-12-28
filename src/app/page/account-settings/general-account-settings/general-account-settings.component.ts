@@ -62,7 +62,7 @@ export class GeneralAccountSettingsComponent implements OnInit {
           document.getElementById('success').innerHTML = 'Update Success!!!';
           setTimeout(() => {
             document.getElementById('success').innerHTML = '';
-          }, 2000);
+          }, 3000);
           // console.log(data);
         });
       });
@@ -73,7 +73,7 @@ export class GeneralAccountSettingsComponent implements OnInit {
         document.getElementById('success').innerHTML = 'Update Success!!!';
         setTimeout(() => {
           document.getElementById('success').innerHTML = '';
-        }, 2000);
+        }, 3000);
         // console.log(data);
       });
     }

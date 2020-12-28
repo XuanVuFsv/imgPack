@@ -96,7 +96,7 @@ export class ViewImageCollectionComponent implements OnInit {
       date: time.getDate() + '/' + (time.getMonth() + 1) + '/' + time.getFullYear(),
       position: (this.collection['src'].length > 0 ? (dataImage['index'] + 1) : 0) + '/' + this.collection['src'].length
     };
-    console.log(this.currentFullImageInfor);
+    // console.log(this.currentFullImageInfor);
   }
 
   ResizeImage(): void {
@@ -156,5 +156,6 @@ export class ViewImageCollectionComponent implements OnInit {
       + '/' + this.collection['src'].length;
     let time = this.collection['imageDate'][this.currentFullImageIndex];
     this.currentFullImageInfor.date = time.getDate() + '/' + (time.getMonth() + 1) + '/' + time.getFullYear();
+    this.currentFullImageInfor.name = this.collection['imageDescription'][this.currentFullImageIndex];
   }
 }

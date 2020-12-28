@@ -57,7 +57,7 @@ export class CollectionsComponent implements OnInit {
       // console.log('newCollection Add', newCollection);
     }
     else {
-      alert('Match Name');
+      alert('Collection already exists');
     }
   }
 

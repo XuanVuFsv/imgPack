@@ -91,7 +91,7 @@ export class UploadComponent implements OnInit {
       // console.log('new collections', this.collectionIDList, this.nameCollection, this.collections);
     }
     else {
-      // console.log('match name');
+      alert('Collection already exists');
     }
   }
 
@@ -118,17 +118,17 @@ export class UploadComponent implements OnInit {
   }
 
   Post(): void {
-    document.getElementById('PostButton').innerHTML = 'UPLOADING';
     this.dataUpload.collectionId = this.collectionValue.nativeElement.value;
     this.dataUpload.description = this.descriptionValue.nativeElement.value;
 
     const formData = new FormData();
     formData.append('source', this.imageFileUpload);
     if (this.dataUpload.collectionId && this.dataUpload.description && this.dataUpload.topics) {
-      this.uploadImageService.UploadS3(formData).subscribe(data => {
-        // console.log(data);
-        this.dataUpload.source = data;
-        if (this.dataUpload.source) {
+      if (this.imageFileUpload) {
+        document.getElementById('PostButton').innerHTML = 'UPLOADING';
+        this.uploadImageService.UploadS3(formData).subscribe(data => {
+          // console.log(data);
+          this.dataUpload.source = data;
           this.uploadImageService.UpdateImageUpload(this.dataUpload).subscribe(data => {
             document.getElementById('PostButton').innerHTML = 'POST';
             document.getElementById('notify').innerHTML = `
@@ -138,14 +138,14 @@ export class UploadComponent implements OnInit {
             </div>`;
             setTimeout(() => {
               document.getElementById('notify').innerHTML = '';
-            }, 2000);
+            }, 3000);
             // console.log(data);
           });
-        }
-        else {
-          alert("No Image to Upload");
-        }
-      });
+        });
+      }
+      else {
+        alert("No Image to Upload");
+      }
     }
     else {
       alert('Check your information again');
