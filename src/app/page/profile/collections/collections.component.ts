@@ -50,7 +50,12 @@ export class CollectionsComponent implements OnInit {
       newCollection = {
         name: this.newTitle.nativeElement.value,
       };
-
+      let time = new Date();
+      this.collections.push({
+        name: newCollection.name,
+        src: [],
+        date: time.getDate() + '/' + (time.getMonth() + 1) + '/' + time.getFullYear()
+      });
       this.profileDataService.AddCollectionsData(newCollection).subscribe(data => {
       });
 
@@ -69,6 +74,6 @@ export class CollectionsComponent implements OnInit {
   ShowFullImage(collectionIndex: number): void {
     this.profileDataService.UpdateCollectionIndex(collectionIndex);
     // console.log(this.profileDataService.GetCollectionIndex());
-    this.router.navigate(['profile/view-collection'], {queryParams: {id : collectionIndex}});
+    this.router.navigate(['profile/view-collection'], { queryParams: { id: collectionIndex } });
   }
 }
