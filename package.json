@@ -1,6 +1,9 @@
 {
-  "name": "demo",
-  "version": "0.0.0",
+  "name": "@xuanvufsv/imgPack",
+  "author": "@xuanvufsv",
+  "repository": "https://github.com/XuanVuFsv/imgPack.git",
+  "version": "1.0.0",
+  "description": "Quest for tea.xyz",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
