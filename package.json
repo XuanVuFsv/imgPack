@@ -1,6 +1,7 @@
 {
-  "name": "@xuanvufsv/imgpack",
+  "name": "imgpack",
   "author": "@xuanvufsv",
+  "license": "ISC",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/XuanVuFsv/imgPack.git"
@@ -73,6 +74,5 @@
     "FE",
     "web3",
     "web"
-  ],
-  "license": "ISC"
+  ]
 }
