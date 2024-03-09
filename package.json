@@ -5,7 +5,7 @@
     "type": "git",
     "url": "git+https://github.com/XuanVuFsv/imgPack.git"
   },
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Quest for tea.xyz",
   "scripts": {
     "ng": "ng",
